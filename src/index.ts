@@ -1,2 +1,3 @@
-export {default} from './next-auth-all-access.js';
-
+export function foo() {
+  return 'FOO'
+}
