@@ -1,0 +1,124 @@
+{
+  "name": "@mshick/tufted",
+  "version": "1.0.0",
+  "keywords": [
+    "react",
+    "nodejs",
+    "nextjs",
+    "markdown",
+    "mdx",
+    "tufte",
+    "rehype",
+    "remark",
+    "sidenote",
+    "epigraph"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist",
+  "typesVersions": {
+    "*": {
+      "react": [
+        "dist/react/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js"
+  ],
+  "scripts": {
+    "build": "del-cli dist && tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "release": "np",
+    "test": "eslint src && ava"
+  },
+  "prettier": {
+    "bracketSpacing": false
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 12
+    },
+    "plugins": [
+      "json-format"
+    ],
+    "extends": [
+      "xo-space"
+    ],
+    "rules": {
+      "no-console": "error",
+      "no-unreachable": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.{ts,tsx}"
+        ],
+        "extends": [
+          "xo-typescript/space"
+        ]
+      },
+      {
+        "files": [
+          "**/*.{md,mdx}"
+        ],
+        "settings": {
+          "mdx/code-blocks": false,
+          "mdx/language-mapper": {}
+        },
+        "extends": [
+          "plugin:mdx/recommended"
+        ]
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "tsconfig.json",
+    "dist"
+  ],
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "files": [
+      "src/**/*.test.ts"
+    ],
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@ava/typescript": "^3.0.1",
+    "@types/node": "^14.15.0",
+    "@types/react": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "ava": "^4.2.0",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.15.0",
+    "eslint-config-xo-space": "^0.32.0",
+    "eslint-config-xo-typescript": "^0.50.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-mdx": "^1.17.0",
+    "next": "^12.1.6",
+    "next-auth": "^4.3.4",
+    "np": "^7.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-node": "^10.7.0",
+    "type-fest": "^2.12.2",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "next-auth": "^4.3.4",
+    "react": "^17.0.2 || ^18",
+    "react-dom": "^17.0.2 || ^18"
+  },
+  "engines": {
+    "node": "^12.19.0 || ^14.15.0 || ^16.13.0"
+  }
+}
