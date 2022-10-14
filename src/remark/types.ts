@@ -1,5 +1,5 @@
 import type {Properties} from 'hast';
-import type {Heading, Paragraph} from 'mdast';
+import type {BlockContent, DefinitionContent, Heading, Paragraph, PhrasingContent} from 'mdast';
 import type {Directive} from 'mdast-util-directive';
 import type {Literal, Node, Parent} from 'unist';
 
@@ -7,6 +7,73 @@ export type HastData = {
   hName?: string;
   hProperties?: Properties;
 } & Parent['data'];
+
+export type SidenoteToggle = {
+  type: 'sidenoteToggle';
+  data?: HastData;
+};
+
+export type SidenoteReference = {
+  type: 'sidenoteReference';
+  children: PhrasingContent[];
+  data?: HastData;
+} & Parent;
+
+export type SidenoteDefinition = {
+  type: 'sidenoteDefinition';
+  children: PhrasingContent[];
+  data?: HastData;
+} & Parent;
+
+export type SidenoteType = 'sidenote';
+
+export type Sidenote = {
+  type: SidenoteType;
+  children: Array<BlockContent | DefinitionContent>;
+  data?: HastData;
+} & Parent;
+
+export type MarginnoteToggle = {
+  type: 'marginnoteToggle';
+  data?: HastData;
+};
+
+export type MarginnoteReference = {
+  type: 'marginnoteReference';
+  children: PhrasingContent[];
+  data?: HastData;
+} & Parent;
+
+export type MarginnoteDefinition = {
+  type: 'marginnoteDefinition';
+  children: PhrasingContent[];
+  data?: HastData;
+} & Parent;
+
+export type MarginnoteType = 'marginnote';
+
+export type Marginnote = {
+  type: MarginnoteType;
+  children: Array<BlockContent | DefinitionContent>;
+  data?: HastData;
+} & Parent;
+
+export type NoteType = `${SidenoteType | MarginnoteType}`;
+export type NoteDefinition = SidenoteDefinition | MarginnoteDefinition;
+export type NoteReference = SidenoteReference | MarginnoteReference;
+export type NoteToggle = SidenoteToggle | MarginnoteToggle;
+
+export type IframeFigure = {
+  type: 'iframeFigure';
+  children: Array<BlockContent | DefinitionContent | PhrasingContent>;
+  data?: HastData;
+} & Parent;
+
+export type Figure = {
+  type: 'figure';
+  children: Array<BlockContent | DefinitionContent | PhrasingContent | TreeNode>;
+  data?: HastData;
+} & Parent;
 
 export type TreeNode = Parent | Literal | Node;
 

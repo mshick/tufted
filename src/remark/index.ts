@@ -1,18 +1,8 @@
 import remarkDirective from 'remark-directive';
 import remarkDirectiveRehype from 'remark-directive-rehype';
-import remarkMdxImages from 'remark-mdx-images';
-import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import type {Preset} from 'unified';
-import remarkEpigraph from './remark-epigraph';
-import remarkFigure from './remark-figure';
-import remarkFooter from './remark-footer';
-import remarkInitialHeading from './remark-initial-heading';
-import remarkNewthought from './remark-newthought';
-import remarkSectionize from './remark-sectionize';
-import remarkSidenotes from './remark-sidenotes';
-import remarkWrapImages from './remark-wrap-images';
-import remarkYoutube from './remark-youtube';
+import remarkYoutube from './remark-youtube.js';
 
 function main(): Preset {
   return {
@@ -21,16 +11,16 @@ function main(): Preset {
       remarkDirectiveRehype,
       remarkYoutube,
       remarkUnwrapImages,
-      remarkWrapImages,
-      remarkFigure,
-      remarkFooter,
-      remarkNewthought,
-      remarkSidenotes,
-      remarkSqueezeParagraphs,
-      remarkInitialHeading,
-      [remarkSectionize, {maxHeadingDepth: 2}],
-      remarkEpigraph,
-      remarkMdxImages,
+      // remarkWrapImages,
+      // remarkFigure,
+      // remarkFooter,
+      // remarkNewthought,
+      // remarkSidenotes,
+      // remarkSqueezeParagraphs,
+      // remarkInitialHeading,
+      // [remarkSectionize, {maxHeadingDepth: 2}],
+      // remarkEpigraph,
+      // remarkMdxImages,
     ],
   };
 }

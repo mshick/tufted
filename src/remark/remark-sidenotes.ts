@@ -10,9 +10,8 @@ import type {Transformer} from 'unified';
 import {u} from 'unist-builder';
 import {select} from 'unist-util-select';
 import {visit} from 'unist-util-visit';
-import type {NoteDefinition, NoteReference, NoteToggle, NoteType} from './complex-types';
-import type {HastData} from './types';
-import {isParagraph} from './types';
+import type {HastData, NoteDefinition, NoteReference, NoteToggle, NoteType} from './types';
+import {isParagraph} from './types.js';
 
 // Need to use the unicode escape sequence for ⊕ / Circled Plus due to later sanitization
 const marginnoteLabel = '\u2295';

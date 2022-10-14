@@ -2,8 +2,7 @@ import type {Parent} from 'mdast';
 import type {Transformer} from 'unified';
 import {u} from 'unist-builder';
 import {visit} from 'unist-util-visit';
-import type {Figure} from './complex-types';
-import type {TreeNode} from './types';
+import type {Figure, TreeNode} from './types';
 
 export default function remmarkWrapImages(): Transformer {
   return tree => {

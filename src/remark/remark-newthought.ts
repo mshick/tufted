@@ -1,7 +1,7 @@
 import type {TextDirective} from 'mdast-util-directive';
 import type {Transformer} from 'unified';
 import {visit} from 'unist-util-visit';
-import type {HastData} from './types';
+import type {HastData} from './types.js';
 
 export default function remarkNewthought(): Transformer {
   return tree => {

@@ -1,7 +1,7 @@
 import type {Node, Parent} from 'unist';
 import {findAfter} from 'unist-util-find-after';
 import {visitParents} from 'unist-util-visit-parents';
-import {isHeading} from './types';
+import {isHeading} from './types.js';
 
 const maxHeadingDepth = 6;
 

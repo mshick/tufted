@@ -1,11 +1,15 @@
 import type {Parent} from 'mdast';
 import type {Transformer} from 'unified';
 import {u} from 'unist-builder';
-import {visit} from 'unist-util-visit';
-import type {IframeFigure} from './complex-types';
-import type {HastData, TreeNode} from './types';
-import {isDirective} from './types';
+import {SKIP, visit} from 'unist-util-visit';
+import type {HastData, IframeFigure, TreeNode} from './types';
+import {isDirective} from './types.js';
 
+/**
+ * Plugin to upgrade remark-directives with videos.
+ *
+ * @type {import('unified').Plugin<void[], Root>}
+ */
 export default function remarkYoutube(): Transformer {
   return (tree, file) => {
     visit(tree, (node: TreeNode, index, parent: Parent) => {
@@ -19,6 +23,7 @@ export default function remarkYoutube(): Transformer {
 
         if (node.type === 'textDirective') {
           file.fail('Text directives for `youtube` not supported', node);
+          return;
         }
 
         if (!id) {
@@ -53,7 +58,11 @@ export default function remarkYoutube(): Transformer {
         );
 
         parent.children.splice(index ?? 0, 1, wrapper);
+
+        return [SKIP, index];
       }
     });
+
+    return tree;
   };
 }
