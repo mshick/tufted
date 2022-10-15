@@ -1,57 +1,58 @@
-import type {BlockContent} from 'mdast';
-import type {Transformer} from 'unified';
-import type {Node} from 'unist';
-import {visit} from 'unist-util-visit';
-import {isParentNode} from './types.js';
+import type { Parent } from 'mdast'
+import type { Transformer } from 'unified'
+import { u } from 'unist-builder'
+import { visit } from 'unist-util-visit'
+import { isBlockquoteNode, isHeadingNode, isSectionNode } from './type-utils.js'
 
 /**
  * Find sections, from remark-sectionize, and then mark blockquotes that
  * are the first children after any headings.
  */
-export default function remarkEpigraph(): Transformer {
-  return tree => {
-    visit(tree, {type: 'section'}, (node: Node) => {
-      if (!isParentNode(node)) {
-        return;
+export default function remarkEpigraph(): Transformer<Parent> {
+  return (tree) => {
+    visit(tree, { type: 'section' }, (node) => {
+      if (!isSectionNode(node)) {
+        return
       }
 
-      let nonBlockquoteFound = false;
+      let nonBlockquoteFound = false
 
-      const epigraphNodes = node.children.filter(child => {
+      const epigraphNodes = node.children.filter((child) => {
         if (nonBlockquoteFound) {
-          return false;
+          return false
         }
 
-        if (child.type === 'heading') {
-          return false;
+        if (isHeadingNode(child)) {
+          return false
         }
 
-        if (child.type === 'blockquote') {
-          return true;
+        if (isBlockquoteNode(child)) {
+          return true
         }
 
-        nonBlockquoteFound = true;
+        nonBlockquoteFound = true
 
-        return false;
-      }) as BlockContent[];
+        return false
+      })
 
       if (epigraphNodes[0]) {
-        const startIndex = node.children.indexOf(epigraphNodes[0]);
+        const startIndex = node.children.indexOf(epigraphNodes[0])
 
-        const epigraph: BlockContent = {
-          type: 'containerDirective',
-          name: 'epigraph',
-          children: epigraphNodes,
-          data: {
-            hName: 'div',
-            hProperties: {
-              className: ['epigraph'],
+        const epigraph = u(
+          'epigraph',
+          {
+            data: {
+              hName: 'div',
+              hProperties: {
+                className: ['epigraph'],
+              },
             },
           },
-        };
+          epigraphNodes,
+        )
 
-        node.children.splice(startIndex, epigraph.children.length, epigraph);
+        node.children.splice(startIndex, epigraph.children.length, epigraph)
       }
-    });
-  };
+    })
+  }
 }

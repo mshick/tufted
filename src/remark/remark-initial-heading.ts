@@ -1,62 +1,58 @@
-import type {Heading} from 'mdast';
-import type {Transformer} from 'unified';
-import type {Node, Parent} from 'unist';
-import {visitParents} from 'unist-util-visit-parents';
+import type { Content, Parent } from 'mdast'
+import type { Transformer } from 'unified'
+import { u } from 'unist-builder'
+import { visitParents } from 'unist-util-visit-parents'
+import { isHeadingNode, isMdxjsEsmNode, isRootNode, isYamlNode } from './type-utils'
 
-function addInitialHeading(node: Node, ancestors: Parent[]) {
-  const start = node;
-  const parent = ancestors[ancestors.length - 1];
-
-  if (!parent) {
-    return;
-  }
-
-  const startIndex = parent.children.indexOf(start);
-
-  const heading: Heading = {
-    type: 'heading',
-    depth: 2,
-    children: [
-      {
-        type: 'text',
-        value: 'Introduction',
-      },
-    ],
-    data: {
-      hProperties: {
-        className: 'hidden',
-      },
-    },
-  };
-
-  parent.children.splice(startIndex, 0, heading);
-}
-
-export default function remarkInitialHeading(): Transformer {
-  return (tree: Node) => {
-    let foundHeading = false;
+export default function remarkInitialHeading(): Transformer<Parent> {
+  return (tree) => {
+    let foundHeading = false
     visitParents(
       tree,
       (node, _, parent) => {
         if (
-          !foundHeading
-        && parent?.type === 'root'
-        && node.type !== 'mdxjsEsm'
-        && node.type !== 'yaml'
-        && node.type !== 'heading'
+          !foundHeading &&
+          isRootNode(parent) &&
+          !isMdxjsEsmNode(node) &&
+          !isYamlNode(node) &&
+          !isHeadingNode(node)
         ) {
-        // First real element
-          foundHeading = true;
-          return true;
+          // First real element
+          foundHeading = true
+          return true
         }
 
-        if (node.type === 'heading') {
-          foundHeading = true;
+        if (isHeadingNode(node)) {
+          foundHeading = true
         }
 
-        return false;
+        return false
       },
-      addInitialHeading,
-    );
-  };
+      (node, ancestors) => {
+        const start = node as Content
+        const parent = ancestors[ancestors.length - 1]
+
+        if (!parent) {
+          return
+        }
+
+        const startIndex = parent.children.indexOf(start)
+
+        const heading = u(
+          'heading',
+          {
+            depth: 2 as const,
+            data: {
+              hProperties: {
+                className: 'hidden',
+              },
+            },
+          },
+          [u('text', 'Introduction')],
+        )
+
+        parent.children.splice(startIndex, 0, heading)
+      },
+    )
+  }
 }

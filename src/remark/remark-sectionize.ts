@@ -1,61 +1,64 @@
-import type {Node, Parent} from 'unist';
-import {findAfter} from 'unist-util-find-after';
-import {visitParents} from 'unist-util-visit-parents';
-import {isHeading} from './types.js';
+import type { Content, Parent } from 'mdast'
+import type { Transformer } from 'unified'
+import type { Node } from 'unist'
+import { u } from 'unist-builder'
+import { findAfter } from 'unist-util-find-after'
+import { visitParents } from 'unist-util-visit-parents'
+import { isHeadingNode } from './type-utils'
 
-const maxHeadingDepth = 6;
+const maxHeadingDepth = 6
 
+/**
+ * Finds content between two headings and wraps the content and the leading
+ * heading in a `section` Node.
+ */
 function sectionize(node: Node, ancestors: Parent[]) {
-  if (!isHeading(node)) {
-    return;
+  if (!isHeadingNode(node)) {
+    return
   }
 
-  const start = node;
-  const {depth} = start;
-  const parent = ancestors[ancestors.length - 1];
+  const start = node
+  const { depth } = start
+  const parent = ancestors[ancestors.length - 1]
 
   if (!parent) {
-    return;
+    return
   }
 
   const isEnd = (node: Node) =>
-    (isHeading(node) && node.depth <= depth) || node.type === 'export';
+    (isHeadingNode(node) && node.depth <= depth) || node.type === 'export'
 
-  const end = findAfter(parent, start, isEnd);
+  const end = findAfter(parent, start, isEnd)
 
-  const startIndex = parent.children.indexOf(start);
-  const endIndex = parent.children.indexOf(end ?? start);
+  const startIndex = parent.children.indexOf(start)
+  const endIndex = end ? parent.children.indexOf(end as Content) : 0
 
-  const between = parent.children.slice(
-    startIndex,
-    endIndex > 0 ? endIndex : undefined,
-  );
+  const between = parent.children.slice(startIndex, endIndex > 0 ? endIndex : undefined)
 
-  const section = {
-    type: 'section',
-    depth,
-    children: between,
-    data: {
-      hName: 'section',
+  const section = u(
+    'section',
+    {
+      data: {
+        hName: 'section',
+      },
     },
-  };
+    between,
+  )
 
-  parent.children.splice(startIndex, section.children.length, section);
+  parent.children.splice(startIndex, section.children.length, section)
 }
 
 type RemarkSectionizeOptions = {
-  maxHeadingDepth?: number;
-};
+  maxHeadingDepth: number
+}
 
-export default function remarkSectionize(options: RemarkSectionizeOptions) {
-  const maxDepth = options.maxHeadingDepth ?? maxHeadingDepth;
-  return (tree: Node) => {
+export default function remarkSectionize(
+  options: RemarkSectionizeOptions = { maxHeadingDepth },
+): Transformer<Parent> {
+  const { maxHeadingDepth: maxDepth } = options
+  return (tree) => {
     for (let depth = maxDepth; depth > 0; depth--) {
-      visitParents(
-        tree,
-        (node: Node) => isHeading(node) && node.depth === depth,
-        sectionize,
-      );
+      visitParents(tree, (node) => isHeadingNode(node) && node.depth === depth, sectionize)
     }
-  };
+  }
 }

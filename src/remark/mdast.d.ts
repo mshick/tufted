@@ -1,34 +1,33 @@
-import 'mdast';
 import type {
+  Epigraph,
+  Figcaption,
   Figure,
-  IframeFigure,
-  Marginnote,
-  MarginnoteDefinition,
-  MarginnoteReference,
-  MarginnoteToggle,
+  Iframe,
+  Newthought,
+  Section,
   Sidenote,
   SidenoteDefinition,
   SidenoteReference,
   SidenoteToggle,
-} from './types';
+} from './types'
 
 declare module 'mdast' {
   interface StaticPhrasingContentMap {
-    sidenote: Sidenote;
-    marginnote: Marginnote;
-  }
-
-  interface DefinitionContentMap {
-    sidenoteDefinition: SidenoteDefinition;
-    marginnoteDefinition: MarginnoteDefinition;
+    figure: Figure
+    newthought: Newthought
+    sidenote: Sidenote
+    sidenoteReference: SidenoteReference
+    sidenoteToggle: SidenoteToggle
   }
 
   interface BlockContentMap {
-    sidenoteToggle: SidenoteToggle;
-    marginnoteToggle: MarginnoteToggle;
-    sidenoteReference: SidenoteReference;
-    marginnoteReference: MarginnoteReference;
-    iframe: IframeFigure;
-    figure: Figure;
+    section: Section
+    iframe: Iframe
+    figcaption: Figcaption
+    epigraph: Epigraph
+  }
+
+  interface DefinitionContentMap {
+    sidenoteDefinition: SidenoteDefinition
   }
 }

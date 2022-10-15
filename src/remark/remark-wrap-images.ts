@@ -1,15 +1,15 @@
-import type {Parent} from 'mdast';
-import type {Transformer} from 'unified';
-import {u} from 'unist-builder';
-import {visit} from 'unist-util-visit';
-import type {Figure, TreeNode} from './types';
+import type { Parent } from 'mdast'
+import type { Transformer } from 'unified'
+import { u } from 'unist-builder'
+import { visit } from 'unist-util-visit'
+import { isContainerDirectiveNode, isParagraphNode, isParentNode } from './type-utils'
 
-export default function remmarkWrapImages(): Transformer {
-  return tree => {
-    visit(tree, {type: 'image'}, (node: TreeNode, index, parent: Parent) => {
+export default function remmarkWrapImages(): Transformer<Parent> {
+  return (tree) => {
+    visit(tree, 'image', (node, index, parent) => {
       // Don't get images in an explicit figure container or that are inline
-      if (parent.type !== 'containerDirective' && parent.type !== 'paragraph') {
-        const wrapper = u(
+      if (isParentNode(parent) && !isContainerDirectiveNode(parent) && !isParagraphNode(parent)) {
+        const figure = u(
           'figure',
           {
             data: {
@@ -17,10 +17,14 @@ export default function remmarkWrapImages(): Transformer {
             },
           },
           [node],
-        ) as Figure;
+        )
 
-        parent.children.splice(index ?? 0, 1, wrapper);
+        parent.children.splice(index ?? 0, 1, figure)
+
+        return
       }
-    });
-  };
+
+      return
+    })
+  }
 }

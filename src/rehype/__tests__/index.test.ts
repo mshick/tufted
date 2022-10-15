@@ -1,10 +1,9 @@
-
-import test from 'ava';
-import rehypeStringify from 'rehype-stringify';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import {unified} from 'unified';
-import preset from '../index.js';
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
+import { expect, test } from 'vitest'
+import preset from '../index.js'
 
 const md = `
 ## Hello World
@@ -18,15 +17,15 @@ function foo(bar) {
   return a + bar(b);
 }
 \`\`\`
-`;
+`
 
-test('the preset works', async t => {
-  const processed = unified()
+test('the preset works', async () => {
+  const processed = await unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeStringify)
-    .use(preset({imgSizeDir: './'}))
-    .processSync(md);
+    .use(preset({ imgSizeDir: './' }))
+    .process(md)
 
-  t.snapshot(String(processed));
-});
+  expect(String(processed)).toMatchSnapshot()
+})

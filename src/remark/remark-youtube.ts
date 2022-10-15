@@ -1,68 +1,60 @@
-import type {Parent} from 'mdast';
-import type {Transformer} from 'unified';
-import {u} from 'unist-builder';
-import {SKIP, visit} from 'unist-util-visit';
-import type {HastData, IframeFigure, TreeNode} from './types';
-import {isDirective} from './types.js';
+import type { Parent } from 'mdast'
+import type { Transformer } from 'unified'
+import { u } from 'unist-builder'
+import { CONTINUE, EXIT, SKIP, visit } from 'unist-util-visit'
+import { isDirectiveNode, isParentNode } from './type-utils.js'
 
-/**
- * Plugin to upgrade remark-directives with videos.
- *
- * @type {import('unified').Plugin<void[], Root>}
- */
-export default function remarkYoutube(): Transformer {
+export default function remarkYoutube(): Transformer<Parent> {
   return (tree, file) => {
-    visit(tree, (node: TreeNode, index, parent: Parent) => {
-      if (isDirective(node)) {
+    visit(tree, (node, index, parent) => {
+      if (isDirectiveNode(node) && isParentNode(parent)) {
         if (node.name !== 'youtube') {
-          return;
+          return [SKIP, index]
         }
 
-        const attributes = node.attributes ?? {};
-        const {id} = attributes;
+        const attributes = node.attributes ?? {}
+        const { id } = attributes
 
         if (node.type === 'textDirective') {
-          file.fail('Text directives for `youtube` not supported', node);
-          return;
+          file.fail('Text directives for `youtube` not supported', node)
+          return [SKIP, index]
         }
 
         if (!id) {
-          file.fail('Missing video id', node);
-          return;
+          file.fail('Missing video id', node)
+          return [SKIP, index]
         }
 
-        const data: HastData = {
-          hName: 'iframe',
-          hProperties: {
-            src: `https://www.youtube.com/embed/${id}`,
-            frameBorder: 0,
-            allow:
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-            allowFullScreen: true,
-          },
-        };
-        node.data = {
-          ...node.data,
-          data,
-        };
-
-        const wrapper: IframeFigure = u(
-          'iframeFigure',
-          {
-            data: {
-              hName: 'figure' as const,
-              hProperties: {className: ['iframe', 'youtube']},
+        const iframe = u('iframe', {
+          data: {
+            hName: 'iframe',
+            hProperties: {
+              src: `https://www.youtube.com/embed/${id}`,
+              frameBorder: 0,
+              allow:
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+              allowFullScreen: true,
             },
           },
-          [node],
-        );
+        })
 
-        parent.children.splice(index ?? 0, 1, wrapper);
+        const figure = u(
+          'figure',
+          {
+            data: {
+              hName: 'figure',
+              hProperties: { className: ['iframe', 'youtube'] },
+            },
+          },
+          [iframe],
+        )
 
-        return [SKIP, index];
+        parent.children.splice(index ?? 0, 1, figure)
+
+        return EXIT
       }
-    });
 
-    return tree;
-  };
+      return CONTINUE
+    })
+  }
 }
