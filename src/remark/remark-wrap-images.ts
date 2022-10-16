@@ -13,7 +13,7 @@ export default function remmarkWrapImages(): Transformer<Parent> {
           'figure',
           {
             data: {
-              hName: 'figure',
+              hName: 'figure' as const,
             },
           },
           [node],

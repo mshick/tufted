@@ -18,7 +18,7 @@ import {
   isParagraphNode,
   isParentNode,
 } from './type-utils'
-import type { HastData, Sidenote } from './types'
+import type { Sidenote } from './types'
 
 // Need to use the unicode escape sequence for ⊕ / Circled Plus due to later sanitization
 const marginnoteLabel = '\u2295'
@@ -55,16 +55,16 @@ function getReplacement({
   const labelSymbol = isMarginNote ? marginnoteLabel : ''
   const noteTypeCls = isMarginNote ? 'marginnote' : 'sidenote'
 
-  return u<Sidenote['type'], { data: HastData }, Array<Content | BlockContent>>(
+  return u<Sidenote['type'], { data: Sidenote['data'] }, Array<Content | BlockContent>>(
     'sidenote',
-    { data: { hName: 'span', hProperties: { className: [noteTypeCls] } } },
+    { data: { hName: 'span' as const, hProperties: { className: [noteTypeCls] } } },
     [
       u(
         `sidenoteReference`,
         {
           identifier,
           data: {
-            hName: 'label',
+            hName: 'label' as const,
             hProperties: { for: inputId, className: [labelCls] },
           },
         },
@@ -73,7 +73,7 @@ function getReplacement({
       u(`sidenoteToggle`, {
         identifier,
         data: {
-          hName: 'input',
+          hName: 'input' as const,
           hProperties: {
             type: 'checkbox',
             id: inputId,
@@ -86,7 +86,7 @@ function getReplacement({
         {
           identifier,
           data: {
-            hName: 'span',
+            hName: 'span' as const,
             hProperties: { className: [`${noteTypeCls}-definition`] },
           },
         },

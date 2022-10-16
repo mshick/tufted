@@ -27,7 +27,7 @@ export default function remarkYoutube(): Transformer<Parent> {
 
         const iframe = u('iframe', {
           data: {
-            hName: 'iframe',
+            hName: 'iframe' as const,
             hProperties: {
               src: `https://www.youtube.com/embed/${id}`,
               frameBorder: 0,
@@ -42,7 +42,7 @@ export default function remarkYoutube(): Transformer<Parent> {
           'figure',
           {
             data: {
-              hName: 'figure',
+              hName: 'figure' as const,
               hProperties: { className: ['iframe', 'youtube'] },
             },
           },

@@ -32,7 +32,7 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
             'figcaption',
             {
               data: {
-                hName: 'figcaption',
+                hName: 'figcaption' as const,
               },
             },
             captionNodes,

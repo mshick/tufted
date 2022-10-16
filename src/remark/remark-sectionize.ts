@@ -39,7 +39,7 @@ function sectionize(node: Node, ancestors: Parent[]) {
     'section',
     {
       data: {
-        hName: 'section',
+        hName: 'section' as const,
       },
     },
     between,

@@ -18,77 +18,75 @@ export interface Newthought extends TextDirective {
 
 export type SidenoteToggle = {
   type: 'sidenoteToggle'
-  data?: HastData
+  data: {
+    hName: 'input'
+    hProperties: Properties
+  }
 }
 
 export type SidenoteReference = {
   type: 'sidenoteReference'
   children: Content[]
-  data?: HastData
+  data: {
+    hName: 'label'
+    hProperties: Properties
+  }
 } & Parent
 
 export type SidenoteDefinition = {
   type: 'sidenoteDefinition'
   children: Content[]
-  data?: HastData
+  data: {
+    hName: 'span'
+    hProperties: Properties
+  }
 } & Parent
-
-export type SidenoteType = 'sidenote'
 
 export type Sidenote = {
-  type: SidenoteType
+  type: 'sidenote'
   children: Array<BlockContent | DefinitionContent | Content>
-  data?: HastData
-} & Parent
-
-export type MarginnoteToggle = {
-  type: 'marginnoteToggle'
-  data?: HastData
-}
-
-export type MarginnoteReference = {
-  type: 'marginnoteReference'
-  children: Content[]
-  data?: HastData
-} & Parent
-
-export type MarginnoteDefinition = {
-  type: 'marginnoteDefinition'
-  children: Content[]
-  data?: HastData
-} & Parent
-
-export type MarginnoteType = 'marginnote'
-
-export type Marginnote = {
-  type: MarginnoteType
-  children: Array<BlockContent | DefinitionContent | Content>
-  data?: HastData
+  data: {
+    hName: 'span'
+    hProperties: Properties
+  }
 } & Parent
 
 export type Iframe = {
   type: 'iframe'
-  data?: HastData
+  data: {
+    hName: 'iframe'
+    hProperties: Properties
+  }
 }
 
 export type Figure = {
   type: 'figure'
   children: Array<Content | Directive | ContainerDirective>
-  data?: HastData
+  data: {
+    hName: 'figure'
+    hProperties?: Properties
+  }
 }
 
 export type Figcaption = {
   type: 'figcaption'
   children: Content[]
-  data?: HastData
+  data: {
+    hName: 'figcaption'
+  }
 }
 
 export type Section = {
   type: 'section'
-  data?: HastData
+  data: {
+    hName: 'section'
+  }
 } & Parent
 
 export type Epigraph = {
   type: 'epigraph'
-  data?: HastData
+  data: {
+    hName: 'div'
+    hProperties: Properties
+  }
 } & Parent

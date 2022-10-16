@@ -42,7 +42,7 @@ export default function remarkEpigraph(): Transformer<Parent> {
           'epigraph',
           {
             data: {
-              hName: 'div',
+              hName: 'div' as const,
               hProperties: {
                 className: ['epigraph'],
               },
