@@ -35,9 +35,11 @@
   },
   "scripts": {
     "build": "del-cli dist && tsc -p tsconfig.build.json",
+    "format": "eslint src --fix",
     "prepare": "npm run build",
     "release": "np",
-    "test": "eslint src && vitest"
+    "test": "npm run format && vitest run",
+    "watch": "vitest"
   },
   "prettier": {
     "bracketSpacing": true,
