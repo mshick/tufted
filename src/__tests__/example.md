@@ -1,12 +1,11 @@
-Introductory text without heading, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut `inline code` et dolore magna aliqua. Vestibulum rhoncus est
-pellentesque elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque
-eu. Erat pellentesque adipiscing commodo elit at imperdiet. Sapien eget mi proin
-sed. Et egestas quis ipsum suspendisse. Ut sem viverra aliquet eget sit amet
-tellus cras. Sed tempus urna et pharetra pharetra.^[An inline footnote,
-renders as a marginnote] Risus quis varius quam quisque id diam.
+Introductory text without heading will add a hidden h2 added. This allows for a
+consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
+ut `inline code` et dolore magna aliqua. Vestibulum rhoncus est pellentesque
+elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.
 
-::youtube[TOTINO BOY!]{#2lPX5b9m7ro}
+This YouTube directive will be upgraded to a figure-wrapped iframe.
+
+::youtube[TOTINO BOY!!]{#2lPX5b9m7ro}
 
 Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
 ut. Tincidunt ornare massa eget egestas purus viverra. Ultricies tristique
@@ -25,11 +24,29 @@ sit amet tellus cras adipiscing enim.
 
 ### Subheading No Section
 
+You can create explicit figures. This allows for optional classes, like
+`.fullwidth`. It also makes it easy to include a `figcaption`.
+
 :::figure{.fullwidth}
 
 ![Directive wrapped figure](https://picsum.photos/200/300)
 
-The figcaption interdum velit euismod in pellentesque massa placerat.
+Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
+purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
+congue.
+
+:::
+
+Figure content and caption text can also be flipped. And, a figure can describe
+a YouTube video.
+
+:::figure{.fullwidth}
+
+Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
+purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
+congue.
+
+::youtube[Pizza Pizza]{#2lPX5b9m7ro}
 
 :::
 
@@ -80,6 +97,9 @@ turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.
 
 ## Code
 
+Code blocks support titles. Titles are typically filenames, and they cannot
+contain spaces.
+
 ```js:foo.js
 function randomCode(bar) {
   var a = 42;
@@ -94,7 +114,7 @@ function randomCode(bar) {
 > dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
 > in iaculis.
 >
-> ::footer[Marc Cicero, "De finibus bonorum et malorum"]
+> ::footer[Marc Cicero, "De finibus bonorum et malorum"^[^An inline note in the blockquote footer]]
 
 > Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
 > accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
@@ -107,3 +127,46 @@ placerat in egestas erat imperdiet. Volutpat consequat mauris nunc congue nisi
 vitae suscipit tellus. Viverra maecenas accumsan lacus vel facilisis volutpat
 est. Augue ut lectus arcu bibendum at varius. Ut pharetra sit amet aliquam id
 diam maecenas ultricies.
+
+## Tables
+
+Table processing in `remark-gfm`. Enim tortor at auctor urna nunc id cursus.
+Sit amet commodo nulla facilisi. Laoreet non curabitur gravida arcu ac tortor
+dignissim. Elementum tempus egestas sed sed risus pretium quam vulputate
+dignissim. Tortor aliquam nulla facilisi cras fermentum.
+
+Colons can be used to align columns.
+
+| Tables        |      Are      |   Cool |
+| ------------- | :-----------: | -----: |
+| col 3 is      | right-aligned | \$1600 |
+| col 2 is      |   centered    |   \$12 |
+| zebra stripes |   are neat    |    \$1 |
+
+There must be at least 3 dashes separating each header cell. The outer pipes (|)
+are optional, and you don't need to make the raw Markdown line up prettily. You
+can also use inline Markdown.
+
+| Markdown | Less      | Pretty     |
+| -------- | --------- | ---------- |
+| _Still_  | `renders` | **nicely** |
+| 1        | 2         | 3          |
+
+## Lists
+
+Quam id leo in vitae turpis massa sed. Sagittis id consectetur purus ut
+faucibus pulvinar elementum. Magna etiam tempor orci eu lobortis elementum.
+
+An unordered list:
+
+- Quam
+- lacus
+- suspendisse
+- faucibus
+
+An ordered list:
+
+1. Eget
+2. magna
+3. fermentum
+4. iaculis

@@ -4,7 +4,7 @@ import type { Node } from 'unist'
 import { u } from 'unist-builder'
 import { findAfter } from 'unist-util-find-after'
 import { visitParents } from 'unist-util-visit-parents'
-import { isHeadingNode } from './type-utils'
+import { isHeadingNode } from './type-utils.js'
 
 const maxHeadingDepth = 6
 

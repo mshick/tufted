@@ -1,3 +1,4 @@
+import 'mdast'
 import type {
   Epigraph,
   Figcaption,
@@ -22,9 +23,10 @@ declare module 'mdast' {
 
   interface BlockContentMap {
     section: Section
-    iframe: Iframe
     figcaption: Figcaption
     epigraph: Epigraph
+    image: Image
+    iframe: Iframe
   }
 
   interface DefinitionContentMap {

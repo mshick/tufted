@@ -1,6 +1,6 @@
 import type { Properties } from 'hast'
 import type { BlockContent, Content, DefinitionContent, Parent } from 'mdast'
-import type { ContainerDirective, Directive, TextDirective } from 'mdast-util-directive'
+import type { Directive, TextDirective } from 'mdast-util-directive'
 import type { Node } from 'unist'
 
 export type Root = {
@@ -53,15 +53,17 @@ export type Sidenote = {
 
 export type Iframe = {
   type: 'iframe'
+  name: string
   data: {
     hName: 'iframe'
     hProperties: Properties
   }
+  children: Array<Content>
 }
 
 export type Figure = {
   type: 'figure'
-  children: Array<Content | Directive | ContainerDirective>
+  children: Array<Content | Directive | BlockContent>
   data: {
     hName: 'figure'
     hProperties?: Properties

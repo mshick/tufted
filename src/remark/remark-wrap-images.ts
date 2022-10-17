@@ -1,30 +1,54 @@
-import type { Parent } from 'mdast'
+import type { BlockContent, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
-import { visit } from 'unist-util-visit'
-import { isContainerDirectiveNode, isParagraphNode, isParentNode } from './type-utils'
+import { CONTINUE, visit } from 'unist-util-visit'
+import {
+  isContainerDirectiveNode,
+  isIframeNode,
+  isImageNode,
+  isParagraphNode,
+  isParentNode,
+} from './type-utils.js'
+import { contentTypePresenceReducer } from './utils.js'
 
 export default function remmarkWrapImages(): Transformer<Parent> {
   return (tree) => {
-    visit(tree, 'image', (node, index, parent) => {
-      // Don't get images in an explicit figure container or that are inline
-      if (isParentNode(parent) && !isContainerDirectiveNode(parent) && !isParagraphNode(parent)) {
-        const figure = u(
-          'figure',
-          {
-            data: {
-              hName: 'figure' as const,
+    visit(
+      tree,
+      (node) => {
+        if (isImageNode(node)) {
+          return true
+        }
+
+        if (isIframeNode(node)) {
+          return true
+        }
+
+        return false
+      },
+      (node, index, parent) => {
+        // Don't get images in an explicit figure container or that are inline
+        if (isParentNode(parent) && !isContainerDirectiveNode(parent) && !isParagraphNode(parent)) {
+          const contentTypesPresent = contentTypePresenceReducer({}, node as BlockContent)
+
+          const figure = u(
+            'figure',
+            {
+              data: {
+                hName: 'figure' as const,
+                hProperties: {
+                  className: Object.keys(contentTypesPresent),
+                },
+              },
             },
-          },
-          [node],
-        )
+            [node as BlockContent],
+          )
 
-        parent.children.splice(index ?? 0, 1, figure)
+          parent.children.splice(index ?? 0, 1, figure)
+        }
 
-        return
-      }
-
-      return
-    })
+        return CONTINUE
+      },
+    )
   }
 }

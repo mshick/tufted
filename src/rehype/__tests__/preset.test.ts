@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype'
 import { readSync } from 'to-vfile'
 import { unified } from 'unified'
 import { expect, test } from 'vitest'
-import preset from '../index.js'
+import preset from '../preset.js'
 
 test('the preset works', async () => {
   const processed = await unified()

@@ -2,7 +2,7 @@ import type { Content, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { visitParents } from 'unist-util-visit-parents'
-import { isHeadingNode, isMdxjsEsmNode, isRootNode, isYamlNode } from './type-utils'
+import { isHeadingNode, isMdxjsEsmNode, isRootNode, isYamlNode } from './type-utils.js'
 
 export default function remarkInitialHeading(): Transformer<Parent> {
   return (tree) => {

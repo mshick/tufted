@@ -15,8 +15,8 @@
   ],
   "type": "module",
   "exports": {
-    "./remark": "./dist/remark/index.js",
-    "./rehype": "./dist/rehype/index.js"
+    "./remark": "./dist/remark",
+    "./rehype": "./dist/rehype"
   },
   "types": "./dist",
   "typesVersions": {
@@ -65,7 +65,16 @@
     "overrides": [
       {
         "files": [
-          "**/*.{ts,tsx}"
+          "src/**/*.js"
+        ],
+        "parserOptions": {
+          "ecmaVersion": "latest",
+          "sourceType": "module"
+        }
+      },
+      {
+        "files": [
+          "**/*.ts"
         ],
         "parser": "@typescript-eslint/parser",
         "parserOptions": {
@@ -110,6 +119,7 @@
     "__snapshots__"
   ],
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.7",
     "image-size": "^1.0.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.1.0",
@@ -122,6 +132,7 @@
     "remark-mdx-images": "^2.0.0",
     "remark-squeeze-paragraphs": "^5.0.1",
     "remark-unwrap-images": "^3.0.1",
+    "tailwindcss": "^3.1.8",
     "unified": "^10.1.2",
     "unist-builder": "^3.0.0",
     "unist-util-find-after": "^4.0.0",

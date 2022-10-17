@@ -13,7 +13,7 @@ import type {
 import type { ContainerDirective, Directive, LeafDirective } from 'mdast-util-directive'
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import type { Node } from 'unist'
-import type { Root, Section } from './types'
+import type { Iframe, Root, Section } from './types'
 
 export function isNode(node: unknown): node is Node {
   return Boolean(node && typeof (node as Node)?.type === 'string')
@@ -50,6 +50,10 @@ export function isCodeNode(node: unknown): node is Code {
 
 export function isImageNode(node: unknown): node is Image {
   return Boolean(isNode(node) && node.type === 'image')
+}
+
+export function isIframeNode(node: unknown): node is Iframe {
+  return Boolean(isNode(node) && node.type === 'iframe')
 }
 
 export function isHeadingNode(node: unknown): node is Heading {

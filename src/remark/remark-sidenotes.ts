@@ -17,7 +17,7 @@ import {
   isFootnoteReferenceNode,
   isParagraphNode,
   isParentNode,
-} from './type-utils'
+} from './type-utils.js'
 import type { Sidenote } from './types'
 
 // Need to use the unicode escape sequence for ⊕ / Circled Plus due to later sanitization
