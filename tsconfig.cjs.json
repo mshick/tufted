@@ -1,11 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "resolveJsonModule": true
+    "module": "CommonJS"
   },
   "include": [
-    "src/tailwind",
-    "src/tailwind/package.json"
+    "src/tailwind"
   ]
 }

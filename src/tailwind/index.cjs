@@ -1,4 +1,4 @@
-import { DEFAULT } from '@tailwindcss/typography/src/styles'
+const { DEFAULT } = require('@tailwindcss/typography/src/styles')
 
 const colors = (theme) => ({
   '--tw-prose-body': theme('colors.black'),
@@ -75,7 +75,7 @@ const inverted = () => ({
   '--tw-prose-pre-code-selection': 'var(--tw-prose-invert-pre-code-selection)',
 })
 
-const typography = (theme) => ({
+module.exports.typography = (theme) => ({
   DEFAULT: {
     css: [
       ...DEFAULT.css,
@@ -483,5 +483,3 @@ const typography = (theme) => ({
     css: inverted(theme),
   },
 })
-
-export default typography

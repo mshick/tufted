@@ -1,6 +1,6 @@
 {
   "name": "@mshick/tufted",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "keywords": [
     "react",
     "nodejs",
@@ -17,7 +17,7 @@
   "exports": {
     "./remark": "./dist/remark/index.js",
     "./rehype": "./dist/rehype/index.js",
-    "./tailwind": "./dist/tailwind/index.js"
+    "./tailwind": "./dist/tailwind/index.cjs"
   },
   "types": "./dist",
   "typesVersions": {
@@ -29,7 +29,7 @@
         "dist/rehype/index.d.ts"
       ],
       "tailwind": [
-        "dist/tailwind/index.d.ts"
+        "dist/tailwind/index.d.cts"
       ]
     }
   },
@@ -54,6 +54,9 @@
     "trailingComma": "all"
   },
   "eslintConfig": {
+    "env": {
+      "node": true
+    },
     "parserOptions": {
       "ecmaVersion": 12
     },
@@ -74,11 +77,10 @@
     "overrides": [
       {
         "files": [
-          "src/**/*.js"
+          "src/**/*.cjs"
         ],
         "parserOptions": {
-          "ecmaVersion": "latest",
-          "sourceType": "module"
+          "ecmaVersion": "latest"
         }
       },
       {
