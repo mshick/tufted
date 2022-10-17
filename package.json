@@ -15,21 +15,21 @@
   ],
   "type": "module",
   "exports": {
-    "./remark": "./dist/remark",
-    "./rehype": "./dist/rehype",
-    "./tailwind": "./dist/tailwind"
+    "./remark": "./dist/remark/index.js",
+    "./rehype": "./dist/rehype/index.js",
+    "./tailwind": "./dist/tailwind/index.js"
   },
   "types": "./dist",
   "typesVersions": {
     "*": {
       "remark": [
-        "dist/remark/*.d.ts"
+        "dist/remark/index.d.ts"
       ],
       "rehype": [
-        "dist/rehype/*.d.ts"
+        "dist/rehype/index.d.ts"
       ],
       "tailwind": [
-        "dist/tailwind/*.d.ts"
+        "dist/tailwind/index.d.ts"
       ]
     }
   },
