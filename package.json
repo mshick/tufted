@@ -34,7 +34,10 @@
     }
   },
   "scripts": {
-    "build": "del-cli dist && tsc -p tsconfig.build.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "clean": "del-cli dist",
     "format": "eslint src --fix",
     "prepare": "npm run build",
     "release": "np",
