@@ -1,5 +1,5 @@
 import remarkDirective from 'remark-directive'
-// import remarkDirectiveRehype from 'remark-directive-rehype'
+import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkFootnotes from 'remark-footnotes'
 import remarkGfm from 'remark-gfm'
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs'
@@ -20,7 +20,7 @@ function main(): Preset {
     plugins: [
       remarkGfm,
       remarkDirective,
-      // remarkDirectiveRehype,
+      remarkDirectiveRehype,
       remarkDirectiveYoutube,
       remarkUnwrapImages,
       remarkWrapImages,
