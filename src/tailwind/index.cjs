@@ -398,7 +398,7 @@ module.exports.typography = (theme) => ({
       },
       figure: {
         display: 'block',
-        gridTemplateColumns: '67.5% 23.5%',
+        gridTemplateColumns: '75.5% 15.5%',
         columnGap: '6.5%',
       },
       'figure > figcaption': {
@@ -430,18 +430,18 @@ module.exports.typography = (theme) => ({
   'tufted-sidenotes-lg': {
     css: {
       'p,h2,h3,h4,h5,h6,blockquote': {
-        width: '67.5%',
+        width: '75.5%',
       },
       'pre,.rehype-code-title': {
-        width: '87.5%',
+        width: '100%',
       },
       '.sidenote-definition, .marginnote-definition': {
         clear: 'right',
         display: 'block',
         float: 'right',
         left: 0,
-        margin: '0.3rem -50% 0 0',
-        width: '40%',
+        margin: '0.3rem -34% 0 0',
+        width: '26%',
       },
       '.sidenote > label.margin-toggle': {
         cursor: 'default',
@@ -464,8 +464,8 @@ module.exports.typography = (theme) => ({
       'figure.fullwidth': {
         display: 'block',
         gridTemplateColumns: 'initial',
-        width: '87.5%',
-        maxWidth: '87.5%',
+        width: '100%',
+        maxWidth: '100%',
         paddingRight: 0,
       },
       'figure.fullwidth > figcaption': {
