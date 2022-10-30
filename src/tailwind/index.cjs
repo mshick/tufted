@@ -317,8 +317,19 @@ module.exports.typography = (theme) => ({
           ...theme('fontSize.xs')[1],
           color: theme('colors.black'),
         },
-        'figure.fullwidth, figure.video': {
+        'figure.fullwidth, figure.iframe': {
           display: 'block',
+          gridTemplateColumns: 'initial',
+          width: '100%',
+          maxWidth: '100%',
+          paddingRight: 0,
+        },
+        'figure.video': {
+          aspectRatio: '16 / 9',
+        },
+        'figure.video > iframe': {
+          height: '100%',
+          width: '100%',
         },
       },
     ],
@@ -396,20 +407,7 @@ module.exports.typography = (theme) => ({
           width: '100%',
         },
       },
-      'figure.iframe': {
-        display: 'block',
-        gridTemplateColumns: 'initial',
-        width: '100%',
-        maxWidth: '100%',
-      },
-      'figure.fullwidth': {
-        display: 'block',
-        gridTemplateColumns: 'initial',
-        width: '100%',
-        maxWidth: '100%',
-        paddingRight: 0,
-      },
-      'figure.fullwidth > figcaption': {
+      'figure.fullwidth > figcaption, figure.iframe > figcaption': {
         p: {
           paddingLeft: theme('spacing.3'),
           paddingRight: theme('spacing.3'),
@@ -456,16 +454,11 @@ module.exports.typography = (theme) => ({
       'figure > figcaption': {
         marginTop: 0,
       },
-      'figure.video': {
-        display: 'block',
-        gridTemplateColumns: 'initial',
-        aspectRatio: '16 / 9',
-      },
       'figure.fullwidth': {
         display: 'block',
         gridTemplateColumns: 'initial',
       },
-      'figure.fullwidth > figcaption, figure.video > figcaption': {
+      'figure.fullwidth > figcaption, figure.iframe > figcaption': {
         marginTop: 0,
         p: {
           paddingLeft: theme('spacing.3'),
