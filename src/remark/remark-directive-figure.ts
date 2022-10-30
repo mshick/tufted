@@ -72,6 +72,16 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
           ...data,
         }
 
+        let className: (string | number)[] = []
+
+        if (hast.properties?.['className']) {
+          if (Array.isArray(hast.properties?.['className'])) {
+            className = hast.properties?.['className']
+          } else {
+            className = [String(hast.properties?.['className'])]
+          }
+        }
+
         const figure = u(
           'figure',
           {
@@ -79,7 +89,7 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
               hName: 'figure' as const,
               hProperties: {
                 ...hast.properties,
-                className: Object.keys(contentTypesPresent),
+                className: [...className, ...Object.keys(contentTypesPresent)],
               },
             },
           },

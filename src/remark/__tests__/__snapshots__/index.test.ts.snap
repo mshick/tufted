@@ -26,7 +26,7 @@ exports[`the preset works 1`] = `
     <p>You can create explicit figures. This allows for optional classes, like
         <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.
     </p>
-    <figure class=\\"image\\"><img src=\\"https://picsum.photos/200/300\\" alt=\\"Directive wrapped figure\\">
+    <figure class=\\"fullwidth image\\"><img src=\\"https://picsum.photos/200/300\\" alt=\\"Directive wrapped figure\\">
         <figcaption>
             <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
                 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
@@ -35,7 +35,7 @@ exports[`the preset works 1`] = `
     </figure>
     <p>Figure content and caption text can also be flipped. And, a figure can describe
         a YouTube video.</p>
-    <figure class=\\"iframe youtube\\">
+    <figure class=\\"fullwidth iframe youtube\\">
         <figcaption>
             <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
                 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
@@ -98,14 +98,13 @@ exports[`the preset works 1`] = `
             <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
                 dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
                 in iaculis.</p>
-            <div>Marc Cicero, \\"De finibus bonorum et malorum\\"<span class=\\"marginnote\\"><label for=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\">⊕</label><input type=\\"checkbox\\" id=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\"><span class=\\"marginnote-definition\\">^An inline note in the blockquote footer</span></span></div>
+            <footer>Marc Cicero, \\"De finibus bonorum et malorum\\"<span class=\\"marginnote\\"><label for=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\">⊕</label><input type=\\"checkbox\\" id=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\"><span class=\\"marginnote-definition\\">^An inline note in the blockquote footer</span></span></footer>
         </blockquote>
         <blockquote>
             <p>Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
                 accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
                 cursus mattis molestie a.</p>
-            <div>Marc Cicero, <div>\\"Using Default Remark Directive Citation\\"</div>
-            </div>
+            <footer>Marc Cicero, <cite>\\"Using Default Remark Directive Citation\\"</cite></footer>
         </blockquote>
     </div>
     <p>Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Amet est
