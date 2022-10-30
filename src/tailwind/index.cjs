@@ -309,7 +309,8 @@ module.exports.typography = (theme) => ({
         },
         figure: {
           maxWidth: '100%',
-          marginBottom: theme('spacing.3'),
+          marginTop: theme('spacing.5'),
+          marginBottom: theme('spacing.5'),
         },
         'figure > figcaption': {
           marginTop: theme('spacing.2'),
@@ -323,6 +324,8 @@ module.exports.typography = (theme) => ({
           width: '100%',
           maxWidth: '100%',
           paddingRight: 0,
+          marginTop: theme('spacing.8'),
+          marginBottom: theme('spacing.8'),
         },
         '.video-wrapper': {
           aspectRatio: '16 / 9',
