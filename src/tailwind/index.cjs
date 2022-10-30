@@ -317,7 +317,7 @@ module.exports.typography = (theme) => ({
           ...theme('fontSize.xs')[1],
           color: theme('colors.black'),
         },
-        'figure.fullwidth, figure.youtube': {
+        'figure.fullwidth, figure.video': {
           display: 'block',
         },
       },
@@ -456,18 +456,16 @@ module.exports.typography = (theme) => ({
       'figure > figcaption': {
         marginTop: 0,
       },
-      'figure.iframe': {
+      'figure.video': {
         display: 'block',
         gridTemplateColumns: 'initial',
-        // width: '67.5%'
+        aspectRatio: '16 / 9',
       },
-      'figure.fullwidth, figure.youtube': {
+      'figure.fullwidth': {
         display: 'block',
         gridTemplateColumns: 'initial',
-        paddingRight: '12.5%',
-        // width: '100%'
       },
-      'figure.fullwidth > figcaption, figure.youtuve > figcaption': {
+      'figure.fullwidth > figcaption, figure.video > figcaption': {
         marginTop: 0,
         p: {
           paddingLeft: theme('spacing.3'),

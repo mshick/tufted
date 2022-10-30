@@ -22,7 +22,7 @@ export default function remarkYoutube(): Transformer<Parent> {
           const iframe = u(
             'iframe',
             {
-              name: 'youtube',
+              name: 'video',
               data: {
                 hName: 'iframe' as const,
                 hProperties: {
