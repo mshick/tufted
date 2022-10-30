@@ -6,10 +6,10 @@ import { SKIP, visit } from 'unist-util-visit'
 import {
   isCodeNode,
   isContainerDirectiveNode,
-  isIframeNode,
   isImageNode,
   isLeafDirectiveNode,
   isParentNode,
+  isVideoNode,
 } from './type-utils.js'
 import type { HastData } from './types'
 import { contentTypePresenceReducer } from './utils.js'
@@ -31,7 +31,7 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
         const contentTypesPresent = node.children.reduce(contentTypePresenceReducer, {})
 
         const groupedCaptions = node.children.reduce<GroupedChildren>((g, n, i) => {
-          if (!isCodeNode(n) && !isImageNode(n) && !isLeafDirectiveNode(n) && !isIframeNode(n)) {
+          if (!isCodeNode(n) && !isImageNode(n) && !isLeafDirectiveNode(n) && !isVideoNode(n)) {
             return {
               ...g,
               [currentGroupStart]: [...(g[currentGroupStart] ?? []), n],

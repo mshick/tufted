@@ -4,10 +4,11 @@ import { u } from 'unist-builder'
 import { CONTINUE, SKIP, visit } from 'unist-util-visit'
 import { isLeafDirectiveNode, isParentNode } from './type-utils.js'
 
-export default function remarkYoutube(): Transformer<Parent> {
+export default function remarkDirectiveVideo(): Transformer<Parent> {
   return (tree, file) => {
     visit(
       tree,
+      // Only handles YouTube right now.
       (node) => isLeafDirectiveNode(node) && node.name === 'youtube',
       (node, index, parent) => {
         if (isLeafDirectiveNode(node) && isParentNode(parent)) {
@@ -22,7 +23,6 @@ export default function remarkYoutube(): Transformer<Parent> {
           const iframe = u(
             'iframe',
             {
-              name: 'video',
               data: {
                 hName: 'iframe' as const,
                 hProperties: {
@@ -38,7 +38,20 @@ export default function remarkYoutube(): Transformer<Parent> {
             node.children,
           )
 
-          parent.children.splice(index ?? 0, 1, iframe)
+          const video = u(
+            'video',
+            {
+              data: {
+                hName: 'div' as const,
+                hProperties: {
+                  className: ['video-wrapper'],
+                },
+              },
+            },
+            [iframe],
+          )
+
+          parent.children.splice(index ?? 0, 1, video)
 
           return [SKIP, index]
         }

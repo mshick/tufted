@@ -4,10 +4,10 @@ import { u } from 'unist-builder'
 import { CONTINUE, visit } from 'unist-util-visit'
 import {
   isContainerDirectiveNode,
-  isIframeNode,
   isImageNode,
   isParagraphNode,
   isParentNode,
+  isVideoNode,
 } from './type-utils.js'
 import { contentTypePresenceReducer } from './utils.js'
 
@@ -20,7 +20,7 @@ export default function remmarkWrapImages(): Transformer<Parent> {
           return true
         }
 
-        if (isIframeNode(node)) {
+        if (isVideoNode(node)) {
           return true
         }
 

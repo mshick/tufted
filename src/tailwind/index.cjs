@@ -317,17 +317,17 @@ module.exports.typography = (theme) => ({
           ...theme('fontSize.xs')[1],
           color: theme('colors.black'),
         },
-        'figure.fullwidth, figure.iframe': {
+        'figure.fullwidth': {
           display: 'block',
           gridTemplateColumns: 'initial',
           width: '100%',
           maxWidth: '100%',
           paddingRight: 0,
         },
-        'figure.video': {
+        '.video-wrapper': {
           aspectRatio: '16 / 9',
         },
-        'figure.video > iframe': {
+        '.video-wrapper > iframe': {
           height: '100%',
           width: '100%',
         },
@@ -407,7 +407,14 @@ module.exports.typography = (theme) => ({
           width: '100%',
         },
       },
-      'figure.fullwidth > figcaption, figure.iframe > figcaption': {
+      'figure.fullwidth': {
+        display: 'block',
+        gridTemplateColumns: 'initial',
+        width: '100%',
+        maxWidth: '100%',
+        paddingRight: 0,
+      },
+      'figure.fullwidth > figcaption': {
         p: {
           paddingLeft: theme('spacing.3'),
           paddingRight: theme('spacing.3'),
@@ -457,8 +464,11 @@ module.exports.typography = (theme) => ({
       'figure.fullwidth': {
         display: 'block',
         gridTemplateColumns: 'initial',
+        width: '100%',
+        maxWidth: '100%',
+        paddingRight: 0,
       },
-      'figure.fullwidth > figcaption, figure.iframe > figcaption': {
+      'figure.fullwidth > figcaption': {
         marginTop: 0,
         p: {
           paddingLeft: theme('spacing.3'),

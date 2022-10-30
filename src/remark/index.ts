@@ -8,7 +8,7 @@ import type { Preset } from 'unified'
 import remarkDirectiveFigure from './remark-directive-figure.js'
 import remarkDirectiveFooter from './remark-directive-footer.js'
 import remarkDirectiveNewthought from './remark-directive-newthought.js'
-import remarkDirectiveYoutube from './remark-directive-youtube.js'
+import remarkDirectiveVideo from './remark-directive-video.js'
 import remarkEpigraph from './remark-epigraph.js'
 import remarkInitialHeading from './remark-initial-heading.js'
 import remarkSectionize from './remark-sectionize.js'
@@ -21,7 +21,7 @@ function main(): Preset {
       remarkGfm,
       remarkDirective,
       remarkDirectiveRehype,
-      remarkDirectiveYoutube,
+      remarkDirectiveVideo,
       remarkUnwrapImages,
       remarkWrapImages,
       remarkDirectiveFigure,

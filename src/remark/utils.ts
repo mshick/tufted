@@ -1,5 +1,5 @@
 import type { BlockContent } from 'mdast'
-import { isCodeNode, isIframeNode, isImageNode, isLeafDirectiveNode } from './type-utils.js'
+import { isCodeNode, isImageNode, isLeafDirectiveNode, isVideoNode } from './type-utils.js'
 
 export function contentTypePresenceReducer(p: Record<string, boolean>, n: BlockContent) {
   if (isCodeNode(n)) {
@@ -14,8 +14,8 @@ export function contentTypePresenceReducer(p: Record<string, boolean>, n: BlockC
     return { ...p, leaf: true }
   }
 
-  if (isIframeNode(n)) {
-    return { ...p, iframe: true, [n.name]: true }
+  if (isVideoNode(n)) {
+    return { ...p, video: true }
   }
 
   return p

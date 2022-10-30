@@ -8,7 +8,9 @@ exports[`the preset works 1`] = `
         ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
         elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
     <p>This YouTube directive will be upgraded to a figure-wrapped iframe.</p>
-    <figure class=\\"iframe video\\"><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">TOTINO BOY!!</iframe></figure>
+    <figure class=\\"video\\">
+        <div class=\\"video-wrapper\\"><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">TOTINO BOY!!</iframe></div>
+    </figure>
     <p>Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
         ut. Tincidunt ornare massa eget egestas purus viverra. Ultricies tristique
         nulla aliquet enim tortor at auctor urna nunc. Nec ullamcorper sit amet risus
@@ -35,12 +37,13 @@ exports[`the preset works 1`] = `
     </figure>
     <p>Figure content and caption text can also be flipped. And, a figure can describe
         a YouTube video.</p>
-    <figure class=\\"fullwidth iframe video\\">
+    <figure class=\\"fullwidth video\\">
         <figcaption>
             <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
                 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
                 congue.</p>
-        </figcaption><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">Pizza Pizza</iframe>
+        </figcaption>
+        <div class=\\"video-wrapper\\"><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">Pizza Pizza</iframe></div>
     </figure>
 </section>
 <section>

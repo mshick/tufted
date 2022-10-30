@@ -10,6 +10,7 @@ import type {
   SidenoteDefinition,
   SidenoteReference,
   SidenoteToggle,
+  Video,
 } from './types'
 
 declare module 'mdast' {
@@ -27,6 +28,7 @@ declare module 'mdast' {
     epigraph: Epigraph
     image: Image
     iframe: Iframe
+    video: Video
   }
 
   interface DefinitionContentMap {

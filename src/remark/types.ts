@@ -53,9 +53,17 @@ export type Sidenote = {
 
 export type Iframe = {
   type: 'iframe'
-  name: string
   data: {
     hName: 'iframe'
+    hProperties: Properties
+  }
+  children: Array<Content>
+}
+
+export type Video = {
+  type: 'video'
+  data: {
+    hName: 'div'
     hProperties: Properties
   }
   children: Array<Content>
