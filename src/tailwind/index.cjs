@@ -321,9 +321,6 @@ module.exports.typography = (theme) => ({
         'figure.fullwidth': {
           display: 'block',
           gridTemplateColumns: 'initial',
-          width: '100%',
-          maxWidth: '100%',
-          paddingRight: 0,
           marginTop: theme('spacing.8'),
           marginBottom: theme('spacing.8'),
         },
@@ -467,8 +464,8 @@ module.exports.typography = (theme) => ({
       'figure.fullwidth': {
         display: 'block',
         gridTemplateColumns: 'initial',
-        width: '100%',
-        maxWidth: '100%',
+        width: '87.5%',
+        maxWidth: '87.5%',
         paddingRight: 0,
       },
       'figure.fullwidth > figcaption': {
