@@ -1,21 +1,21 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`the preset works 1`] = `
 "<section>
-    <h2 class=\\"hidden\\">Introduction</h2>
+    <h2 class="hidden">Introduction</h2>
     <p>Introductory text without heading will add a hidden h2 added. This allows for a
         consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
         elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
     <p>This YouTube directive will be upgraded to a figure-wrapped iframe.</p>
-    <figure class=\\"video\\">
-        <div class=\\"video-wrapper\\"><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">TOTINO BOY!!</iframe></div>
+    <figure class="video">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">TOTINO BOY!!</iframe></div>
     </figure>
     <p>Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
         ut. Tincidunt ornare massa eget egestas purus viverra. Ultricies tristique
         nulla aliquet enim tortor at auctor urna nunc. Nec ullamcorper sit amet risus
         nullam. Morbi tempus iaculis urna id. Sed turpis tincidunt id aliquet risus
-        feugiat in ante metus.<span class=\\"sidenote\\"><label for=\\"sn-1-1\\" class=\\"margin-toggle sidenote-number\\"></label><input type=\\"checkbox\\" id=\\"sn-1-1\\" class=\\"margin-toggle\\"><span class=\\"sidenote-definition\\"><a href=\\"https://www.google.com\\">Referenced Footnote To Sidenote</a></span></span> Integer vitae justo eget magna fermentum iaculis.
+        feugiat in ante metus.<span class="sidenote"><label for="sn-1-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1-1" class="margin-toggle"><span class="sidenote-definition"><a href="https://www.google.com">Referenced Footnote To Sidenote</a></span></span> Integer vitae justo eget magna fermentum iaculis.
         Libero enim sed faucibus turpis. Ut placerat orci nulla pellentesque dignissim
         enim sit amet. In eu mi bibendum neque. Blandit massa enim nec dui nunc.
         Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Imperdiet
@@ -28,7 +28,7 @@ exports[`the preset works 1`] = `
     <p>You can create explicit figures. This allows for optional classes, like
         <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.
     </p>
-    <figure class=\\"fullwidth image\\"><img src=\\"https://picsum.photos/200/300\\" alt=\\"Directive wrapped figure\\">
+    <figure class="fullwidth image"><img src="https://picsum.photos/200/300" alt="Directive wrapped figure">
         <figcaption>
             <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
                 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
@@ -37,20 +37,20 @@ exports[`the preset works 1`] = `
     </figure>
     <p>Figure content and caption text can also be flipped. And, a figure can describe
         a YouTube video.</p>
-    <figure class=\\"fullwidth video\\">
+    <figure class="fullwidth video">
         <figcaption>
             <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
                 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
                 congue.</p>
         </figcaption>
-        <div class=\\"video-wrapper\\"><iframe src=\\"https://www.youtube.com/embed/2lPX5b9m7ro\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen class=\\"youtube\\">Pizza Pizza</iframe></div>
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">Pizza Pizza</iframe></div>
     </figure>
 </section>
 <section>
     <h2>Sidenotes</h2>
     <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
         nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
-        aliquet bibendum enim.<span class=\\"marginnote\\"><label for=\\"mn-margin-2\\" class=\\"margin-toggle\\">⊕</label><input type=\\"checkbox\\" id=\\"mn-margin-2\\" class=\\"margin-toggle\\"><span class=\\"marginnote-definition\\"><img src=\\"./local-image.png\\" alt=\\"Image in a marginnote\\"> At urna condimentum mattis
+        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition"><img src="./local-image.png" alt="Image in a marginnote"> At urna condimentum mattis
                 pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
                 nulla porttitor massa id neque aliquam vestibulum.</span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
         risus commodo viverra maecenas accumsan lacus. Tellus orci ac auctor augue
@@ -63,7 +63,7 @@ exports[`the preset works 1`] = `
         ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
         tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
         vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
-    <figure class=\\"image\\"><img src=\\"./local-image.png\\" alt=\\"Standalone image gets wrapped in figure\\"></figure>
+    <figure class="image"><img src="./local-image.png" alt="Standalone image gets wrapped in figure"></figure>
     <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
         purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
         nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id
@@ -74,9 +74,9 @@ exports[`the preset works 1`] = `
         <p>This blockquote has a footer that contains a footnote citation. Tellus rutrum
             tellus pellentesque eu tincidunt tortor. Tincidunt id aliquet risus feugiat
             in. Elementum integer enim neque volutpat ac tincidunt vitae.</p>
-        <footer><a href=\\"https://www.reddit.com/r/AskHistorians/comments/1l2jge/how_significant_was_cicero_in_the_events_that_led/\\">Marcus Tullius Cicero, reddit, 'How To Fill Text' subreddit</a></footer>
+        <footer><a href="https://www.reddit.com/r/AskHistorians/comments/1l2jge/how_significant_was_cicero_in_the_events_that_led/">Marcus Tullius Cicero, reddit, 'How To Fill Text' subreddit</a></footer>
     </blockquote>
-    <p><span class=\\"newthought\\">Rhoncus urna neque</span> viverra justo. Sed id semper risus in hendrerit
+    <p><span class="newthought">Rhoncus urna neque</span> viverra justo. Sed id semper risus in hendrerit
         gravida. Diam vel quam elementum pulvinar etiam. Lacus sed turpis tincidunt id
         aliquet risus feugiat in ante. Dui vivamus arcu felis bibendum ut tristique et
         egestas. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula
@@ -87,7 +87,7 @@ exports[`the preset works 1`] = `
     <h2>Code</h2>
     <p>Code blocks support titles. Titles are typically filenames, and they cannot
         contain spaces.</p>
-    <pre><code class=\\"language-js:foo.js\\">function randomCode(bar) {
+    <pre><code class="language-js:foo.js">function randomCode(bar) {
   var a = 42;
   var b = 'Prism';
   return a + bar(b);
@@ -96,18 +96,18 @@ exports[`the preset works 1`] = `
 </section>
 <section>
     <h2>Epigraphs</h2>
-    <div class=\\"epigraph\\">
+    <div class="epigraph">
         <blockquote>
             <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
                 dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
                 in iaculis.</p>
-            <footer>Marc Cicero, \\"De finibus bonorum et malorum\\"<span class=\\"marginnote\\"><label for=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\">⊕</label><input type=\\"checkbox\\" id=\\"mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2\\" class=\\"margin-toggle\\"><span class=\\"marginnote-definition\\">^An inline note in the blockquote footer</span></span></footer>
+            <footer>Marc Cicero, "De finibus bonorum et malorum"<span class="marginnote"><label for="mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2" class="margin-toggle"><span class="marginnote-definition">^An inline note in the blockquote footer</span></span></footer>
         </blockquote>
         <blockquote>
             <p>Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
                 accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
                 cursus mattis molestie a.</p>
-            <footer>Marc Cicero, <cite>\\"Using Default Remark Directive Citation\\"</cite></footer>
+            <footer>Marc Cicero, <cite>"Using Default Remark Directive Citation"</cite></footer>
         </blockquote>
     </div>
     <p>Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Amet est
@@ -127,25 +127,25 @@ exports[`the preset works 1`] = `
         <thead>
             <tr>
                 <th>Tables</th>
-                <th align=\\"center\\">Are</th>
-                <th align=\\"right\\">Cool</th>
+                <th align="center">Are</th>
+                <th align="right">Cool</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>col 3 is</td>
-                <td align=\\"center\\">right-aligned</td>
-                <td align=\\"right\\">$1600</td>
+                <td align="center">right-aligned</td>
+                <td align="right">$1600</td>
             </tr>
             <tr>
                 <td>col 2 is</td>
-                <td align=\\"center\\">centered</td>
-                <td align=\\"right\\">$12</td>
+                <td align="center">centered</td>
+                <td align="right">$12</td>
             </tr>
             <tr>
                 <td>zebra stripes</td>
-                <td align=\\"center\\">are neat</td>
-                <td align=\\"right\\">$1</td>
+                <td align="center">are neat</td>
+                <td align="right">$1</td>
             </tr>
         </tbody>
     </table>
