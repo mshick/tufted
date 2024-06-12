@@ -58,7 +58,7 @@
       "node": true
     },
     "parserOptions": {
-      "ecmaVersion": 12,
+      "ecmaVersion": 14,
       "sourceType": "module"
     },
     "settings": {
