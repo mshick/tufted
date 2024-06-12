@@ -11,7 +11,7 @@ import {
   isParentNode,
   isVideoNode,
 } from './type-utils.js'
-import type { HastData } from './types'
+import type { HastData } from './types.js'
 import { contentTypePresenceReducer } from './utils.js'
 
 type GroupedChildren = Record<number, Array<BlockContent | DefinitionContent>>

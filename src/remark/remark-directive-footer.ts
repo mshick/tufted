@@ -3,7 +3,7 @@ import type { Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { EXIT, SKIP, visit } from 'unist-util-visit'
 import { isContainerDirectiveNode, isLeafDirectiveNode } from './type-utils.js'
-import type { HastData } from './types'
+import type { HastData } from './types.js'
 
 export default function remarkFooter(): Transformer<Parent> {
   return (tree) => {
