@@ -40,13 +40,18 @@ export default function remarkSectionize(
           const end = findAfter(
             parent,
             start,
-            (node) => (isHeadingNode(node) && node.depth <= depth) || node.type === 'export',
+            (node) =>
+              (isHeadingNode(node) && node.depth <= depth) ||
+              node.type === 'export',
           )
 
           const startIndex = parent.children.indexOf(start)
           const endIndex = end ? parent.children.indexOf(end) : 0
 
-          const between = parent.children.slice(startIndex, endIndex > 0 ? endIndex : undefined)
+          const between = parent.children.slice(
+            startIndex,
+            endIndex > 0 ? endIndex : undefined,
+          )
 
           const section = u(
             'section',

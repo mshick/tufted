@@ -26,7 +26,11 @@ function isNumericString(key: string): boolean {
   return !isNaN(Number(key))
 }
 
-function generateInputId(isMarginNote: boolean, identifier: string, referenceCount: number) {
+function generateInputId(
+  isMarginNote: boolean,
+  identifier: string,
+  referenceCount: number,
+) {
   return `${isMarginNote ? 'mn' : 'sn'}-${identifier}-${referenceCount}`
 }
 
@@ -102,7 +106,9 @@ function getReplacement({
   )
 }
 
-export default function remarkSidenotes(options = { marginnoteLabel }): Transformer<Parent> {
+export default function remarkSidenotes(
+  options = { marginnoteLabel },
+): Transformer<Parent> {
   const settings = {
     marginnoteLabel: options.marginnoteLabel || marginnoteLabel,
   }
@@ -122,9 +128,10 @@ export default function remarkSidenotes(options = { marginnoteLabel }): Transfor
 
       const { identifier } = node
 
-      const target = select(`footnoteDefinition[identifier='${identifier}']`, tree) as
-        | FootnoteDefinition
-        | undefined
+      const target = select(
+        `footnoteDefinition[identifier='${identifier}']`,
+        tree,
+      ) as FootnoteDefinition | undefined
 
       if (!target) {
         throw new Error('No coresponding note found')

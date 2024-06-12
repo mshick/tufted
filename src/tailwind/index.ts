@@ -142,9 +142,10 @@ module.exports.typography = (theme: PluginAPI['theme']) => ({
             outlineOffset: '.4em',
           },
         },
-        '.token.comment,.token.prolog,.token.doctype,.token.cdata,.token.punctuation': {
-          color: 'var(--tw-prose-pre-code-comment)',
-        },
+        '.token.comment,.token.prolog,.token.doctype,.token.cdata,.token.punctuation':
+          {
+            color: 'var(--tw-prose-pre-code-comment)',
+          },
         '.token.namespace': {
           opacity: 0.7,
         },

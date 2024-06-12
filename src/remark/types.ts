@@ -1,5 +1,10 @@
 import type { Properties } from 'hast'
-import type { BlockContent, DefinitionContent, Parent, PhrasingContent } from 'mdast'
+import type {
+  BlockContent,
+  DefinitionContent,
+  Parent,
+  PhrasingContent,
+} from 'mdast'
 import type { TextDirective } from 'mdast-util-directive'
 import type { Node } from 'unist'
 

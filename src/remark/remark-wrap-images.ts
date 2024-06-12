@@ -28,8 +28,15 @@ export default function remmarkWrapImages(): Transformer<Parent> {
       },
       (node, index, parent) => {
         // Don't get images in an explicit figure container or that are inline
-        if (isParentNode(parent) && !isContainerDirectiveNode(parent) && !isParagraphNode(parent)) {
-          const contentTypesPresent = contentTypePresenceReducer({}, node as BlockContent)
+        if (
+          isParentNode(parent) &&
+          !isContainerDirectiveNode(parent) &&
+          !isParagraphNode(parent)
+        ) {
+          const contentTypesPresent = contentTypePresenceReducer(
+            {},
+            node as BlockContent,
+          )
 
           const figure = u(
             'figure',

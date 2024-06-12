@@ -28,24 +28,37 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
 
         let currentGroupStart = 0
 
-        const contentTypesPresent = node.children.reduce(contentTypePresenceReducer, {})
+        const contentTypesPresent = node.children.reduce(
+          contentTypePresenceReducer,
+          {},
+        )
 
-        const groupedCaptions = node.children.reduce<GroupedChildren>((g, n, i) => {
-          if (!isCodeNode(n) && !isImageNode(n) && !isLeafDirectiveNode(n) && !isVideoNode(n)) {
-            return {
-              ...g,
-              [currentGroupStart]: [...(g[currentGroupStart] ?? []), n],
+        const groupedCaptions = node.children.reduce<GroupedChildren>(
+          (g, n, i) => {
+            if (
+              !isCodeNode(n) &&
+              !isImageNode(n) &&
+              !isLeafDirectiveNode(n) &&
+              !isVideoNode(n)
+            ) {
+              return {
+                ...g,
+                [currentGroupStart]: [...(g[currentGroupStart] ?? []), n],
+              }
             }
-          }
 
-          currentGroupStart = i + 1
-          return g
-        }, {})
+            currentGroupStart = i + 1
+            return g
+          },
+          {},
+        )
 
         const figureChildren = [...node.children]
 
         if (Object.entries(groupedCaptions).length > 0) {
-          for (const [startIndex, captionNodes] of Object.entries(groupedCaptions)) {
+          for (const [startIndex, captionNodes] of Object.entries(
+            groupedCaptions,
+          )) {
             const figcaption = u(
               'figcaption',
               {
@@ -56,7 +69,11 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
               captionNodes,
             )
 
-            figureChildren.splice(Number(startIndex), figcaption.children.length, figcaption)
+            figureChildren.splice(
+              Number(startIndex),
+              figcaption.children.length,
+              figcaption,
+            )
           }
         }
 

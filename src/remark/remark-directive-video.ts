@@ -10,7 +10,9 @@ export type RemarkDirectiveVideoOptions = {
 }
 
 export default function remarkDirectiveVideo(
-  { figureClassNames }: RemarkDirectiveVideoOptions = { figureClassNames: ['fullwidth'] },
+  { figureClassNames }: RemarkDirectiveVideoOptions = {
+    figureClassNames: ['fullwidth'],
+  },
 ): Transformer<Parent> {
   return (tree, file) => {
     visit(

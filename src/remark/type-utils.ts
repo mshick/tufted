@@ -9,7 +9,11 @@ import type {
   Parent,
   Yaml,
 } from 'mdast'
-import type { ContainerDirective, Directives, LeafDirective } from 'mdast-util-directive'
+import type {
+  ContainerDirective,
+  Directives,
+  LeafDirective,
+} from 'mdast-util-directive'
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import type { Node } from 'unist'
 import type { Footnote, Iframe, Root, Section, Video } from './types.js'
@@ -35,7 +39,9 @@ export function isParagraphNode(node: unknown): node is Paragraph {
   return Boolean(isNode(node) && node.type === 'paragraph')
 }
 
-export function isContainerDirectiveNode(node?: unknown): node is ContainerDirective {
+export function isContainerDirectiveNode(
+  node?: unknown,
+): node is ContainerDirective {
   return Boolean(isNode(node) && node.type === 'containerDirective')
 }
 
@@ -87,10 +93,14 @@ export function isFootnoteNode(node: unknown): node is Footnote {
   return Boolean(isNode(node) && node.type === 'footnote')
 }
 
-export function isFootnoteReferenceNode(node: unknown): node is FootnoteReference {
+export function isFootnoteReferenceNode(
+  node: unknown,
+): node is FootnoteReference {
   return Boolean(isNode(node) && node.type === 'footnoteReference')
 }
 
-export function isFootnoteDefinitionNode(node: unknown): node is FootnoteDefinition {
+export function isFootnoteDefinitionNode(
+  node: unknown,
+): node is FootnoteDefinition {
   return Boolean(isNode(node) && node.type === 'footnoteDefinition')
 }

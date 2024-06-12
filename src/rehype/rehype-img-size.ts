@@ -46,14 +46,21 @@ type MdxNode = {
   }>
 }
 
-function collectImportIdentifiers(node: UnistNode, importIdentifierMap: ImportIdentifierMap) {
+function collectImportIdentifiers(
+  node: UnistNode,
+  importIdentifierMap: ImportIdentifierMap,
+) {
   const estree = node.data?.['estree'] as Record<string, MdxNode[]>
 
-  const importNodes = estree['body']?.filter((n) => n.type === 'ImportDeclaration') ?? []
+  const importNodes =
+    estree['body']?.filter((n) => n.type === 'ImportDeclaration') ?? []
 
   for (const importNode of importNodes) {
     for (const specifier of importNode.specifiers) {
-      if (specifier.type === 'ImportDefaultSpecifier' && specifier.local.type === 'Identifier') {
+      if (
+        specifier.type === 'ImportDefaultSpecifier' &&
+        specifier.local.type === 'Identifier'
+      ) {
         importIdentifierMap[specifier.local.name] = importNode.source.value
       }
     }
@@ -125,7 +132,10 @@ function createImageSizeTransformer(contentDir: string) {
       return tree
     }
 
-    const dir = path.join(contentDir, file.data?.rawDocumentData?.sourceFileDir ?? '')
+    const dir = path.join(
+      contentDir,
+      file.data?.rawDocumentData?.sourceFileDir ?? '',
+    )
 
     visit(tree, ['mdxjsEsm', 'mdxJsxTextElement'], (node) => {
       const mdastNode = node as MdxJsxFlowElement | MdxJsxTextElement
@@ -147,6 +157,8 @@ export type RehypeImgSizeOptions = {
   dir?: string
 }
 
-export default function rehypeImgSize(options: RehypeImgSizeOptions): Transformer {
+export default function rehypeImgSize(
+  options: RehypeImgSizeOptions,
+): Transformer {
   return createImageSizeTransformer(options?.dir ?? '')
 }
