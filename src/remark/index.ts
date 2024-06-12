@@ -13,7 +13,7 @@ import remarkInitialHeading from './remark-initial-heading.js'
 import remarkSectionize from './remark-sectionize.js'
 import remarkSidenotes from './remark-sidenotes.js'
 
-function main(): Preset {
+function main(): Omit<Preset, 'settings'> {
   return {
     plugins: [
       remarkGfm,
