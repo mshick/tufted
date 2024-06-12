@@ -134,7 +134,6 @@
     "@microflash/rehype-figure": "^2.1.0",
     "@tailwindcss/typography": "^0.5.13",
     "image-size": "^1.1.1",
-    "mdast": "^3.0.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-code-titles": "^1.2.0",
     "rehype-prism-plus": "^2.0.0",
