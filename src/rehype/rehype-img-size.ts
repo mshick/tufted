@@ -1,4 +1,4 @@
-import sizeOf from 'image-size'
+import { imageSize } from 'image-size'
 import type { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx'
 import path from 'path'
 import type { Transformer } from 'unified'
@@ -27,7 +27,7 @@ function getImageSize(src: string, dir: string) {
     src = path.join(dir, src)
   }
 
-  return sizeOf(src)
+  return imageSize(src)
 }
 
 type ImportIdentifierMap = Record<string, string>

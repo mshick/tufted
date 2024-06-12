@@ -1,7 +1,7 @@
 import type { Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { visit } from 'unist-util-visit'
-import type { HastData, Newthought } from './types'
+import type { HastData, Newthought } from './types.js'
 
 export default function remarkNewthought(): Transformer<Parent> {
   return (tree) => {

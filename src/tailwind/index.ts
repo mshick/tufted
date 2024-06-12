@@ -1,6 +1,8 @@
-const { DEFAULT } = require('@tailwindcss/typography/src/styles')
+// @ts-expect-error No types
+import { DEFAULT } from '@tailwindcss/typography/src/styles'
+import { PluginAPI } from 'tailwindcss/types/config.js'
 
-const colors = (theme) => ({
+const colors = (theme: PluginAPI['theme']) => ({
   '--tw-prose-body': theme('colors.black'),
   '--tw-prose-headings': theme('colors.black'),
   '--tw-prose-lead': theme('colors.black'),
@@ -75,7 +77,7 @@ const inverted = () => ({
   '--tw-prose-pre-code-selection': 'var(--tw-prose-invert-pre-code-selection)',
 })
 
-module.exports.typography = (theme) => ({
+module.exports.typography = (theme: PluginAPI['theme']) => ({
   DEFAULT: {
     css: [
       ...DEFAULT.css,
@@ -86,8 +88,8 @@ module.exports.typography = (theme) => ({
           fontStyle: 'italic',
           marginTop: theme('spacing.2'),
           marginBottom: theme('spacing.3'),
-          fontSize: theme('fontSize.base')[0],
-          ...theme('fontSize.base')[1],
+          fontSize: theme('fontSize.base')?.[0],
+          ...theme('fontSize.base')?.[1],
         },
         section: {
           paddingTop: theme('spacing.4'),
@@ -103,16 +105,16 @@ module.exports.typography = (theme) => ({
         h2: {
           fontWeight: 'normal',
           fontStyle: 'italic',
-          fontSize: theme('fontSize.3xl')[0],
-          ...theme('fontSize.3xl')[1],
+          fontSize: theme('fontSize.3xl')?.[0],
+          ...theme('fontSize.3xl')?.[1],
           marginTop: theme('spacing.8'),
           marginBottom: theme('spacing.6'),
         },
         h3: {
           fontWeight: 'normal',
           fontStyle: 'italic',
-          fontSize: theme('fontSize.2xl')[0],
-          ...theme('fontSize.2xl')[1],
+          fontSize: theme('fontSize.2xl')?.[0],
+          ...theme('fontSize.2xl')?.[1],
           marginTop: theme('spacing.8'),
           marginBottom: theme('spacing.6'),
         },
@@ -122,8 +124,8 @@ module.exports.typography = (theme) => ({
         },
         pre: {
           borderColor: 'var(--tw-prose-borders)',
-          fontSize: theme('fontSize.xs')[0],
-          ...theme('fontSize.sm')[1],
+          fontSize: theme('fontSize.xs')?.[0],
+          ...theme('fontSize.sm')?.[1],
           borderWidth: '1px',
           borderStyle: 'dashed',
           overflow: 'auto',
@@ -212,8 +214,8 @@ module.exports.typography = (theme) => ({
         },
         blockquote: {
           position: 'relative',
-          fontSize: theme('fontSize.sm')[0],
-          ...theme('fontSize.sm')[1],
+          fontSize: theme('fontSize.sm')?.[0],
+          ...theme('fontSize.sm')?.[1],
           fontStyle: 'regular',
           border: 0,
           marginTop: 0,
@@ -238,8 +240,8 @@ module.exports.typography = (theme) => ({
         },
         '.newthought': {
           fontVariant: 'small-caps',
-          fontSize: theme('fontSize.xl')[0],
-          ...theme('fontSize.xl')[1],
+          fontSize: theme('fontSize.xl')?.[0],
+          ...theme('fontSize.xl')?.[1],
         },
         hr: {
           border: 0,
@@ -314,8 +316,8 @@ module.exports.typography = (theme) => ({
         },
         'figure > figcaption': {
           marginTop: theme('spacing.2'),
-          fontSize: theme('fontSize.xs')[0],
-          ...theme('fontSize.xs')[1],
+          fontSize: theme('fontSize.xs')?.[0],
+          ...theme('fontSize.xs')?.[1],
           color: theme('colors.black'),
         },
         'figure.fullwidth': {
@@ -356,8 +358,8 @@ module.exports.typography = (theme) => ({
         verticalAlign: 'baseline',
       },
       '.sidenote-definition, .marginnote-definition': {
-        fontSize: theme('fontSize.xs')[0],
-        ...theme('fontSize.xs')[1],
+        fontSize: theme('fontSize.xs')?.[0],
+        ...theme('fontSize.xs')?.[1],
         position: 'relative',
         verticalAlign: 'baseline',
         clear: 'both',
@@ -481,6 +483,6 @@ module.exports.typography = (theme) => ({
     css: colors(theme),
   },
   'tufted-bbs-invert': {
-    css: inverted(theme),
+    css: inverted(),
   },
 })

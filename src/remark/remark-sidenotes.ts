@@ -1,3 +1,4 @@
+import { createHash } from 'crypto'
 import type {
   BlockContent,
   DefinitionContent,
@@ -11,11 +12,12 @@ import { select } from 'unist-util-select'
 import { SKIP, visit } from 'unist-util-visit'
 import {
   isFootnoteDefinitionNode,
+  isFootnoteNode,
   isFootnoteReferenceNode,
   isParagraphNode,
   isParentNode,
 } from './type-utils.js'
-import type { Sidenote } from './types'
+import type { Sidenote } from './types.js'
 
 // Need to use the unicode escape sequence for ⊕ / Circled Plus due to later sanitization
 const marginnoteLabel = '\u2295'
@@ -28,9 +30,9 @@ function generateInputId(isMarginNote: boolean, identifier: string, referenceCou
   return `${isMarginNote ? 'mn' : 'sn'}-${identifier}-${referenceCount}`
 }
 
-// function createIdentifierHash(data: string) {
-//   return createHash('sha1').update(data).digest('base64').replace('=', '')
-// }
+function createIdentifierHash(data: string) {
+  return createHash('sha1').update(data).digest('base64').replace('=', '')
+}
 
 type GetReplacementParams = {
   isMarginNote: boolean
@@ -149,24 +151,26 @@ export default function remarkSidenotes(options = { marginnoteLabel }): Transfor
 
     // "Inline" Sidenotes which do not have two parts
     // Syntax: ^[<markdown>]
-    // visit(tree, { type: 'footnote' }, (node, index, parent) => {
-    //   if (!isFootnoteNode(node) || !isParentNode(parent)) {
-    //     return
-    //   }
+    // Requires use of deprecated remark-footnotes, or some other plugin supporting inline notes
+    visit(tree, { type: 'footnote' }, (node, index, parent) => {
+      if (!isFootnoteNode(node) || !isParentNode(parent)) {
+        return
+      }
 
-    //   const notesAst = node.children
-    //   const notesValue = notesAst?.[0]?.value
-    //   const identifier = createIdentifierHash(notesValue)
-    //   const replacement = getReplacement({
-    //     isMarginNote: true,
-    //     notesAst,
-    //     identifier,
-    //     referenceCount,
-    //     ...settings,
-    //   })
+      const notesAst = node.children
+      // @ts-expect-error Ugh
+      const notesValue = notesAst?.[0]?.value
+      const identifier = createIdentifierHash(notesValue)
+      const replacement = getReplacement({
+        isMarginNote: true,
+        notesAst,
+        identifier,
+        referenceCount,
+        ...settings,
+      })
 
-    //   parent.children.splice(index ?? 0, 1, replacement)
-    // })
+      parent.children.splice(index ?? 0, 1, replacement)
+    })
 
     // These are suppressed, since the reference needs to pull this info in context
     visit(tree, { type: 'footnoteDefinition' }, (node, index, parent) => {

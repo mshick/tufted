@@ -12,6 +12,11 @@ export type HastData = {
   hProperties?: Properties
 }
 
+export type Footnote = {
+  type: 'footnote'
+  children: PhrasingContent[]
+} & Parent
+
 export type Newthought = TextDirective & {
   name: 'newthought'
 }

@@ -12,7 +12,7 @@ import type {
 import type { ContainerDirective, Directives, LeafDirective } from 'mdast-util-directive'
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import type { Node } from 'unist'
-import type { Iframe, Root, Section, Video } from './types'
+import type { Footnote, Iframe, Root, Section, Video } from './types.js'
 
 export function isNode(node: unknown): node is Node {
   return Boolean(node && typeof (node as Node)?.type === 'string')
@@ -83,9 +83,9 @@ export function isSectionNode(node: unknown): node is Section {
   return Boolean(isNode(node) && node.type === 'section')
 }
 
-// export function isFootnoteNode(node: unknown): node is Footnote {
-//   return Boolean(isNode(node) && node.type === 'footnote')
-// }
+export function isFootnoteNode(node: unknown): node is Footnote {
+  return Boolean(isNode(node) && node.type === 'footnote')
+}
 
 export function isFootnoteReferenceNode(node: unknown): node is FootnoteReference {
   return Boolean(isNode(node) && node.type === 'footnoteReference')
