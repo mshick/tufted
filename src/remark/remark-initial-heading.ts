@@ -1,7 +1,7 @@
-import type { Content, Parent } from 'mdast'
+import type { BlockContent, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
-import { visitParents } from 'unist-util-visit-parents'
+import { SKIP, visitParents } from 'unist-util-visit-parents'
 import { isHeadingNode, isMdxjsEsmNode, isRootNode, isYamlNode } from './type-utils.js'
 
 export default function remarkInitialHeading(): Transformer<Parent> {
@@ -29,14 +29,14 @@ export default function remarkInitialHeading(): Transformer<Parent> {
         return false
       },
       (node, ancestors) => {
-        const start = node as Content
-        const parent = ancestors[ancestors.length - 1]
+        const start = node
+        const parent: Parent | undefined = ancestors[ancestors.length - 1]
 
         if (!parent) {
-          return
+          return SKIP
         }
 
-        const startIndex = parent.children.indexOf(start)
+        const startIndex = parent.children.indexOf(start as BlockContent)
 
         const heading = u(
           'heading',
@@ -52,6 +52,8 @@ export default function remarkInitialHeading(): Transformer<Parent> {
         )
 
         parent.children.splice(startIndex, 0, heading)
+
+        return SKIP
       },
     )
   }

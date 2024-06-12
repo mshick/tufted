@@ -1,52 +1,11 @@
-import type { Content, Parent } from 'mdast'
+import type { Parent } from 'mdast'
 import type { Transformer } from 'unified'
-import type { Node } from 'unist'
 import { u } from 'unist-builder'
 import { findAfter } from 'unist-util-find-after'
-import { visitParents } from 'unist-util-visit-parents'
+import { SKIP, visitParents } from 'unist-util-visit-parents'
 import { isHeadingNode } from './type-utils.js'
 
 const maxHeadingDepth = 6
-
-/**
- * Finds content between two headings and wraps the content and the leading
- * heading in a `section` Node.
- */
-function sectionize(node: Node, ancestors: Parent[]) {
-  if (!isHeadingNode(node)) {
-    return
-  }
-
-  const start = node
-  const { depth } = start
-  const parent = ancestors[ancestors.length - 1]
-
-  if (!parent) {
-    return
-  }
-
-  const isEnd = (node: Node) =>
-    (isHeadingNode(node) && node.depth <= depth) || node.type === 'export'
-
-  const end = findAfter(parent, start, isEnd)
-
-  const startIndex = parent.children.indexOf(start)
-  const endIndex = end ? parent.children.indexOf(end as Content) : 0
-
-  const between = parent.children.slice(startIndex, endIndex > 0 ? endIndex : undefined)
-
-  const section = u(
-    'section',
-    {
-      data: {
-        hName: 'section' as const,
-      },
-    },
-    between,
-  )
-
-  parent.children.splice(startIndex, section.children.length, section)
-}
 
 type RemarkSectionizeOptions = {
   maxHeadingDepth: number
@@ -58,7 +17,52 @@ export default function remarkSectionize(
   const { maxHeadingDepth: maxDepth } = options
   return (tree) => {
     for (let depth = maxDepth; depth > 0; depth--) {
-      visitParents(tree, (node) => isHeadingNode(node) && node.depth === depth, sectionize)
+      visitParents(
+        tree,
+        (child) => Boolean(isHeadingNode(child) && child.depth === depth),
+        /**
+         * Finds content between two headings and wraps the content and the leading
+         * heading in a `section` Node.
+         */
+        (node, ancestors) => {
+          if (!isHeadingNode(node)) {
+            return SKIP
+          }
+
+          const start = node
+          const { depth } = start
+          const parent: Parent | undefined = ancestors[ancestors.length - 1]
+
+          if (!parent) {
+            return SKIP
+          }
+
+          const end = findAfter(
+            parent,
+            start,
+            (node) => (isHeadingNode(node) && node.depth <= depth) || node.type === 'export',
+          )
+
+          const startIndex = parent.children.indexOf(start)
+          const endIndex = end ? parent.children.indexOf(end) : 0
+
+          const between = parent.children.slice(startIndex, endIndex > 0 ? endIndex : undefined)
+
+          const section = u(
+            'section',
+            {
+              data: {
+                hName: 'section' as const,
+              },
+            },
+            between,
+          )
+
+          parent.children.splice(startIndex, section.children.length, section)
+
+          return SKIP
+        },
+      )
     }
   }
 }

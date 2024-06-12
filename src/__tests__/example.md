@@ -114,7 +114,7 @@ function randomCode(bar) {
 > dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
 > in iaculis.
 >
-> ::footer[Marc Cicero, "De finibus bonorum et malorum"^[^An inline note in the blockquote footer]]
+> ::footer[Marc Cicero, "De finibus bonorum et malorum"^[^footer]]
 
 > Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
 > accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
@@ -128,6 +128,8 @@ vitae suscipit tellus. Viverra maecenas accumsan lacus vel facilisis volutpat
 est. Augue ut lectus arcu bibendum at varius. Ut pharetra sit amet aliquam id
 diam maecenas ultricies.
 
+[^footer]: An inline note in the blockquote footer
+    
 ## Tables
 
 Table processing in `remark-gfm`. Enim tortor at auctor urna nunc id cursus.

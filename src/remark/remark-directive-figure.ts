@@ -1,5 +1,5 @@
-import { h } from 'hastscript'
-import type { BlockContent, Parent } from 'mdast'
+import { h, Properties } from 'hastscript'
+import type { BlockContent, DefinitionContent, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { SKIP, visit } from 'unist-util-visit'
@@ -14,7 +14,7 @@ import {
 import type { HastData } from './types'
 import { contentTypePresenceReducer } from './utils.js'
 
-type GroupedChildren = Record<number, Array<BlockContent>>
+type GroupedChildren = Record<number, Array<BlockContent | DefinitionContent>>
 
 export default function remarkDirectiveFigure(): Transformer<Parent> {
   return (tree) => {
@@ -60,7 +60,7 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
           }
         }
 
-        const hast = h(node.name, node.attributes)
+        const hast = h(node.name, node.attributes as Properties)
 
         const data: HastData = {
           hName: hast.tagName,

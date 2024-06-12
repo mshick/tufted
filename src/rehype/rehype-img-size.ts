@@ -1,7 +1,8 @@
 import sizeOf from 'image-size'
+import type { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx'
 import path from 'path'
 import type { Transformer } from 'unified'
-import type { Node } from 'unist-util-visit'
+import type { Node as UnistNode } from 'unist'
 import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
 
@@ -45,7 +46,7 @@ type MdxNode = {
   }>
 }
 
-function collectImportIdentifiers(node: Node, importIdentifierMap: ImportIdentifierMap) {
+function collectImportIdentifiers(node: UnistNode, importIdentifierMap: ImportIdentifierMap) {
   const estree = node.data?.['estree'] as Record<string, MdxNode[]>
 
   const importNodes = estree['body']?.filter((n) => n.type === 'ImportDeclaration') ?? []
@@ -65,7 +66,7 @@ type ImgNode = {
     name: string
     value?: { value?: string } | string
   }>
-} & Node
+} & MdxJsxTextElement
 
 function addSizeAttributes(
   node: ImgNode,
@@ -119,7 +120,7 @@ type ContentLayerVfile = VFile & {
 function createImageSizeTransformer(contentDir: string) {
   const importIdentifierMap: ImportIdentifierMap = {}
 
-  return function (tree: Node, file: ContentLayerVfile) {
+  return function (tree: UnistNode<any>, file: ContentLayerVfile) {
     if (!file?.data?.rawDocumentData?.sourceFileDir) {
       return tree
     }
@@ -127,13 +128,14 @@ function createImageSizeTransformer(contentDir: string) {
     const dir = path.join(contentDir, file.data?.rawDocumentData?.sourceFileDir ?? '')
 
     visit(tree, ['mdxjsEsm', 'mdxJsxTextElement'], (node) => {
-      if (node.type === 'mdxjsEsm') {
-        collectImportIdentifiers(node, importIdentifierMap)
+      const mdastNode = node as MdxJsxFlowElement | MdxJsxTextElement
+
+      if (mdastNode.type === 'mdxJsxFlowElement') {
+        collectImportIdentifiers(mdastNode, importIdentifierMap)
       }
 
-      // @ts-expect-error Don't get the Node types
-      if (node.type === 'mdxJsxTextElement' && node.name === 'img') {
-        addSizeAttributes(node, importIdentifierMap, dir)
+      if (mdastNode.type === 'mdxJsxTextElement' && mdastNode.name === 'img') {
+        addSizeAttributes(mdastNode as ImgNode, importIdentifierMap, dir)
       }
     })
 

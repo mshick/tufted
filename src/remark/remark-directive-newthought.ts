@@ -5,15 +5,17 @@ import type { HastData, Newthought } from './types'
 
 export default function remarkNewthought(): Transformer<Parent> {
   return (tree) => {
-    visit(tree, { type: 'textDirective', name: 'newthought' }, (node: Newthought) => {
+    visit(tree, { type: 'textDirective', name: 'newthought' }, (node) => {
+      const newthought = node as Newthought
+
       const data: HastData = {
         hName: 'span',
         hProperties: {
           className: ['newthought'],
         },
       }
-      node.data = {
-        ...node.data,
+      newthought.data = {
+        ...newthought.data,
         ...data,
       }
     })

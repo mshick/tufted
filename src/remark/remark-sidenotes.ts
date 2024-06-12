@@ -1,19 +1,16 @@
 import type {
   BlockContent,
-  Content,
   DefinitionContent,
   FootnoteDefinition,
   Parent,
   PhrasingContent,
 } from 'mdast'
-import { createHash } from 'node:crypto'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { select } from 'unist-util-select'
-import { visit } from 'unist-util-visit'
+import { SKIP, visit } from 'unist-util-visit'
 import {
   isFootnoteDefinitionNode,
-  isFootnoteNode,
   isFootnoteReferenceNode,
   isParagraphNode,
   isParentNode,
@@ -31,9 +28,9 @@ function generateInputId(isMarginNote: boolean, identifier: string, referenceCou
   return `${isMarginNote ? 'mn' : 'sn'}-${identifier}-${referenceCount}`
 }
 
-function createIdentifierHash(data: string) {
-  return createHash('sha1').update(data).digest('base64').replace('=', '')
-}
+// function createIdentifierHash(data: string) {
+//   return createHash('sha1').update(data).digest('base64').replace('=', '')
+// }
 
 type GetReplacementParams = {
   isMarginNote: boolean
@@ -49,15 +46,22 @@ function getReplacement({
   identifier,
   referenceCount,
   marginnoteLabel,
-}: GetReplacementParams) {
+}: GetReplacementParams): Sidenote {
   const inputId = generateInputId(isMarginNote, identifier, referenceCount)
   const labelCls = `margin-toggle ${isMarginNote ? '' : 'sidenote-number'}`
   const labelSymbol = isMarginNote ? marginnoteLabel : ''
   const noteTypeCls = isMarginNote ? 'marginnote' : 'sidenote'
 
-  return u<Sidenote['type'], { data: Sidenote['data'] }, Array<Content | BlockContent>>(
+  return u(
     'sidenote',
-    { data: { hName: 'span' as const, hProperties: { className: [noteTypeCls] } } },
+    {
+      data: {
+        hName: 'span' as const,
+        hProperties: {
+          className: [noteTypeCls],
+        },
+      },
+    },
     [
       u(
         `sidenoteReference`,
@@ -109,14 +113,14 @@ export default function remarkSidenotes(options = { marginnoteLabel }): Transfor
     // Syntax for Marginnotes [^<string>] and somewhere else [^<string>]: <markdown>
     visit(tree, { type: 'footnoteReference' }, (node, index, parent) => {
       if (!isFootnoteReferenceNode(node) || !isParentNode(parent)) {
-        return
+        return SKIP
       }
 
       referenceCount += 1
 
       const { identifier } = node
 
-      const target = select(`footnoteDefinition[identifier=${identifier}]`, tree) as
+      const target = select(`footnoteDefinition[identifier='${identifier}']`, tree) as
         | FootnoteDefinition
         | undefined
 
@@ -139,37 +143,40 @@ export default function remarkSidenotes(options = { marginnoteLabel }): Transfor
       })
 
       parent.children.splice(index ?? 0, 1, replacement)
+
+      return SKIP
     })
 
     // "Inline" Sidenotes which do not have two parts
     // Syntax: ^[<markdown>]
-    visit(tree, { type: 'footnote' }, (node, index, parent) => {
-      if (!isFootnoteNode(node) || !isParentNode(parent)) {
-        return
-      }
+    // visit(tree, { type: 'footnote' }, (node, index, parent) => {
+    //   if (!isFootnoteNode(node) || !isParentNode(parent)) {
+    //     return
+    //   }
 
-      const notesAst = node.children
-      // @ts-expect-error Is always a text node
-      const notesValue = notesAst?.[0]?.value
-      const identifier = createIdentifierHash(notesValue)
-      const replacement = getReplacement({
-        isMarginNote: true,
-        notesAst,
-        identifier,
-        referenceCount,
-        ...settings,
-      })
+    //   const notesAst = node.children
+    //   const notesValue = notesAst?.[0]?.value
+    //   const identifier = createIdentifierHash(notesValue)
+    //   const replacement = getReplacement({
+    //     isMarginNote: true,
+    //     notesAst,
+    //     identifier,
+    //     referenceCount,
+    //     ...settings,
+    //   })
 
-      parent.children.splice(index ?? 0, 1, replacement)
-    })
+    //   parent.children.splice(index ?? 0, 1, replacement)
+    // })
 
     // These are suppressed, since the reference needs to pull this info in context
     visit(tree, { type: 'footnoteDefinition' }, (node, index, parent) => {
       if (!isFootnoteDefinitionNode(node) || !isParentNode(parent)) {
-        return
+        return SKIP
       }
 
       parent.children.splice(index ?? 0, 1)
+
+      return SKIP
     })
   }
 }

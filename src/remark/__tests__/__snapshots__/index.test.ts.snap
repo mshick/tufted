@@ -8,7 +8,7 @@ exports[`the preset works 1`] = `
         ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
         elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
     <p>This YouTube directive will be upgraded to a figure-wrapped iframe.</p>
-    <figure class="video">
+    <figure class="video fullwidth">
         <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">TOTINO BOY!!</iframe></div>
     </figure>
     <p>Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
@@ -50,9 +50,13 @@ exports[`the preset works 1`] = `
     <h2>Sidenotes</h2>
     <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
         nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
-        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition"><img src="./local-image.png" alt="Image in a marginnote"> At urna condimentum mattis
+        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition">
+                <figure><img src="./local-image.png" alt="Image in a marginnote">
+                    <figcaption>Image in a marginnote</figcaption>
+                </figure> At urna condimentum mattis
                 pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
-                nulla porttitor massa id neque aliquam vestibulum.</span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
+                nulla porttitor massa id neque aliquam vestibulum.
+            </span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
         risus commodo viverra maecenas accumsan lacus. Tellus orci ac auctor augue
         mauris. Lorem ipsum dolor sit amet consectetur. Viverra aliquet eget sit amet
         tellus cras adipiscing enim. Amet justo donec enim diam vulputate ut pharetra
@@ -63,7 +67,9 @@ exports[`the preset works 1`] = `
         ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
         tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
         vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
-    <figure class="image"><img src="./local-image.png" alt="Standalone image gets wrapped in figure"></figure>
+    <figure><img src="./local-image.png" alt="Standalone image gets wrapped in figure">
+        <figcaption>Standalone image gets wrapped in figure</figcaption>
+    </figure>
     <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
         purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
         nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id
@@ -101,7 +107,7 @@ exports[`the preset works 1`] = `
             <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
                 dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
                 in iaculis.</p>
-            <footer>Marc Cicero, "De finibus bonorum et malorum"<span class="marginnote"><label for="mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-N6v7pLc1EgOWT9j0GV035+c6kUc-2" class="margin-toggle"><span class="marginnote-definition">^An inline note in the blockquote footer</span></span></footer>
+            <footer>Marc Cicero, "De finibus bonorum et malorum"^<span class="marginnote"><label for="mn-footer-3" class="margin-toggle">⊕</label><input type="checkbox" id="mn-footer-3" class="margin-toggle"><span class="marginnote-definition">An inline note in the blockquote footer</span></span></footer>
         </blockquote>
         <blockquote>
             <p>Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus

@@ -1,10 +1,17 @@
-import type { Parent } from 'mdast'
+import type { BlockContent, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { CONTINUE, SKIP, visit } from 'unist-util-visit'
 import { isLeafDirectiveNode, isParentNode } from './type-utils.js'
+import { Video } from './types.js'
 
-export default function remarkDirectiveVideo(): Transformer<Parent> {
+export type RemarkDirectiveVideoOptions = {
+  figureClassNames?: string[]
+}
+
+export default function remarkDirectiveVideo(
+  { figureClassNames }: RemarkDirectiveVideoOptions = { figureClassNames: ['fullwidth'] },
+): Transformer<Parent> {
   return (tree, file) => {
     visit(
       tree,
@@ -38,7 +45,7 @@ export default function remarkDirectiveVideo(): Transformer<Parent> {
             node.children,
           )
 
-          const video = u(
+          const video: Video = u(
             'video',
             {
               data: {
@@ -51,7 +58,24 @@ export default function remarkDirectiveVideo(): Transformer<Parent> {
             [iframe],
           )
 
-          parent.children.splice(index ?? 0, 1, video)
+          let child: BlockContent = video
+
+          if (parent.type === 'root') {
+            child = u(
+              'figure',
+              {
+                data: {
+                  hName: 'figure' as const,
+                  hProperties: {
+                    className: ['video', ...(figureClassNames ?? [])],
+                  },
+                },
+              },
+              [video],
+            )
+          }
+
+          parent.children.splice(index ?? 0, 1, child)
 
           return [SKIP, index]
         }

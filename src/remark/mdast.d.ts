@@ -15,23 +15,43 @@ import type {
 
 declare module 'mdast' {
   interface StaticPhrasingContentMap {
-    figure: Figure
-    newthought: Newthought
+    // newthought: Newthought
     sidenote: Sidenote
     sidenoteReference: SidenoteReference
     sidenoteToggle: SidenoteToggle
   }
 
   interface BlockContentMap {
-    section: Section
+    figure: Figure
     figcaption: Figcaption
+    section: Section
     epigraph: Epigraph
     image: Image
     iframe: Iframe
     video: Video
+    newthought: Newthought
+    sidenote: Sidenote
+    sidenoteReference: SidenoteReference
+    sidenoteDefinition: SidenoteDefinition
+    sidenoteToggle: SidenoteToggle
   }
 
-  interface DefinitionContentMap {
+  interface RootContentMap {
+    figure: Figure
+    figcaption: Figcaption
+    section: Section
+    epigraph: Epigraph
+    image: Image
+    iframe: Iframe
+    video: Video
+    newthought: Newthought
+    sidenote: Sidenote
+    sidenoteReference: SidenoteReference
     sidenoteDefinition: SidenoteDefinition
+    sidenoteToggle: SidenoteToggle
   }
+
+  // interface DefinitionContentMap {
+  //   sidenoteDefinition: SidenoteDefinition
+  // }
 }

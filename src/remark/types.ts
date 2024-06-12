@@ -1,6 +1,6 @@
 import type { Properties } from 'hast'
-import type { BlockContent, Content, DefinitionContent, Parent } from 'mdast'
-import type { Directive, TextDirective } from 'mdast-util-directive'
+import type { BlockContent, DefinitionContent, Parent, PhrasingContent } from 'mdast'
+import type { TextDirective } from 'mdast-util-directive'
 import type { Node } from 'unist'
 
 export type Root = {
@@ -12,7 +12,7 @@ export type HastData = {
   hProperties?: Properties
 }
 
-export interface Newthought extends TextDirective {
+export type Newthought = TextDirective & {
   name: 'newthought'
 }
 
@@ -26,7 +26,7 @@ export type SidenoteToggle = {
 
 export type SidenoteReference = {
   type: 'sidenoteReference'
-  children: Content[]
+  children: Array<PhrasingContent>
   data: {
     hName: 'label'
     hProperties: Properties
@@ -35,7 +35,7 @@ export type SidenoteReference = {
 
 export type SidenoteDefinition = {
   type: 'sidenoteDefinition'
-  children: Content[]
+  children: Array<BlockContent | DefinitionContent | PhrasingContent>
   data: {
     hName: 'span'
     hProperties: Properties
@@ -44,7 +44,7 @@ export type SidenoteDefinition = {
 
 export type Sidenote = {
   type: 'sidenote'
-  children: Array<BlockContent | DefinitionContent | Content>
+  children: Array<SidenoteReference | SidenoteDefinition | SidenoteToggle>
   data: {
     hName: 'span'
     hProperties: Properties
@@ -57,7 +57,7 @@ export type Iframe = {
     hName: 'iframe'
     hProperties: Properties
   }
-  children: Array<Content>
+  children: Array<BlockContent | PhrasingContent>
 }
 
 export type Video = {
@@ -66,12 +66,12 @@ export type Video = {
     hName: 'div'
     hProperties: Properties
   }
-  children: Array<Content>
+  children: Array<BlockContent>
 }
 
 export type Figure = {
   type: 'figure'
-  children: Array<Content | Directive | BlockContent>
+  children: Array<BlockContent | DefinitionContent>
   data: {
     hName: 'figure'
     hProperties?: Properties
@@ -80,7 +80,7 @@ export type Figure = {
 
 export type Figcaption = {
   type: 'figcaption'
-  children: Content[]
+  children: Array<PhrasingContent | BlockContent | DefinitionContent>
   data: {
     hName: 'figcaption'
   }

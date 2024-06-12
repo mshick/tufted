@@ -1,6 +1,5 @@
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
-import remarkFootnotes from 'remark-footnotes'
 import remarkGfm from 'remark-gfm'
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs'
 import remarkUnwrapImages from 'remark-unwrap-images'
@@ -13,22 +12,18 @@ import remarkEpigraph from './remark-epigraph.js'
 import remarkInitialHeading from './remark-initial-heading.js'
 import remarkSectionize from './remark-sectionize.js'
 import remarkSidenotes from './remark-sidenotes.js'
-import remarkWrapImages from './remark-wrap-images.js'
 
 function main(): Preset {
   return {
     plugins: [
       remarkGfm,
-      remarkDirective,
-      remarkDirectiveRehype,
-      remarkDirectiveVideo,
       remarkUnwrapImages,
-      remarkWrapImages,
+      remarkDirective,
+      remarkDirectiveVideo,
       remarkDirectiveFigure,
+      remarkDirectiveRehype,
       remarkDirectiveFooter,
       remarkDirectiveNewthought,
-      // For inline notes, whichzzzzzz gfm doesn't support
-      [remarkFootnotes, { inlineNotes: true }],
       remarkSidenotes,
       remarkSqueezeParagraphs,
       remarkInitialHeading,
