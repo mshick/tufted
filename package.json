@@ -17,7 +17,7 @@
   "exports": {
     "./remark": "./dist/remark/index.js",
     "./rehype": "./dist/rehype/index.js",
-    "./tailwind": "./dist/tailwind/index.cjs"
+    "./tailwind": "./dist/tailwind/index.js"
   },
   "types": "./dist",
   "typesVersions": {
@@ -29,7 +29,7 @@
         "dist/rehype/index.d.ts"
       ],
       "tailwind": [
-        "dist/tailwind/index.d.cts"
+        "dist/tailwind/index.d.ts"
       ]
     }
   },
