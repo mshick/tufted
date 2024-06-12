@@ -77,7 +77,7 @@ const inverted = () => ({
   '--tw-prose-pre-code-selection': 'var(--tw-prose-invert-pre-code-selection)',
 })
 
-module.exports.typography = (theme: PluginAPI['theme']) => ({
+export const typography = (theme: PluginAPI['theme']) => ({
   DEFAULT: {
     css: [
       ...DEFAULT.css,
