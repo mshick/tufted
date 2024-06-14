@@ -9,7 +9,15 @@ import {
   isYamlNode,
 } from './type-utils.js'
 
-export default function remarkInitialHeading(): Transformer<Parent> {
+const headingDepth = 2
+
+type RemarkInitialHeadingOptions = {
+  headingDepth: number
+}
+
+export default function remarkInitialHeading(
+  options: RemarkInitialHeadingOptions = { headingDepth },
+): Transformer<Parent> {
   return (tree) => {
     let foundHeading = false
     visitParents(
@@ -28,7 +36,9 @@ export default function remarkInitialHeading(): Transformer<Parent> {
         }
 
         if (isHeadingNode(node)) {
-          foundHeading = true
+          if (node.depth === options.headingDepth) {
+            foundHeading = true
+          }
         }
 
         return false

@@ -1,3 +1,5 @@
+# Title Skip for Initial Heading
+
 Introductory text without heading will add a hidden h2 added. This allows for a
 consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
 ut `inline code` et dolore magna aliqua. Vestibulum rhoncus est pellentesque

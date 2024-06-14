@@ -2,201 +2,204 @@
 
 exports[`the preset works 1`] = `
 "<section>
-    <h2 class="hidden">Introduction</h2>
-    <p>Introductory text without heading will add a hidden h2 added. This allows for a
-        consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
-        elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
-    <p>This YouTube directive will be upgraded to a figure-wrapped iframe.</p>
-    <figure class="video fullwidth">
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">TOTINO BOY!!</iframe></div>
-    </figure>
-    <p>Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
-        ut. Tincidunt ornare massa eget egestas purus viverra. Ultricies tristique
-        nulla aliquet enim tortor at auctor urna nunc. Nec ullamcorper sit amet risus
-        nullam. Morbi tempus iaculis urna id. Sed turpis tincidunt id aliquet risus
-        feugiat in ante metus.<span class="sidenote"><label for="sn-1-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1-1" class="margin-toggle"><span class="sidenote-definition"><a href="https://www.google.com">Referenced Footnote To Sidenote</a></span></span> Integer vitae justo eget magna fermentum iaculis.
-        Libero enim sed faucibus turpis. Ut placerat orci nulla pellentesque dignissim
-        enim sit amet. In eu mi bibendum neque. Blandit massa enim nec dui nunc.
-        Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Imperdiet
-        proin fermentum leo vel orci porta non. Suspendisse in est ante in nibh. Eget
-        sit amet tellus cras adipiscing enim.</p>
-</section>
-<section>
-    <h2>Heading Starts Section</h2>
-    <h3>Subheading No Section</h3>
-    <p>You can create explicit figures. This allows for optional classes, like
-        <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.
-    </p>
-    <figure class="fullwidth image"><img src="https://picsum.photos/200/300" alt="Directive wrapped figure">
-        <figcaption>
-            <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
-                purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
-                congue.</p>
-        </figcaption>
-    </figure>
-    <p>Figure content and caption text can also be flipped. And, a figure can describe
-        a YouTube video.</p>
-    <figure class="fullwidth video">
-        <figcaption>
-            <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
-                purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
-                congue.</p>
-        </figcaption>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">Pizza Pizza</iframe></div>
-    </figure>
-</section>
-<section>
-    <h2>Sidenotes</h2>
-    <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
-        nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
-        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition">
-                <figure><img src="./local-image.png" alt="Image in a marginnote">
-                    <figcaption>Image in a marginnote</figcaption>
-                </figure> At urna condimentum mattis
-                pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
-                nulla porttitor massa id neque aliquam vestibulum.
-            </span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
-        risus commodo viverra maecenas accumsan lacus. Tellus orci ac auctor augue
-        mauris. Lorem ipsum dolor sit amet consectetur. Viverra aliquet eget sit amet
-        tellus cras adipiscing enim. Amet justo donec enim diam vulputate ut pharetra
-        sit. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Eu nisl nunc
-        mi ipsum faucibus vitae aliquet nec. Quam nulla porttitor massa id neque
-        aliquam vestibulum morbi. Leo vel orci porta non pulvinar neque. In mollis
-        nunc sed id semper risus. Massa tempor nec feugiat nisl pretium fusce id velit
-        ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
-        tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
-        vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
-    <figure><img src="./local-image.png" alt="Standalone image gets wrapped in figure">
-        <figcaption>Standalone image gets wrapped in figure</figcaption>
-    </figure>
-    <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
-        purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
-        nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id
-        cursus metus aliquam eleifend mi in nulla posuere. Vitae tempus quam
-        pellentesque nec. Enim neque volutpat ac tincidunt vitae semper quis.
-        Sit amet luctus venenatis lectus magna fringilla.</p>
-    <blockquote>
-        <p>This blockquote has a footer that contains a footnote citation. Tellus rutrum
-            tellus pellentesque eu tincidunt tortor. Tincidunt id aliquet risus feugiat
-            in. Elementum integer enim neque volutpat ac tincidunt vitae.</p>
-        <footer><a href="https://www.reddit.com/r/AskHistorians/comments/1l2jge/how_significant_was_cicero_in_the_events_that_led/">Marcus Tullius Cicero, reddit, 'How To Fill Text' subreddit</a></footer>
-    </blockquote>
-    <p><span class="newthought">Rhoncus urna neque</span> viverra justo. Sed id semper risus in hendrerit
-        gravida. Diam vel quam elementum pulvinar etiam. Lacus sed turpis tincidunt id
-        aliquet risus feugiat in ante. Dui vivamus arcu felis bibendum ut tristique et
-        egestas. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula
-        ullamcorper. Feugiat vivamus at augue eget. Amet purus gravida quis blandit
-        turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.</p>
-</section>
-<section>
-    <h2>Code</h2>
-    <p>Code blocks support titles. Titles are typically filenames, and they cannot
-        contain spaces.</p>
-    <pre><code class="language-js:foo.js">function randomCode(bar) {
+    <h1>Title Skip for Initial Heading</h1>
+    <section>
+        <h2 class="hidden">Introduction</h2>
+        <p>Introductory text without heading will add a hidden h2 added. This allows for a
+            consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
+            elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
+        <p>This YouTube directive will be upgraded to a figure-wrapped iframe.</p>
+        <figure class="video fullwidth">
+            <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">TOTINO BOY!!</iframe></div>
+        </figure>
+        <p>Vivamus at augue eget arcu dictum varius. In cursus turpis massa tincidunt dui
+            ut. Tincidunt ornare massa eget egestas purus viverra. Ultricies tristique
+            nulla aliquet enim tortor at auctor urna nunc. Nec ullamcorper sit amet risus
+            nullam. Morbi tempus iaculis urna id. Sed turpis tincidunt id aliquet risus
+            feugiat in ante metus.<span class="sidenote"><label for="sn-1-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1-1" class="margin-toggle"><span class="sidenote-definition"><a href="https://www.google.com">Referenced Footnote To Sidenote</a></span></span> Integer vitae justo eget magna fermentum iaculis.
+            Libero enim sed faucibus turpis. Ut placerat orci nulla pellentesque dignissim
+            enim sit amet. In eu mi bibendum neque. Blandit massa enim nec dui nunc.
+            Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Imperdiet
+            proin fermentum leo vel orci porta non. Suspendisse in est ante in nibh. Eget
+            sit amet tellus cras adipiscing enim.</p>
+    </section>
+    <section>
+        <h2>Heading Starts Section</h2>
+        <h3>Subheading No Section</h3>
+        <p>You can create explicit figures. This allows for optional classes, like
+            <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.
+        </p>
+        <figure class="fullwidth image"><img src="https://picsum.photos/200/300" alt="Directive wrapped figure">
+            <figcaption>
+                <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
+                    purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
+                    congue.</p>
+            </figcaption>
+        </figure>
+        <p>Figure content and caption text can also be flipped. And, a figure can describe
+            a YouTube video.</p>
+        <figure class="fullwidth video">
+            <figcaption>
+                <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
+                    purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
+                    congue.</p>
+            </figcaption>
+            <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2lPX5b9m7ro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube">Pizza Pizza</iframe></div>
+        </figure>
+    </section>
+    <section>
+        <h2>Sidenotes</h2>
+        <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
+            nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
+            aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition">
+                    <figure><img src="./local-image.png" alt="Image in a marginnote">
+                        <figcaption>Image in a marginnote</figcaption>
+                    </figure> At urna condimentum mattis
+                    pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
+                    nulla porttitor massa id neque aliquam vestibulum.
+                </span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
+            risus commodo viverra maecenas accumsan lacus. Tellus orci ac auctor augue
+            mauris. Lorem ipsum dolor sit amet consectetur. Viverra aliquet eget sit amet
+            tellus cras adipiscing enim. Amet justo donec enim diam vulputate ut pharetra
+            sit. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Eu nisl nunc
+            mi ipsum faucibus vitae aliquet nec. Quam nulla porttitor massa id neque
+            aliquam vestibulum morbi. Leo vel orci porta non pulvinar neque. In mollis
+            nunc sed id semper risus. Massa tempor nec feugiat nisl pretium fusce id velit
+            ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
+            tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
+            vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
+        <figure><img src="./local-image.png" alt="Standalone image gets wrapped in figure">
+            <figcaption>Standalone image gets wrapped in figure</figcaption>
+        </figure>
+        <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
+            purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
+            nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id
+            cursus metus aliquam eleifend mi in nulla posuere. Vitae tempus quam
+            pellentesque nec. Enim neque volutpat ac tincidunt vitae semper quis.
+            Sit amet luctus venenatis lectus magna fringilla.</p>
+        <blockquote>
+            <p>This blockquote has a footer that contains a footnote citation. Tellus rutrum
+                tellus pellentesque eu tincidunt tortor. Tincidunt id aliquet risus feugiat
+                in. Elementum integer enim neque volutpat ac tincidunt vitae.</p>
+            <footer><a href="https://www.reddit.com/r/AskHistorians/comments/1l2jge/how_significant_was_cicero_in_the_events_that_led/">Marcus Tullius Cicero, reddit, 'How To Fill Text' subreddit</a></footer>
+        </blockquote>
+        <p><span class="newthought">Rhoncus urna neque</span> viverra justo. Sed id semper risus in hendrerit
+            gravida. Diam vel quam elementum pulvinar etiam. Lacus sed turpis tincidunt id
+            aliquet risus feugiat in ante. Dui vivamus arcu felis bibendum ut tristique et
+            egestas. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula
+            ullamcorper. Feugiat vivamus at augue eget. Amet purus gravida quis blandit
+            turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.</p>
+    </section>
+    <section>
+        <h2>Code</h2>
+        <p>Code blocks support titles. Titles are typically filenames, and they cannot
+            contain spaces.</p>
+        <pre><code class="language-js:foo.js">function randomCode(bar) {
   var a = 42;
   var b = 'Prism';
   return a + bar(b);
 }
 </code></pre>
-</section>
-<section>
-    <h2>Epigraphs</h2>
-    <div class="epigraph">
-        <blockquote>
-            <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
-                dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
-                in iaculis.</p>
-            <footer>Marc Cicero, "De finibus bonorum et malorum"^<span class="marginnote"><label for="mn-footer-3" class="margin-toggle">⊕</label><input type="checkbox" id="mn-footer-3" class="margin-toggle"><span class="marginnote-definition">An inline note in the blockquote footer</span></span></footer>
-        </blockquote>
-        <blockquote>
-            <p>Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
-                accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
-                cursus mattis molestie a.</p>
-            <footer>Marc Cicero, <cite>"Using Default Remark Directive Citation"</cite></footer>
-        </blockquote>
-    </div>
-    <p>Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Amet est
-        placerat in egestas erat imperdiet. Volutpat consequat mauris nunc congue nisi
-        vitae suscipit tellus. Viverra maecenas accumsan lacus vel facilisis volutpat
-        est. Augue ut lectus arcu bibendum at varius. Ut pharetra sit amet aliquam id
-        diam maecenas ultricies.</p>
-</section>
-<section>
-    <h2>Tables</h2>
-    <p>Table processing in <code>remark-gfm</code>. Enim tortor at auctor urna nunc id cursus.
-        Sit amet commodo nulla facilisi. Laoreet non curabitur gravida arcu ac tortor
-        dignissim. Elementum tempus egestas sed sed risus pretium quam vulputate
-        dignissim. Tortor aliquam nulla facilisi cras fermentum.</p>
-    <p>Colons can be used to align columns.</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Tables</th>
-                <th align="center">Are</th>
-                <th align="right">Cool</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>col 3 is</td>
-                <td align="center">right-aligned</td>
-                <td align="right">$1600</td>
-            </tr>
-            <tr>
-                <td>col 2 is</td>
-                <td align="center">centered</td>
-                <td align="right">$12</td>
-            </tr>
-            <tr>
-                <td>zebra stripes</td>
-                <td align="center">are neat</td>
-                <td align="right">$1</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>There must be at least 3 dashes separating each header cell. The outer pipes (|)
-        are optional, and you don't need to make the raw Markdown line up prettily. You
-        can also use inline Markdown.</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Markdown</th>
-                <th>Less</th>
-                <th>Pretty</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><em>Still</em></td>
-                <td><code>renders</code></td>
-                <td><strong>nicely</strong></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-<section>
-    <h2>Lists</h2>
-    <p>Quam id leo in vitae turpis massa sed. Sagittis id consectetur purus ut
-        faucibus pulvinar elementum. Magna etiam tempor orci eu lobortis elementum.</p>
-    <p>An unordered list:</p>
-    <ul>
-        <li>Quam</li>
-        <li>lacus</li>
-        <li>suspendisse</li>
-        <li>faucibus</li>
-    </ul>
-    <p>An ordered list:</p>
-    <ol>
-        <li>Eget</li>
-        <li>magna</li>
-        <li>fermentum</li>
-        <li>iaculis</li>
-    </ol>
+    </section>
+    <section>
+        <h2>Epigraphs</h2>
+        <div class="epigraph">
+            <blockquote>
+                <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
+                    dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
+                    in iaculis.</p>
+                <footer>Marc Cicero, "De finibus bonorum et malorum"^<span class="marginnote"><label for="mn-footer-3" class="margin-toggle">⊕</label><input type="checkbox" id="mn-footer-3" class="margin-toggle"><span class="marginnote-definition">An inline note in the blockquote footer</span></span></footer>
+            </blockquote>
+            <blockquote>
+                <p>Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Luctus
+                    accumsan tortor posuere ac ut consequat semper. Est ante in nibh mauris
+                    cursus mattis molestie a.</p>
+                <footer>Marc Cicero, <cite>"Using Default Remark Directive Citation"</cite></footer>
+            </blockquote>
+        </div>
+        <p>Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Amet est
+            placerat in egestas erat imperdiet. Volutpat consequat mauris nunc congue nisi
+            vitae suscipit tellus. Viverra maecenas accumsan lacus vel facilisis volutpat
+            est. Augue ut lectus arcu bibendum at varius. Ut pharetra sit amet aliquam id
+            diam maecenas ultricies.</p>
+    </section>
+    <section>
+        <h2>Tables</h2>
+        <p>Table processing in <code>remark-gfm</code>. Enim tortor at auctor urna nunc id cursus.
+            Sit amet commodo nulla facilisi. Laoreet non curabitur gravida arcu ac tortor
+            dignissim. Elementum tempus egestas sed sed risus pretium quam vulputate
+            dignissim. Tortor aliquam nulla facilisi cras fermentum.</p>
+        <p>Colons can be used to align columns.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tables</th>
+                    <th align="center">Are</th>
+                    <th align="right">Cool</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>col 3 is</td>
+                    <td align="center">right-aligned</td>
+                    <td align="right">$1600</td>
+                </tr>
+                <tr>
+                    <td>col 2 is</td>
+                    <td align="center">centered</td>
+                    <td align="right">$12</td>
+                </tr>
+                <tr>
+                    <td>zebra stripes</td>
+                    <td align="center">are neat</td>
+                    <td align="right">$1</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>There must be at least 3 dashes separating each header cell. The outer pipes (|)
+            are optional, and you don't need to make the raw Markdown line up prettily. You
+            can also use inline Markdown.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Markdown</th>
+                    <th>Less</th>
+                    <th>Pretty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><em>Still</em></td>
+                    <td><code>renders</code></td>
+                    <td><strong>nicely</strong></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2>Lists</h2>
+        <p>Quam id leo in vitae turpis massa sed. Sagittis id consectetur purus ut
+            faucibus pulvinar elementum. Magna etiam tempor orci eu lobortis elementum.</p>
+        <p>An unordered list:</p>
+        <ul>
+            <li>Quam</li>
+            <li>lacus</li>
+            <li>suspendisse</li>
+            <li>faucibus</li>
+        </ul>
+        <p>An ordered list:</p>
+        <ol>
+            <li>Eget</li>
+            <li>magna</li>
+            <li>fermentum</li>
+            <li>iaculis</li>
+        </ol>
+    </section>
 </section>"
 `;
