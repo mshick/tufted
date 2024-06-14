@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`the preset works 1`] = `
-"<p>Introductory text without heading will add a hidden h2 added. This allows for a
+"<h1 id="title-skip-for-initial-heading"><a class="anchor" href="#title-skip-for-initial-heading">Title Skip for Initial Heading</a></h1>
+<p>Introductory text without heading will add a hidden h2 added. This allows for a
     consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
     ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
     elit. Cras sed felis eget velit. Accumsan in nisl nisi scelerisque eu.</p>
