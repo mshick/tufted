@@ -1,6 +1,6 @@
 # Tufted
 
-Tufted is a set if [remark](https://github.com/remarkjs/remark) and
+Tufted is a set of [remark](https://github.com/remarkjs/remark) and
 [rehype](https://github.com/rehypejs/rehype) plugins, plus a
 [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin) theme
 that provides a richer reading experience for HTML generated from markdown.
