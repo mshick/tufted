@@ -8,8 +8,11 @@ import type {
 import type { TextDirective } from 'mdast-util-directive'
 import type { Node } from 'unist'
 
-export type Root = {
-  type: 'root'
+/**
+ * Type related to mdx exports, can't find typings...
+ */
+export type Export = {
+  type: 'export'
 } & Node
 
 export type HastData = {

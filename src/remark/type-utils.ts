@@ -7,6 +7,7 @@ import type {
   Image,
   Paragraph,
   Parent,
+  Root,
   Yaml,
 } from 'mdast'
 import type {
@@ -14,9 +15,10 @@ import type {
   Directives,
   LeafDirective,
 } from 'mdast-util-directive'
+import { MdxJsxFlowElement } from 'mdast-util-mdx-jsx'
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import type { Node } from 'unist'
-import type { Footnote, Iframe, Root, Section, Video } from './types.js'
+import type { Export, Footnote, Iframe, Section, Video } from './types.js'
 
 export function isNode(node: unknown): node is Node {
   return Boolean(node && typeof (node as Node)?.type === 'string')
@@ -83,6 +85,14 @@ export function isYamlNode(node: unknown): node is Yaml {
 
 export function isMdxjsEsmNode(node: unknown): node is MdxjsEsm {
   return Boolean(isNode(node) && node.type === 'mdxjsEsm')
+}
+
+export function isMdxjsFlowElement(node: unknown): node is MdxJsxFlowElement {
+  return Boolean(isNode(node) && node.type === 'mdxJsxFlowElement')
+}
+
+export function isExportNode(node: unknown): node is Export {
+  return Boolean(isNode(node) && node.type === 'export')
 }
 
 export function isSectionNode(node: unknown): node is Section {

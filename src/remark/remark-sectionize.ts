@@ -3,7 +3,11 @@ import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { findAfter } from 'unist-util-find-after'
 import { SKIP, visitParents } from 'unist-util-visit-parents'
-import { isHeadingNode } from './type-utils.js'
+import {
+  isExportNode,
+  isHeadingNode,
+  isMdxjsFlowElement,
+} from './type-utils.js'
 
 const maxHeadingDepth = 6
 
@@ -15,11 +19,14 @@ export default function remarkSectionize(
   options: RemarkSectionizeOptions = { maxHeadingDepth },
 ): Transformer<Parent> {
   const { maxHeadingDepth: maxDepth } = options
+
   return (tree) => {
     for (let depth = maxDepth; depth > 0; depth--) {
       visitParents(
         tree,
-        (child) => Boolean(isHeadingNode(child) && child.depth === depth),
+        (child) => {
+          return isHeadingNode(child) && child.depth === depth
+        },
         /**
          * Finds content between two headings and wraps the content and the leading
          * heading in a `section` Node.
@@ -37,13 +44,13 @@ export default function remarkSectionize(
             return SKIP
           }
 
-          const end = findAfter(
-            parent,
-            start,
-            (node) =>
-              (isHeadingNode(node) && node.depth <= depth) ||
-              node.type === 'export',
-          )
+          const end = findAfter(parent, start, (child) => {
+            return (
+              (isHeadingNode(child) && child.depth <= depth) ||
+              isMdxjsFlowElement(child) ||
+              isExportNode(child)
+            )
+          })
 
           const startIndex = parent.children.indexOf(start)
           const endIndex = end ? parent.children.indexOf(end) : 0
