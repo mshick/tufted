@@ -8,17 +8,18 @@ import type { Preset } from 'unified'
 import rehypeImgSize from './rehype-img-size.js'
 
 export type PresetSettings = {
-  imgSizeDir: string
+  assets: string
+  base: string
 }
 
-function main({ imgSizeDir }: PresetSettings): Preset {
+function main({ assets, base }: PresetSettings): Preset {
   return {
     plugins: [
       rehypeFigure,
       rehypeSlug,
       rehypeCodeTitles,
       [rehypePrism, { ignoreMissing: true }],
-      [rehypeImgSize, { dir: imgSizeDir }],
+      [rehypeImgSize, { assets, base }],
       [
         rehypeAutolinkHeadings,
         {

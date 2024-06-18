@@ -13,7 +13,7 @@ test('the preset works', async () => {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeStringify)
-    .use(preset({ imgSizeDir: './' }))
+    .use(preset({ assets: './', base: '/' }))
     .process(readSync(path.resolve(__dirname, '../../__tests__/example.md')))
 
   expect(html(String(processed))).toMatchSnapshot()
