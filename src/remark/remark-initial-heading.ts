@@ -12,7 +12,7 @@ import {
 const headingDepth = 2
 
 type RemarkInitialHeadingOptions = {
-  headingDepth: number
+  headingDepth: 1 | 2 | 3 | 4 | 5
 }
 
 export default function remarkInitialHeading(
@@ -56,7 +56,7 @@ export default function remarkInitialHeading(
         const heading = u(
           'heading',
           {
-            depth: 2 as const,
+            depth: options.headingDepth,
             data: {
               hProperties: {
                 className: 'hidden',

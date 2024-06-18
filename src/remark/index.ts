@@ -31,7 +31,7 @@ function main(): {
       remarkSidenotes,
       remarkSqueezeParagraphs,
       remarkInitialHeading,
-      [remarkSectionize, { maxHeadingDepth: 2 }],
+      [remarkSectionize, { minHeadingDepth: 2, maxHeadingDepth: 2 }],
       remarkEpigraph,
     ],
   }

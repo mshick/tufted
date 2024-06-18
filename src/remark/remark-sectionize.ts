@@ -9,19 +9,24 @@ import {
   isMdxjsFlowElement,
 } from './type-utils.js'
 
+const minHeadingDepth = 2
 const maxHeadingDepth = 6
 
 type RemarkSectionizeOptions = {
-  maxHeadingDepth: number
+  minHeadingDepth?: 1 | 2 | 3 | 4 | 5 | 6
+  maxHeadingDepth?: 1 | 2 | 3 | 4 | 5 | 6
 }
 
 export default function remarkSectionize(
-  options: RemarkSectionizeOptions = { maxHeadingDepth },
+  options: RemarkSectionizeOptions = { minHeadingDepth, maxHeadingDepth },
 ): Transformer<Parent> {
-  const { maxHeadingDepth: maxDepth } = options
+  const {
+    maxHeadingDepth: maxDepth = maxHeadingDepth,
+    minHeadingDepth: minDepth = minHeadingDepth,
+  } = options
 
   return (tree) => {
-    for (let depth = maxDepth; depth > 0; depth--) {
+    for (let depth = maxDepth; depth >= minDepth; depth--) {
       visitParents(
         tree,
         (child) => {
