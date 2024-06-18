@@ -2,3 +2,4 @@
 src
 tsconfig.*
 .node-version
+vitest.config.ts
