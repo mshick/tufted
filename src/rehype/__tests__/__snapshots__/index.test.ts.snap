@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`the preset works 1`] = `
-"<h1 id="title-skip-for-initial-heading"><a class="anchor" href="#title-skip-for-initial-heading">Title Skip for Initial Heading</a></h1>
+"<h1 id="title-skip-for-initial-heading">Title Skip for Initial Heading<a class="heading-link hidden" href="#title-skip-for-initial-heading"><span class="icon icon-link"></span></a></h1>
 <p>Introductory text without heading will add a hidden h2 added. This allows for a
     consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
     ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque
@@ -19,8 +19,8 @@ Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Imperdiet
 proin fermentum leo vel orci porta non. Suspendisse in est ante in nibh. Eget
 sit amet tellus cras adipiscing enim.</p>
 <p>[^1]: <a href="https://www.google.com">Referenced Footnote To Sidenote</a></p>
-<h2 id="heading-starts-section"><a class="anchor" href="#heading-starts-section">Heading Starts Section</a></h2>
-<h3 id="subheading-no-section"><a class="anchor" href="#subheading-no-section">Subheading No Section</a></h3>
+<h2 id="heading-starts-section">Heading Starts Section<a class="heading-link hidden" href="#heading-starts-section"><span class="icon icon-link"></span></a></h2>
+<h3 id="subheading-no-section">Subheading No Section<a class="heading-link hidden" href="#subheading-no-section"><span class="icon icon-link"></span></a></h3>
 <p>You can create explicit figures. This allows for optional classes, like
 <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.</p>
 <p>:::figure{.fullwidth}</p>
@@ -37,7 +37,7 @@ purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
 congue.</p>
 <p>::youtube[Pizza Pizza]{#2lPX5b9m7ro}</p>
 <p>:::</p>
-<h2 id="sidenotes"><a class="anchor" href="#sidenotes">Sidenotes</a></h2>
+<h2 id="sidenotes">Sidenotes<a class="heading-link hidden" href="#sidenotes"><span class="icon icon-link"></span></a></h2>
 <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
 nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
 aliquet bibendum enim.[^margin] Magna eget est lorem ipsum dolor. Malesuada nunc vel
@@ -74,7 +74,7 @@ aliquet risus feugiat in ante. Dui vivamus arcu felis bibendum ut tristique et
 egestas. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula
 ullamcorper. Feugiat vivamus at augue eget. Amet purus gravida quis blandit
 turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.</p>
-<h2 id="code"><a class="anchor" href="#code">Code</a></h2>
+<h2 id="code">Code<a class="heading-link hidden" href="#code"><span class="icon icon-link"></span></a></h2>
 <p>Code blocks support titles. Titles are typically filenames, and they cannot
 contain spaces.</p>
 <div class="rehype-code-title">foo.js</div><pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">randomCode</span><span class="token punctuation">(</span><span class="token parameter">bar</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -83,7 +83,7 @@ contain spaces.</p>
 </span><span class="code-line">  <span class="token keyword control-flow">return</span> a <span class="token operator">+</span> <span class="token function">bar</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<h2 id="epigraphs"><a class="anchor" href="#epigraphs">Epigraphs</a></h2>
+<h2 id="epigraphs">Epigraphs<a class="heading-link hidden" href="#epigraphs"><span class="icon icon-link"></span></a></h2>
 <blockquote>
 <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
 dolor sed. Ac odio tempor orci dapibus. Ac odio tempor orci dapibus ultrices
@@ -102,7 +102,7 @@ vitae suscipit tellus. Viverra maecenas accumsan lacus vel facilisis volutpat
 est. Augue ut lectus arcu bibendum at varius. Ut pharetra sit amet aliquam id
 diam maecenas ultricies.</p>
 <p>[^footer]: An inline note in the blockquote footer</p>
-<h2 id="tables"><a class="anchor" href="#tables">Tables</a></h2>
+<h2 id="tables">Tables<a class="heading-link hidden" href="#tables"><span class="icon icon-link"></span></a></h2>
 <p>Table processing in <code>remark-gfm</code>. Enim tortor at auctor urna nunc id cursus.
 Sit amet commodo nulla facilisi. Laoreet non curabitur gravida arcu ac tortor
 dignissim. Elementum tempus egestas sed sed risus pretium quam vulputate
@@ -120,7 +120,7 @@ can also use inline Markdown.</p>
 | -------- | --------- | ---------- |
 | <em>Still</em>  | <code>renders</code> | <strong>nicely</strong> |
 | 1        | 2         | 3          |</p>
-<h2 id="lists"><a class="anchor" href="#lists">Lists</a></h2>
+<h2 id="lists">Lists<a class="heading-link hidden" href="#lists"><span class="icon icon-link"></span></a></h2>
 <p>Quam id leo in vitae turpis massa sed. Sagittis id consectetur purus ut
 faucibus pulvinar elementum. Magna etiam tempor orci eu lobortis elementum.</p>
 <p>An unordered list:</p>
