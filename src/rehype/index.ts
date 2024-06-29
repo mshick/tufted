@@ -23,9 +23,9 @@ function main({ assets, base }: PresetSettings): Preset {
       [
         rehypeAutolinkHeadings,
         {
-          behavior: 'wrap',
+          behavior: 'append',
           properties: {
-            className: ['anchor'],
+            className: ['heading-link', 'hidden'],
           },
         },
       ],
