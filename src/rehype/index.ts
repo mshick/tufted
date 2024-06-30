@@ -1,6 +1,7 @@
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-// import rehypePrism from 'rehype-prism-plus'
-import rehypeShiki from '@shikijs/rehype'
+import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype'
+import rehypeAutolinkHeadings, {
+  Options as RehypeAutolinkHeadingsOptions,
+} from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 // @ts-expect-error No types
 import rehypeFigure from '@microflash/rehype-figure'
@@ -10,9 +11,13 @@ import rehypeImgSize from './rehype-img-size.js'
 export type PresetSettings = {
   assets: string
   base: string
+  plugins?: {
+    rehypeShiki?: RehypeShikiOptions
+    rehypeAutolinkHeadings?: RehypeAutolinkHeadingsOptions
+  }
 }
 
-function main({ assets, base }: PresetSettings): Preset {
+function main({ assets, base, plugins }: PresetSettings): Preset {
   return {
     plugins: [
       rehypeFigure,
@@ -23,9 +28,10 @@ function main({ assets, base }: PresetSettings): Preset {
         {
           // or `theme` for a single theme
           themes: {
-            light: 'vitesse-light',
-            dark: 'vitesse-dark',
+            light: 'one-light',
+            dark: 'one-dark-prod',
           },
+          ...plugins?.rehypeShiki,
         },
       ],
       // [rehypePrism, { ignoreMissing: true }],
@@ -37,6 +43,7 @@ function main({ assets, base }: PresetSettings): Preset {
           properties: {
             className: ['heading-link', 'hidden'],
           },
+          ...plugins?.rehypeAutolinkHeadings,
         },
       ],
     ],
