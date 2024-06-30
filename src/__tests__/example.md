@@ -102,7 +102,7 @@ turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.
 Code blocks support titles. Titles are typically filenames, and they cannot
 contain spaces.
 
-```js:foo.js
+```js
 function randomCode(bar) {
   var a = 42;
   var b = 'Prism';

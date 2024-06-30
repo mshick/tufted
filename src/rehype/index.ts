@@ -1,5 +1,4 @@
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeCodeTitles from 'rehype-code-titles'
 // import rehypePrism from 'rehype-prism-plus'
 import rehypeShiki from '@shikijs/rehype'
 import rehypeSlug from 'rehype-slug'
@@ -18,7 +17,7 @@ function main({ assets, base }: PresetSettings): Preset {
     plugins: [
       rehypeFigure,
       rehypeSlug,
-      rehypeCodeTitles,
+      // rehypeCodeTitles,
       [
         rehypeShiki,
         {

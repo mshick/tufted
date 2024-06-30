@@ -77,12 +77,12 @@ turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.</p>
 <h2 id="code">Code<a class="heading-link hidden" href="#code"><span class="icon icon-link"></span></a></h2>
 <p>Code blocks support titles. Titles are typically filenames, and they cannot
 contain spaces.</p>
-<div class="rehype-code-title">foo.js</div><pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">randomCode</span><span class="token punctuation">(</span><span class="token parameter">bar</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">'Prism'</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token keyword control-flow">return</span> a <span class="token operator">+</span> <span class="token function">bar</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token punctuation">}</span>
-</span></code></pre>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">function</span><span style="color:#59873A;--shiki-dark:#80A665"> randomCode</span><span style="color:#999999;--shiki-dark:#666666">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">bar</span><span style="color:#999999;--shiki-dark:#666666">)</span><span style="color:#999999;--shiki-dark:#666666"> {</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">  var</span><span style="color:#B07D48;--shiki-dark:#BD976A"> a</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 42</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">  var</span><span style="color:#B07D48;--shiki-dark:#BD976A"> b</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#B5695999;--shiki-dark:#C98A7D99"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">Prism</span><span style="color:#B5695999;--shiki-dark:#C98A7D99">'</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">  return</span><span style="color:#B07D48;--shiki-dark:#BD976A"> a</span><span style="color:#AB5959;--shiki-dark:#CB7676"> +</span><span style="color:#59873A;--shiki-dark:#80A665"> bar</span><span style="color:#999999;--shiki-dark:#666666">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">b</span><span style="color:#999999;--shiki-dark:#666666">);</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">}</span></span>
+<span class="line"></span></code></pre>
 <h2 id="epigraphs">Epigraphs<a class="heading-link hidden" href="#epigraphs"><span class="icon icon-link"></span></a></h2>
 <blockquote>
 <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem
