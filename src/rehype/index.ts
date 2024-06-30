@@ -26,10 +26,9 @@ function main({ assets, base, plugins }: PresetSettings): Preset {
       [
         rehypeShiki,
         {
-          // or `theme` for a single theme
           themes: {
-            light: 'one-light',
-            dark: 'one-dark-prod',
+            light: 'vitesse-light',
+            dark: 'vitesse-dark',
           },
           ...plugins?.rehypeShiki,
         },
