@@ -1,6 +1,7 @@
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCodeTitles from 'rehype-code-titles'
-import rehypePrism from 'rehype-prism-plus'
+// import rehypePrism from 'rehype-prism-plus'
+import rehypeShiki from '@shikijs/rehype'
 import rehypeSlug from 'rehype-slug'
 // @ts-expect-error No types
 import rehypeFigure from '@microflash/rehype-figure'
@@ -18,7 +19,17 @@ function main({ assets, base }: PresetSettings): Preset {
       rehypeFigure,
       rehypeSlug,
       rehypeCodeTitles,
-      [rehypePrism, { ignoreMissing: true }],
+      [
+        rehypeShiki,
+        {
+          // or `theme` for a single theme
+          themes: {
+            light: 'vitesse-light',
+            dark: 'vitesse-dark',
+          },
+        },
+      ],
+      // [rehypePrism, { ignoreMissing: true }],
       [rehypeImgSize, { assets, base }],
       [
         rehypeAutolinkHeadings,

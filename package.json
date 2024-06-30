@@ -131,6 +131,7 @@
   ],
   "dependencies": {
     "@microflash/rehype-figure": "^2.1.0",
+    "@shikijs/rehype": "^1.10.0",
     "@tailwindcss/typography": "^0.5.13",
     "image-size": "^1.1.1",
     "rehype-autolink-headings": "^7.1.0",
