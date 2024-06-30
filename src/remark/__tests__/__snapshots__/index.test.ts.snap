@@ -94,7 +94,7 @@ exports[`the preset works 1`] = `
     <h2>Code</h2>
     <p>Code blocks support titles. Titles are typically filenames, and they cannot
         contain spaces.</p>
-    <pre><code class="language-js:foo.js">function randomCode(bar) {
+    <pre><code class="language-js">function randomCode(bar) {
   var a = 42;
   var b = 'Prism';
   return a + bar(b);
