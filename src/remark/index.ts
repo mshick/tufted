@@ -3,7 +3,7 @@ import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import type { Plugin, PluginTuple } from 'unified'
+import type { Preset, Settings } from 'unified'
 import remarkDirectiveFigure from './remark-directive-figure.js'
 import remarkDirectiveFooter from './remark-directive-footer.js'
 import remarkDirectiveNewthought from './remark-directive-newthought.js'
@@ -13,12 +13,13 @@ import remarkInitialHeading from './remark-initial-heading.js'
 import remarkSectionize from './remark-sectionize.js'
 import remarkSidenotes from './remark-sidenotes.js'
 
-function main(): {
-  plugins: Array<
-    Plugin<Array<any>, any, any> | PluginTuple<Array<any>, any, any>
-  >
-} {
+export type PresetSettings = {
+  settings?: Settings
+}
+
+function main({ settings }: PresetSettings = {}): Preset {
   return {
+    settings,
     plugins: [
       remarkGfm,
       remarkUnwrapImages,

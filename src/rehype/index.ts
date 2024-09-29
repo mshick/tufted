@@ -5,10 +5,11 @@ import rehypeAutolinkHeadings, {
 import rehypeSlug from 'rehype-slug'
 // @ts-expect-error No types
 import rehypeFigure from '@microflash/rehype-figure'
-import type { Preset } from 'unified'
+import type { Preset, Settings } from 'unified'
 import rehypeImgSize from './rehype-img-size.js'
 
 export type PresetSettings = {
+  settings?: Settings
   assets: string
   base: string
   plugins?: {
@@ -17,8 +18,9 @@ export type PresetSettings = {
   }
 }
 
-function main({ assets, base, plugins }: PresetSettings): Preset {
+function main({ settings, assets, base, plugins }: PresetSettings): Preset {
   return {
+    settings,
     plugins: [
       rehypeFigure,
       rehypeSlug,
