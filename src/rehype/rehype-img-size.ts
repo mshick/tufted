@@ -1,7 +1,6 @@
 import { Element, Root } from 'hast'
 import { imageSize } from 'image-size'
-import assert from 'node:assert'
-import { join } from 'node:path'
+import { join, resolve } from 'node:path'
 import { visit } from 'unist-util-visit'
 
 /**
@@ -76,7 +75,13 @@ export type RehypeImgSizeOptions = {
 }
 
 export default function rehypeImgSize(options: RehypeImgSizeOptions) {
-  assert(options.assets, 'Must provide assets path')
-  assert(options.base, 'Must provide base url')
-  return createImageSizeTransformer(options.assets, options.base)
+  if (!options.assets) {
+    throw new Error('Must provide assets path')
+  }
+
+  if (!options.assets) {
+    throw new Error('Must provide base url')
+  }
+
+  return createImageSizeTransformer(resolve(options.assets), options.base)
 }
