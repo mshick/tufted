@@ -15,7 +15,7 @@ export type PresetSettings = {
   }
 }
 
-function main({ settings, plugins }: PresetSettings): Preset {
+function main({ settings, plugins }: PresetSettings = {}): Preset {
   return {
     settings,
     plugins: [
