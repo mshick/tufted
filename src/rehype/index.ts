@@ -9,8 +9,6 @@ import type { Preset, Settings } from 'unified'
 
 export type PresetSettings = {
   settings?: Settings
-  assets: string
-  base: string
   plugins?: {
     rehypeShiki?: RehypeShikiOptions
     rehypeAutolinkHeadings?: RehypeAutolinkHeadingsOptions
