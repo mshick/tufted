@@ -6,7 +6,6 @@ import rehypeAutolinkHeadings, {
 } from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import type { Preset, Settings } from 'unified'
-import rehypeImgSize from './rehype-img-size.js'
 
 export type PresetSettings = {
   settings?: Settings
@@ -18,13 +17,12 @@ export type PresetSettings = {
   }
 }
 
-function main({ settings, assets, base, plugins }: PresetSettings): Preset {
+function main({ settings, plugins }: PresetSettings): Preset {
   return {
     settings,
     plugins: [
       rehypeFigure,
       rehypeSlug,
-      // rehypeCodeTitles,
       [
         rehypeShiki,
         {
@@ -35,8 +33,7 @@ function main({ settings, assets, base, plugins }: PresetSettings): Preset {
           ...plugins?.rehypeShiki,
         },
       ],
-      // [rehypePrism, { ignoreMissing: true }],
-      [rehypeImgSize, { assets, base }],
+      // [rehypeImgSize, { assets, base }],
       [
         rehypeAutolinkHeadings,
         {
