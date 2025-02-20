@@ -19,6 +19,7 @@
     "./rehype": "./dist/rehype/index.js",
     "./tailwind": "./dist/tailwind/index.js"
   },
+  "files": ["dist", "LICENSE", "README.md"],
   "types": "./dist",
   "typesVersions": {
     "*": {
