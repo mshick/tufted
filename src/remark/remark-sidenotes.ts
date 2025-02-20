@@ -1,4 +1,4 @@
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
 import type {
   BlockContent,
   DefinitionContent,
@@ -23,7 +23,7 @@ import type { Sidenote } from './types.js'
 const marginnoteLabel = '\u2295'
 
 function isNumericString(key: string): boolean {
-  return !isNaN(Number(key))
+  return !Number.isNaN(Number(key))
 }
 
 function generateInputId(
@@ -70,7 +70,7 @@ function getReplacement({
     },
     [
       u(
-        `sidenoteReference`,
+        'sidenoteReference',
         {
           identifier,
           data: {
@@ -80,7 +80,7 @@ function getReplacement({
         },
         [u('text', labelSymbol)],
       ),
-      u(`sidenoteToggle`, {
+      u('sidenoteToggle', {
         identifier,
         data: {
           hName: 'input' as const,
@@ -92,7 +92,7 @@ function getReplacement({
         },
       }),
       u(
-        `sidenoteDefinition`,
+        'sidenoteDefinition',
         {
           identifier,
           data: {

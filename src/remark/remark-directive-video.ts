@@ -3,7 +3,7 @@ import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
 import { CONTINUE, SKIP, visit } from 'unist-util-visit'
 import { isLeafDirectiveNode, isParentNode } from './type-utils.js'
-import { Video } from './types.js'
+import type { Video } from './types.js'
 
 export type RemarkDirectiveVideoOptions = {
   figureClassNames?: string[]

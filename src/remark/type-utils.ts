@@ -15,7 +15,7 @@ import type {
   Directives,
   LeafDirective,
 } from 'mdast-util-directive'
-import { MdxJsxFlowElement } from 'mdast-util-mdx-jsx'
+import type { MdxJsxFlowElement } from 'mdast-util-mdx-jsx'
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import type { Node } from 'unist'
 import type { Export, Footnote, Iframe, Section, Video } from './types.js'

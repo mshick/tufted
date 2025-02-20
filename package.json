@@ -22,127 +22,35 @@
   "types": "./dist",
   "typesVersions": {
     "*": {
-      "remark": [
-        "dist/remark/index.d.ts"
-      ],
-      "rehype": [
-        "dist/rehype/index.d.ts"
-      ],
-      "tailwind": [
-        "dist/tailwind/index.d.ts"
-      ]
+      "remark": ["dist/remark/index.d.ts"],
+      "rehype": ["dist/rehype/index.d.ts"],
+      "tailwind": ["dist/tailwind/index.d.ts"]
     }
   },
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "del-cli dist",
     "format": "eslint src --fix",
+    "lint": "biome check",
     "prepare": "npm run build",
     "release": "np",
     "test": "npm run format && vitest run",
     "typecheck": "tsc --noEmit",
     "watch": "vitest"
   },
-  "prettier": {
-    "bracketSpacing": true,
-    "jsxSingleQuote": true,
-    "printWidth": 80,
-    "proseWrap": "always",
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
-  },
-  "eslintConfig": {
-    "env": {
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 14,
-      "sourceType": "module"
-    },
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
-      }
-    },
-    "extends": [
-      "eslint:recommended"
-    ],
-    "rules": {
-      "capitalized-comments": "off",
-      "no-console": "error",
-      "no-unreachable": "error"
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/*.js"
-        ],
-        "extends": [
-          "plugin:prettier/recommended"
-        ]
-      },
-      {
-        "files": [
-          "**/*.ts",
-          "**/*.tsx"
-        ],
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-          "ecmaVersion": "latest",
-          "sourceType": "module"
-        },
-        "extends": [
-          "plugin:@typescript-eslint/recommended",
-          "plugin:prettier/recommended"
-        ],
-        "rules": {
-          "@typescript-eslint/no-explicit-any": "off"
-        }
-      },
-      {
-        "files": [
-          "*.json"
-        ],
-        "plugins": [
-          "json-format"
-        ]
-      },
-      {
-        "files": [
-          "*.mdx",
-          "*.md"
-        ],
-        "settings": {
-          "mdx/code-blocks": false,
-          "mdx/language-mapper": {}
-        },
-        "extends": "plugin:mdx/recommended",
-        "rules": {
-          "indent": "off"
-        }
-      }
-    ]
-  },
-  "eslintIgnore": [
-    "tsconfig.json",
-    "dist"
-  ],
   "dependencies": {
-    "@microflash/rehype-figure": "^2.1.0",
+    "@microflash/rehype-figure": "^2.1.3",
     "@shikijs/rehype": "^1.10.0",
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/typography": "^0.5.16",
     "image-size": "^1.1.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-code-titles": "^1.2.0",
     "rehype-prism-plus": "^2.0.0",
     "rehype-slug": "^6.0.0",
-    "remark-directive": "^3.0.0",
+    "remark-directive": "^3.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-footnotes": "^4.0.1",
-    "remark-gfm": "^4.0.0",
-    "remark-mdx-images": "^2.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-squeeze-paragraphs": "^6.0.0",
     "remark-unwrap-images": "^4.0.0",
     "unified": "^11.0.4",
@@ -154,39 +62,30 @@
     "unist-util-visit-parents": "^6.0.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@tsconfig/node20": "^20.1.4",
     "@tsconfig/strictest": "^2.0.5",
     "@types/hast": "^3.0.4",
     "@types/js-beautify": "^1.14.3",
     "@types/mdast": "^4.0.4",
     "@types/node": "^20.14.2",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
-    "@typescript-eslint/parser": "^7.13.0",
-    "del-cli": "^5.1.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-json-format": "^2.0.1",
-    "eslint-plugin-mdx": "^3.1.5",
-    "eslint-plugin-prettier": "^5.1.3",
-    "hastscript": "^9.0.0",
-    "js-beautify": "^1.15.1",
-    "mdast-util-directive": "^3.0.0",
-    "mdast-util-mdx-jsx": "^3.1.2",
+    "del-cli": "^6.0.0",
+    "hastscript": "^9.0.1",
+    "js-beautify": "^1.15.3",
+    "mdast-util-directive": "^3.1.0",
+    "mdast-util-mdx-jsx": "^3.2.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
-    "np": "^10.0.5",
-    "prettier": "^3.3.2",
-    "rehype-stringify": "^10.0.0",
+    "np": "^10.2.0",
+    "rehype-stringify": "^10.0.1",
     "remark-html": "^16.0.1",
-    "remark-mdx": "^3.0.1",
+    "remark-mdx": "^3.1.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.0",
+    "remark-rehype": "^11.1.1",
     "tailwindcss": "^3.4.4",
     "to-vfile": "^8.0.0",
-    "type-fest": "^4.20.0",
+    "type-fest": "^4.35.0",
     "typescript": "^5.4.5",
-    "vfile": "^6.0.1",
+    "vfile": "^6.0.3",
     "vitest": "^1.6.0"
   },
   "packageManager": "npm@10.4.0",

@@ -1,7 +1,7 @@
+import * as path from 'node:path'
 // @ts-expect-error No types
 import rehypeFigure from '@microflash/rehype-figure'
 import { html } from 'js-beautify'
-import * as path from 'node:path'
 import rehypeStringify from 'rehype-stringify'
 import remarkMdx from 'remark-mdx'
 import remarkParse from 'remark-parse'

@@ -4,7 +4,8 @@
 		"rootDir": "src",
 		"outDir": "dist",
 		"declaration": true,
-		"pretty": true
+		"pretty": true,
+		"noPropertyAccessFromIndexSignature": false
 	},
   "include": [
     "src"

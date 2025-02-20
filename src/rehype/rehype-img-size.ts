@@ -1,6 +1,6 @@
-import { Element, Root } from 'hast'
-import { imageSize } from 'image-size'
 import { join, resolve } from 'node:path'
+import type { Element, Root } from 'hast'
+import { imageSize } from 'image-size'
 import { visit } from 'unist-util-visit'
 
 /**
@@ -17,7 +17,7 @@ import { visit } from 'unist-util-visit'
  * }
  */
 function createImageSizeTransformer(assetsDir: string, urlBase: string) {
-  return function (tree: Root) {
+  return (tree: Root) => {
     visit(tree, ['element'], (n) => {
       const node = n as Element
 

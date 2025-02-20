@@ -1,4 +1,4 @@
-import { h, Properties } from 'hastscript'
+import { type Properties, h } from 'hastscript'
 import type { BlockContent, DefinitionContent, Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { u } from 'unist-builder'
@@ -41,10 +41,9 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
               !isLeafDirectiveNode(n) &&
               !isVideoNode(n)
             ) {
-              return {
-                ...g,
+              return Object.assign(g, {
                 [currentGroupStart]: [...(g[currentGroupStart] ?? []), n],
-              }
+              })
             }
 
             currentGroupStart = i + 1
@@ -91,11 +90,11 @@ export default function remarkDirectiveFigure(): Transformer<Parent> {
 
         let className: (string | number)[] = []
 
-        if (hast.properties?.['className']) {
-          if (Array.isArray(hast.properties?.['className'])) {
-            className = hast.properties?.['className']
+        if (hast.properties?.className) {
+          if (Array.isArray(hast.properties?.className)) {
+            className = hast.properties?.className
           } else {
-            className = [String(hast.properties?.['className'])]
+            className = [String(hast.properties?.className)]
           }
         }
 

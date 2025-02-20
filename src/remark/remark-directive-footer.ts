@@ -1,4 +1,4 @@
-import { h, Properties } from 'hastscript'
+import { type Properties, h } from 'hastscript'
 import type { Parent } from 'mdast'
 import type { Transformer } from 'unified'
 import { EXIT, SKIP, visit } from 'unist-util-visit'

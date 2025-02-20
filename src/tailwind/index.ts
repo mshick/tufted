@@ -1,6 +1,6 @@
 // @ts-expect-error No types
 import { DEFAULT } from '@tailwindcss/typography/src/styles'
-import { PluginAPI } from 'tailwindcss/types/config.js'
+import type { PluginAPI } from 'tailwindcss/types/config.js'
 
 const colors = (theme: PluginAPI['theme']) => ({
   '--tw-prose-body': theme('colors.black'),

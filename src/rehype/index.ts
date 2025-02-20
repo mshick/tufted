@@ -1,8 +1,8 @@
 // @ts-expect-error No types
 import rehypeFigure from '@microflash/rehype-figure'
-import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype'
+import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
 import rehypeAutolinkHeadings, {
-  Options as RehypeAutolinkHeadingsOptions,
+  type Options as RehypeAutolinkHeadingsOptions,
 } from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import type { Preset, Settings } from 'unified'
