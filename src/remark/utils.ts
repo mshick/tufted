@@ -1,30 +1,30 @@
-import type { BlockContent, DefinitionContent } from 'mdast'
+import type { BlockContent, DefinitionContent } from 'mdast';
 import {
   isCodeNode,
   isImageNode,
   isLeafDirectiveNode,
   isVideoNode,
-} from './type-utils.js'
+} from './type-utils.js';
 
 export function contentTypePresenceReducer(
   p: Record<string, boolean>,
   n: BlockContent | DefinitionContent,
 ) {
   if (isCodeNode(n)) {
-    return { ...p, code: true }
+    return { ...p, code: true };
   }
 
   if (isImageNode(n)) {
-    return { ...p, image: true }
+    return { ...p, image: true };
   }
 
   if (isLeafDirectiveNode(n)) {
-    return { ...p, leaf: true }
+    return { ...p, leaf: true };
   }
 
   if (isVideoNode(n)) {
-    return { ...p, video: true }
+    return { ...p, video: true };
   }
 
-  return p
+  return p;
 }

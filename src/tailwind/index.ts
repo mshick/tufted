@@ -1,6 +1,6 @@
 // @ts-expect-error No types
-import { DEFAULT } from '@tailwindcss/typography/src/styles'
-import type { PluginAPI } from 'tailwindcss/types/config.js'
+import { DEFAULT } from '@tailwindcss/typography/src/styles';
+import type { PluginAPI } from 'tailwindcss/types/config.js';
 
 const colors = (theme: PluginAPI['theme']) => ({
   '--tw-prose-body': theme('colors.black'),
@@ -61,7 +61,7 @@ const colors = (theme: PluginAPI['theme']) => ({
   '--tw-prose-invert-th-borders': theme('colors.gray.700'),
   '--tw-prose-invert-td-borders': theme('colors.gray.700'),
   '--tw-prose-invert-tr-even': theme('colors.gray.900'),
-})
+});
 
 const inverted = () => ({
   '--tw-prose-borders': 'var(--tw-prose-invert-borders)',
@@ -75,7 +75,7 @@ const inverted = () => ({
   '--tw-prose-pre-code-variable': 'var(--tw-prose-invert-pre-code-variable)',
   '--tw-prose-pre-code-inserted': 'var(--tw-prose-invert-pre-code-important)',
   '--tw-prose-pre-code-selection': 'var(--tw-prose-invert-pre-code-selection)',
-})
+});
 
 export const typography = (theme: PluginAPI['theme']) => ({
   DEFAULT: {
@@ -486,4 +486,4 @@ export const typography = (theme: PluginAPI['theme']) => ({
   'tufted-bbs-invert': {
     css: inverted(),
   },
-})
+});

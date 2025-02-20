@@ -1,7 +1,7 @@
-import { join, resolve } from 'node:path'
-import type { Element, Root } from 'hast'
-import { imageSize } from 'image-size'
-import { visit } from 'unist-util-visit'
+import { join, resolve } from 'node:path';
+import type { Element, Root } from 'hast';
+import { imageSize } from 'image-size';
+import { visit } from 'unist-util-visit';
 
 /**
  * @example
@@ -19,69 +19,69 @@ import { visit } from 'unist-util-visit'
 function createImageSizeTransformer(assetsDir: string, urlBase: string) {
   return (tree: Root) => {
     visit(tree, ['element'], (n) => {
-      const node = n as Element
+      const node = n as Element;
 
       const {
         tagName,
         properties: { src },
-      } = node
+      } = node;
 
       if (
         tagName !== 'img' ||
         typeof src !== 'string' ||
         !src.startsWith('/static/')
       ) {
-        return
+        return;
       }
 
-      const imgFilePath = join(assetsDir, src.replace(urlBase, ''))
+      const imgFilePath = join(assetsDir, src.replace(urlBase, ''));
 
       /**
        * @example { height: 2657, width: 1771, type: 'jpg' }
        */
-      const size = imageSize(imgFilePath)
+      const size = imageSize(imgFilePath);
 
       if (!size) {
-        return
+        return;
       }
 
       if (size.height) {
         node.properties = {
           ...node.properties,
           height: String(size.height),
-        }
+        };
       }
 
       if (size.width) {
         node.properties = {
           ...node.properties,
           width: String(size.width),
-        }
+        };
       }
 
       if (size.type) {
         node.properties = {
           ...node.properties,
           'data-type': size.type,
-        }
+        };
       }
-    })
-  }
+    });
+  };
 }
 
 export type RehypeImgSizeOptions = {
-  assets: string
-  base: string
-}
+  assets: string;
+  base: string;
+};
 
 export default function rehypeImgSize(options: RehypeImgSizeOptions) {
   if (!options.assets) {
-    throw new Error('Must provide assets path')
+    throw new Error('Must provide assets path');
   }
 
   if (!options.assets) {
-    throw new Error('Must provide base url')
+    throw new Error('Must provide base url');
   }
 
-  return createImageSizeTransformer(resolve(options.assets), options.base)
+  return createImageSizeTransformer(resolve(options.assets), options.base);
 }

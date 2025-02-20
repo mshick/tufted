@@ -31,8 +31,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "del-cli dist",
-    "format": "eslint src --fix",
-    "lint": "biome check",
+    "format": "biome check --fix",
     "prepare": "npm run build",
     "release": "np",
     "test": "npm run format && vitest run",
@@ -87,7 +86,7 @@
     "type-fest": "^4.35.0",
     "typescript": "^5.4.5",
     "vfile": "^6.0.3",
-    "vitest": "^1.6.0"
+    "vitest": "^3.0.6"
   },
   "packageManager": "npm@10.4.0",
   "engines": {

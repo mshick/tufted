@@ -1,19 +1,19 @@
 // @ts-expect-error No types
-import rehypeFigure from '@microflash/rehype-figure'
-import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
+import rehypeFigure from '@microflash/rehype-figure';
+import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype';
 import rehypeAutolinkHeadings, {
   type Options as RehypeAutolinkHeadingsOptions,
-} from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
-import type { Preset, Settings } from 'unified'
+} from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import type { Preset, Settings } from 'unified';
 
 export type PresetSettings = {
-  settings?: Settings
+  settings?: Settings;
   plugins?: {
-    rehypeShiki?: RehypeShikiOptions
-    rehypeAutolinkHeadings?: RehypeAutolinkHeadingsOptions
-  }
-}
+    rehypeShiki?: RehypeShikiOptions;
+    rehypeAutolinkHeadings?: RehypeAutolinkHeadingsOptions;
+  };
+};
 
 function main({ settings, plugins }: PresetSettings = {}): Preset {
   return {
@@ -43,7 +43,7 @@ function main({ settings, plugins }: PresetSettings = {}): Preset {
         },
       ],
     ],
-  }
+  };
 }
 
-export default main
+export default main;

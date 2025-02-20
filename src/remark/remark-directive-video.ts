@@ -1,13 +1,13 @@
-import type { BlockContent, Parent } from 'mdast'
-import type { Transformer } from 'unified'
-import { u } from 'unist-builder'
-import { CONTINUE, SKIP, visit } from 'unist-util-visit'
-import { isLeafDirectiveNode, isParentNode } from './type-utils.js'
-import type { Video } from './types.js'
+import type { BlockContent, Parent } from 'mdast';
+import type { Transformer } from 'unified';
+import { u } from 'unist-builder';
+import { CONTINUE, SKIP, visit } from 'unist-util-visit';
+import { isLeafDirectiveNode, isParentNode } from './type-utils.js';
+import type { Video } from './types.js';
 
 export type RemarkDirectiveVideoOptions = {
-  figureClassNames?: string[]
-}
+  figureClassNames?: string[];
+};
 
 export default function remarkDirectiveVideo(
   { figureClassNames }: RemarkDirectiveVideoOptions = {
@@ -21,12 +21,12 @@ export default function remarkDirectiveVideo(
       (node) => isLeafDirectiveNode(node) && node.name === 'youtube',
       (node, index, parent) => {
         if (isLeafDirectiveNode(node) && isParentNode(parent)) {
-          const attributes = node.attributes ?? {}
-          const { id } = attributes
+          const attributes = node.attributes ?? {};
+          const { id } = attributes;
 
           if (!id) {
-            file.fail('Missing video id', node)
-            return [SKIP, index]
+            file.fail('Missing video id', node);
+            return [SKIP, index];
           }
 
           const iframe = u(
@@ -45,7 +45,7 @@ export default function remarkDirectiveVideo(
               },
             },
             node.children,
-          )
+          );
 
           const video: Video = u(
             'video',
@@ -58,9 +58,9 @@ export default function remarkDirectiveVideo(
               },
             },
             [iframe],
-          )
+          );
 
-          let child: BlockContent = video
+          let child: BlockContent = video;
 
           if (parent.type === 'root') {
             child = u(
@@ -74,17 +74,17 @@ export default function remarkDirectiveVideo(
                 },
               },
               [video],
-            )
+            );
           }
 
-          parent.children.splice(index ?? 0, 1, child)
+          parent.children.splice(index ?? 0, 1, child);
 
-          return [SKIP, index]
+          return [SKIP, index];
         }
 
-        return CONTINUE
+        return CONTINUE;
       },
       true,
-    )
-  }
+    );
+  };
 }

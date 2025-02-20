@@ -1,4 +1,4 @@
-import 'mdast'
+import 'mdast';
 import type {
   Epigraph,
   Figcaption,
@@ -11,44 +11,44 @@ import type {
   SidenoteReference,
   SidenoteToggle,
   Video,
-} from './types.js'
+} from './types.js';
 
 declare module 'mdast' {
   interface PhrasingContentMap {
     // newthought: Newthought
-    sidenote: Sidenote
-    sidenoteReference: SidenoteReference
-    sidenoteToggle: SidenoteToggle
+    sidenote: Sidenote;
+    sidenoteReference: SidenoteReference;
+    sidenoteToggle: SidenoteToggle;
   }
 
   interface BlockContentMap {
-    figure: Figure
-    figcaption: Figcaption
-    section: Section
-    epigraph: Epigraph
-    image: Image
-    iframe: Iframe
-    video: Video
-    newthought: Newthought
-    sidenote: Sidenote
-    sidenoteReference: SidenoteReference
-    sidenoteDefinition: SidenoteDefinition
-    sidenoteToggle: SidenoteToggle
+    figure: Figure;
+    figcaption: Figcaption;
+    section: Section;
+    epigraph: Epigraph;
+    image: Image;
+    iframe: Iframe;
+    video: Video;
+    newthought: Newthought;
+    sidenote: Sidenote;
+    sidenoteReference: SidenoteReference;
+    sidenoteDefinition: SidenoteDefinition;
+    sidenoteToggle: SidenoteToggle;
   }
 
   interface RootContentMap {
-    figure: Figure
-    figcaption: Figcaption
-    section: Section
-    epigraph: Epigraph
-    image: Image
-    iframe: Iframe
-    video: Video
-    newthought: Newthought
-    sidenote: Sidenote
-    sidenoteReference: SidenoteReference
-    sidenoteDefinition: SidenoteDefinition
-    sidenoteToggle: SidenoteToggle
+    figure: Figure;
+    figcaption: Figcaption;
+    section: Section;
+    epigraph: Epigraph;
+    image: Image;
+    iframe: Iframe;
+    video: Video;
+    newthought: Newthought;
+    sidenote: Sidenote;
+    sidenoteReference: SidenoteReference;
+    sidenoteDefinition: SidenoteDefinition;
+    sidenoteToggle: SidenoteToggle;
   }
 
   // interface DefinitionContentMap {
