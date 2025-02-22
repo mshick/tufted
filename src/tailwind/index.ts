@@ -1,264 +1,350 @@
-// @ts-expect-error No types
-import { DEFAULT } from '@tailwindcss/typography/src/styles';
-import type { PluginAPI } from 'tailwindcss/types/config.js';
+import typography from '@tailwindcss/typography';
+import colors from 'tailwindcss/colors';
+import type { Config, PluginAPI } from 'tailwindcss/plugin';
 
-const colors = (theme: PluginAPI['theme']) => ({
-  '--tw-prose-body': theme('colors.black'),
-  '--tw-prose-headings': theme('colors.black'),
-  '--tw-prose-lead': theme('colors.black'),
-  '--tw-prose-links': theme('colors.black'),
-  '--tw-prose-bold': theme('colors.black'),
-  '--tw-prose-counters': theme('colors.black'),
-  '--tw-prose-bullets': theme('colors.black'),
-  '--tw-prose-hr': theme('colors.black'),
-  '--tw-prose-quotes': theme('colors.black'),
-  '--tw-prose-quote-borders': theme('colors.black'),
-  '--tw-prose-captions': theme('colors.black'),
-  '--tw-prose-borders': theme('colors.gray.300'),
-  '--tw-prose-code': theme('colors.black'),
-  '--tw-prose-pre-code': '#977d49',
-  '--tw-prose-pre-code-keyword': '#728fcb',
-  '--tw-prose-pre-code-comment': '#b6ad9a',
-  '--tw-prose-pre-code-tag': '#063289',
-  '--tw-prose-pre-code-function': '#b29762',
-  '--tw-prose-pre-code-selector': '#2d2006',
-  '--tw-prose-pre-code-attr-name': '#896724',
-  '--tw-prose-pre-code-variable': '#93abdc',
-  '--tw-prose-pre-code-inserted': '#2d2006',
-  '--tw-prose-pre-code-important': '#896724',
-  '--tw-prose-pre-code-highlight': '#896724',
-  '--tw-prose-pre-code-selection': '#f2ece4',
-  '--tw-prose-pre-bg': theme('colors.white'),
-  '--tw-prose-th-borders': theme('colors.gray.300'),
-  '--tw-prose-td-borders': theme('colors.gray.300'),
-  '--tw-prose-tr-even': theme('colors.gray.100'),
-  '--tw-prose-invert-body': theme('colors.white'),
-  '--tw-prose-invert-headings': theme('colors.white'),
-  '--tw-prose-invert-lead': theme('colors.white'),
-  '--tw-prose-invert-links': theme('colors.white'),
-  '--tw-prose-invert-bold': theme('colors.white'),
-  '--tw-prose-invert-counters': theme('colors.white'),
-  '--tw-prose-invert-bullets': theme('colors.white'),
-  '--tw-prose-invert-hr': theme('colors.white'),
-  '--tw-prose-invert-quotes': theme('colors.white'),
-  '--tw-prose-invert-quote-borders': theme('colors.white'),
-  '--tw-prose-invert-captions': theme('colors.white'),
-  '--tw-prose-invert-borders': theme('colors.gray.700'),
-  '--tw-prose-invert-code': theme('colors.white'),
-  '--tw-prose-invert-pre-code': '#b3ace8',
-  '--tw-prose-invert-pre-code-keyword': '#ffcc99',
-  '--tw-prose-invert-pre-code-comment': '#6c6783',
-  '--tw-prose-invert-pre-code-tag': '#e09142',
-  '--tw-prose-invert-pre-code-function': '#9a86fd',
-  '--tw-prose-invert-pre-code-selector': '#eeebff',
-  '--tw-prose-invert-pre-code-attr-name': '#c4b9fe',
-  '--tw-prose-invert-pre-code-variable': '#ffcc99',
-  '--tw-prose-invert-pre-code-inserted': '#eeebff',
-  '--tw-prose-invert-pre-code-important': '#c4b9fe',
-  '--tw-prose-invert-pre-code-highlight': '#8a75f5',
-  '--tw-prose-invert-pre-code-selection': '#6a51e6',
-  '--tw-prose-invert-pre-bg': theme('colors.black'),
-  '--tw-prose-invert-th-borders': theme('colors.gray.700'),
-  '--tw-prose-invert-td-borders': theme('colors.gray.700'),
-  '--tw-prose-invert-tr-even': theme('colors.gray.900'),
-});
+const round = (num: number) =>
+  num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, '$1')
+    .replace(/\.0$/, '');
+const rem = (px: number) => `${round(px / 16)}rem`;
+const em = (px: number, base: number) => `${round(px / base)}em`;
 
-const inverted = () => ({
-  '--tw-prose-borders': 'var(--tw-prose-invert-borders)',
-  '--tw-prose-tr-even': 'var(--tw-prose-invert-tr-even)',
-  '--tw-prose-pre-code-keyword': 'var(--tw-prose-invert-pre-code-keyword)',
-  '--tw-prose-pre-code-comment': 'var(--tw-prose-invert-pre-code-comment)',
-  '--tw-prose-pre-code-tag': 'var(--tw-prose-invert-pre-code-tag)',
-  '--tw-prose-pre-code-function': 'var(--tw-prose-invert-pre-code-function)',
-  '--tw-prose-pre-code-selector': 'var(--tw-prose-invert-pre-code-selector)',
-  '--tw-prose-pre-code-attr-name': 'var(--tw-prose-invert-pre-code-attr-name)',
-  '--tw-prose-pre-code-variable': 'var(--tw-prose-invert-pre-code-variable)',
-  '--tw-prose-pre-code-inserted': 'var(--tw-prose-invert-pre-code-important)',
-  '--tw-prose-pre-code-selection': 'var(--tw-prose-invert-pre-code-selection)',
-});
+const sidenoteCounter = 'sidenote-counter';
 
-export const typography = (theme: PluginAPI['theme']) => ({
+const styles = ({ theme }: Pick<PluginAPI, 'theme'>) => ({
   DEFAULT: {
     css: [
-      ...DEFAULT.css,
       {
-        maxWidth: 'none',
-        counterReset: 'sidenote-counter',
+        '--tw-prose-body': colors.black,
+        '--tw-prose-headings': colors.black,
+        '--tw-prose-lead': colors.black,
+        '--tw-prose-links': colors.black,
+        '--tw-prose-links-selection-bg': colors.black,
+        '--tw-prose-links-hover-bg': colors.black,
+        '--tw-prose-links-hover-text': colors.black,
+        '--tw-prose-bold': colors.black,
+        '--tw-prose-counters': colors.black,
+        '--tw-prose-bullets': colors.black,
+        '--tw-prose-hr': colors.black,
+        '--tw-prose-quotes': colors.black,
+        '--tw-prose-quote-borders': colors.black,
+        '--tw-prose-captions': colors.black,
+        '--tw-prose-borders': colors.gray['300'],
+        '--tw-prose-code': colors.black,
+        // '--tw-prose-pre-code': colors.amber['200'],
+        // '--tw-prose-pre-code-keyword': colors.blue['300'],
+        // '--tw-prose-pre-code-comment': colors.violet['300'],
+        // '--tw-prose-pre-code-tag': colors.pink['400'],
+        // '--tw-prose-pre-code-function': colors.pink['400'],
+        // '--tw-prose-pre-code-selector': colors.blue['500'],
+        // '--tw-prose-pre-code-attr-name': colors.blue['500'],
+        // '--tw-prose-pre-code-variable': colors.red['500'],
+        // '--tw-prose-pre-code-inserted': colors.blue['500'],
+        // '--tw-prose-pre-code-important': colors.red['500'],
+        // '--tw-prose-pre-code-highlight': colors.red['500'],
+        // '--tw-prose-pre-code-selection': '#f2ece4',
+        // '--tw-prose-pre-bg': colors.gray['50'],
+        '--tw-prose-th-borders': colors.gray['300'],
+        '--tw-prose-td-borders': colors.gray['300'],
+        '--tw-prose-tr-even': colors.gray['100'],
+        '--tw-prose-invert-body': colors.white,
+        '--tw-prose-invert-headings': colors.white,
+        '--tw-prose-invert-lead': colors.white,
+        '--tw-prose-invert-links': colors.white,
+        '--tw-prose-invert-bold': colors.white,
+        '--tw-prose-invert-counters': colors.white,
+        '--tw-prose-invert-bullets': colors.white,
+        '--tw-prose-invert-hr': colors.white,
+        '--tw-prose-invert-quotes': colors.white,
+        '--tw-prose-invert-quote-borders': colors.white,
+        '--tw-prose-invert-captions': colors.white,
+        '--tw-prose-invert-borders': colors.gray['700'],
+        '--tw-prose-invert-code': colors.white,
+        // '--tw-prose-invert-pre-code': colors.violet['300'],
+        // '--tw-prose-invert-pre-code-keyword': colors.orange['300'],
+        // '--tw-prose-invert-pre-code-comment': colors.indigo['400'],
+        // '--tw-prose-invert-pre-code-tag': colors.orange['400'],
+        // '--tw-prose-invert-pre-code-function': colors.violet['400'],
+        // '--tw-prose-invert-pre-code-selector': colors.neutral['100'],
+        // '--tw-prose-invert-pre-code-attr-name': colors.violet['200'],
+        // '--tw-prose-invert-pre-code-variable': colors.orange['300'],
+        // '--tw-prose-invert-pre-code-inserted': colors.neutral['100'],
+        // '--tw-prose-invert-pre-code-important': colors.violet['200'],
+        // '--tw-prose-invert-pre-code-highlight': colors.indigo['400'],
+        // '--tw-prose-invert-pre-code-selection': colors.indigo['500'],
+        // '--tw-prose-invert-pre-bg': colors.black,
+        '--tw-prose-invert-th-borders': colors.gray['700'],
+        '--tw-prose-invert-td-borders': colors.gray['700'],
+        '--tw-prose-invert-tr-even': colors.gray['900'],
+        fontSize: rem(16),
+        lineHeight: round(24 / 14),
+        p: {
+          marginTop: em(16, 14),
+          marginBottom: em(16, 14),
+        },
         '[class~="lead"]': {
           fontStyle: 'italic',
-          marginTop: theme('spacing.2'),
-          marginBottom: theme('spacing.3'),
-          fontSize: theme('fontSize.base')?.[0],
-          ...theme('fontSize.base')?.[1],
+          lineHeight: round(28 / 18),
+          marginTop: em(16, 18),
+          marginBottom: em(16, 18),
         },
-        section: {
-          paddingTop: theme('spacing.4'),
-          paddingBottom: theme('spacing.4'),
-        },
-        a: {
-          '&::selection': {
-            backgroundColor: theme('colors.gray.500'),
-            color: theme('colors.white'),
-            textShadow: 'none',
+        blockquote: {
+          paddingInlineStart: em(20, 18),
+          position: 'relative',
+          fontStyle: 'regular',
+          border: '0',
+          marginTop: '0',
+          marginLeft: em(8, 16),
+          marginBottom: em(12, 16),
+          marginRight: '0',
+          paddingLeft: em(12, 16),
+          p: {
+            width: '100%',
           },
         },
+        'blockquote p:first-of-type::before': {
+          content: '">"',
+          display: 'block',
+          position: 'absolute',
+          left: em(-8, 16),
+          color: 'inherit',
+        },
+        '&': {
+          counterReset: sidenoteCounter,
+        },
+        section: {
+          paddingTop: em(16, 16),
+          paddingBottom: em(16, 16),
+        },
+        a: {
+          textUnderlineOffset: em(8, 16),
+        },
+        'a:hover': {
+          textDecorationColor: 'var(--tw-prose-links-hover-bg)',
+          backgroundColor: 'var(--tw-prose-links-hover-bg)',
+          color: 'var(--tw-prose-links-hover-text)',
+          textShadow: 'none',
+        },
+        'a::selection': {
+          backgroundColor: 'var(--tw-prose-links-selection-bg)',
+          color: 'var(--tw-prose-pre-bg)',
+          textShadow: 'none',
+        },
+        'a.anchor': {
+          textDecoration: 'none',
+        },
+        h1: {
+          fontWeight: 'normal',
+          fontSize: em(30, 14),
+          marginTop: em(20, 18),
+          marginBottom: em(14, 16),
+          lineHeight: round(36 / 30),
+        },
+        'h1:first-child': {
+          marginTop: em(20, 18),
+        },
         h2: {
+          fontSize: em(20, 14),
+          lineHeight: round(28 / 20),
           fontWeight: 'normal',
           fontStyle: 'italic',
-          fontSize: theme('fontSize.3xl')?.[0],
-          ...theme('fontSize.3xl')?.[1],
-          marginTop: theme('spacing.8'),
-          marginBottom: theme('spacing.6'),
+          marginTop: em(24, 18),
+          marginBottom: em(16, 16),
         },
         h3: {
+          fontSize: em(18, 14),
+          lineHeight: round(28 / 18),
           fontWeight: 'normal',
           fontStyle: 'italic',
-          fontSize: theme('fontSize.2xl')?.[0],
-          ...theme('fontSize.2xl')?.[1],
-          marginTop: theme('spacing.8'),
-          marginBottom: theme('spacing.6'),
+          marginTop: em(24, 18),
+          marginBottom: em(16, 16),
         },
-        // Auto-linked headings
+        h4: {
+          fontWeight: 'normal',
+          marginTop: em(20, 14),
+          marginBottom: em(8, 14),
+          lineHeight: round(20 / 14),
+        },
+
+        img: {
+          marginTop: em(24, 14),
+          marginBottom: em(24, 14),
+        },
+        picture: {
+          marginTop: em(24, 14),
+          marginBottom: em(24, 14),
+        },
+        'picture > img': {
+          marginTop: '0',
+          marginBottom: '0',
+        },
+        video: {
+          marginTop: em(24, 14),
+          marginBottom: em(24, 14),
+        },
+        kbd: {
+          fontSize: em(12, 14),
+          borderRadius: rem(5),
+          paddingTop: em(2, 14),
+          paddingInlineEnd: em(5, 14),
+          paddingBottom: em(2, 14),
+          paddingInlineStart: em(5, 14),
+        },
+        code: {
+          fontSize: em(12, 14),
+        },
+        'h2 code': {
+          fontSize: em(18, 20),
+        },
+        'h3 code': {
+          fontSize: em(16, 18),
+        },
         'h2 > a, h3 > a': {
           fontWeight: 'normal',
         },
         pre: {
+          fontSize: em(12, 14),
+          lineHeight: round(20 / 12),
+          marginTop: em(20, 12),
+          marginBottom: em(20, 12),
+          borderRadius: rem(4),
+          paddingTop: em(8, 12),
+          paddingInlineEnd: em(12, 12),
+          paddingBottom: em(8, 12),
+          paddingInlineStart: em(12, 12),
+
           borderColor: 'var(--tw-prose-borders)',
-          fontSize: theme('fontSize.xs')?.[0],
-          ...theme('fontSize.sm')?.[1],
           borderWidth: '1px',
           borderStyle: 'dashed',
           overflow: 'auto',
-          padding: theme('spacing.4'),
-          marginTop: theme('spacing.4'),
-          marginBottom: theme('spacing.4'),
-          color: 'var(--tw-prose-pre-code)',
-          '.highlight': {
-            background: 'hsla(0, 0%, 70%, .5)',
-          },
-
-          '> code.highlight': {
-            outline: '.4em solid var(--tw-prose-pre-code-highlight)',
-            outlineOffset: '.4em',
-          },
-        },
-        '.token.comment,.token.prolog,.token.doctype,.token.cdata,.token.punctuation':
-          {
-            color: 'var(--tw-prose-pre-code-comment)',
-          },
-        '.token.namespace': {
-          opacity: 0.7,
-        },
-        '.token.tag,.token.operator,.token.number': {
-          color: 'var(--tw-prose-pre-code-tag)',
-        },
-        '.token.property,.token.function': {
-          color: 'var(--tw-prose-pre-code-function)',
-        },
-        '.token.tag-id,.token.selector,.token.atrule-id': {
-          color: 'var(--tw-prose-pre-code-selector)',
-        },
-        '.token.attr-name': {
-          color: 'var(--tw-prose-pre-code-attr-name)',
-        },
-        '.token.boolean,.token.string,.token.entity,.token.url,.token.attr-value,.token.keyword,.token.control,.token.directive,.token.unit,.token.statement,.token.regex,.token.at-rule':
-          {
-            color: 'var(--tw-prose-pre-code-keyword)',
-          },
-        '.token.placeholder,.token.variable': {
-          color: 'var(--tw-prose-pre-code-variable)',
-        },
-        '.token.deleted': {
-          textDecorationLine: 'line-through',
-        },
-        '.token.inserted': {
-          borderBottom: '1px dotted var(--tw-prose-pre-code-inserted)',
-          textDecoration: 'none',
-        },
-        '.token.italic': {
-          fontStyle: 'italic',
-        },
-        '.token.important,.bold': {
-          fontWeight: 'bold',
-        },
-        '.token.important': {
-          color: 'var(--tw-prose-pre-code-important)',
-        },
-        '.token.entity': {
-          cursor: 'help',
-        },
-        'code[class*="language-"],pre[class*="language-"]': {
-          '::selection': {
-            textShadow: 'none',
-            background: 'var(--tw-prose-pre-code-selection)',
-          },
-        },
-        '.rehype-code-title': {
           backgroundColor: 'var(--tw-prose-pre-bg)',
-          paddingLeft: theme('spacing.4'),
-          paddingRight: theme('spacing.4'),
-          paddingTop: theme('spacing.2'),
-          paddingBottom: theme('spacing.2'),
-          margin: 0,
-          borderTopLeftRadius: '10px',
-          borderTopRightRadius: '10px',
-          borderColor: 'var(--tw-prose-borders)',
-          borderWidth: '1px',
-          borderStyle: 'dashed',
-          fontWeight: 'bold',
         },
-        '.rehype-code-title + pre': {
-          marginTop: 0,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-          borderTopWidth: 0,
-        },
-        blockquote: {
+        ol: {
+          paddingInlineStart: em(22, 14),
           position: 'relative',
-          fontSize: theme('fontSize.sm')?.[0],
-          ...theme('fontSize.sm')?.[1],
-          fontStyle: 'regular',
-          border: 0,
-          marginTop: 0,
-          marginLeft: theme('spacing.2'),
-          marginBottom: theme('spacing.3'),
-          marginRight: 0,
-          paddingLeft: theme('spacing.3'),
-          p: {
-            width: '100%',
-          },
-          'p:first-of-type::before': {
-            content: '">"',
-            display: 'block',
-            position: 'absolute',
-            left: '-8px',
-            color: 'inherit',
-          },
+          listStyle: 'none',
+          marginTop: '0',
+          marginBottom: em(12, 16),
+          padding: '0',
+          marginLeft: theme('spacing.7'),
+        },
+        ul: {
+          paddingInlineStart: em(22, 14),
+          position: 'relative',
+          listStyle: 'none',
+          marginTop: '0',
+          marginBottom: em(12, 16),
+          padding: '0',
+          marginLeft: theme('spacing.7'),
+        },
+        li: {
+          marginTop: em(4, 14),
+          marginBottom: theme('spacing.1'),
+        },
+        'ol > li': {
+          paddingInlineStart: em(6, 14),
+          counterIncrement: 'li',
+        },
+        'ul > li': {
+          paddingInlineStart: em(6, 14),
+          counterIncrement: 'li',
+        },
+        '> ul > li p': {
+          marginTop: em(8, 14),
+          marginBottom: em(8, 14),
+        },
+        '> ul > li > p:first-child': {
+          marginTop: em(16, 14),
+        },
+        '> ul > li > p:last-child': {
+          marginBottom: em(16, 14),
+        },
+        '> ol > li > p:first-child': {
+          marginTop: em(16, 14),
+        },
+        '> ol > li > p:last-child': {
+          marginBottom: em(16, 14),
+        },
+        'ul ul, ul ol, ol ul, ol ol': {
+          marginTop: em(8, 14),
+          marginBottom: em(8, 14),
+        },
+        dl: {
+          marginTop: em(16, 14),
+          marginBottom: em(16, 14),
+        },
+        dt: {
+          marginTop: em(16, 14),
+        },
+        dd: {
+          marginTop: em(4, 14),
+          paddingInlineStart: em(22, 14),
+        },
+        hr: {
+          marginTop: em(40, 14),
+          marginBottom: em(40, 14),
+        },
+        'hr + *': {
+          marginTop: '0',
+        },
+        'h2 + *': {
+          marginTop: '0',
+        },
+        'h3 + *': {
+          marginTop: '0',
+        },
+        'h4 + *': {
+          marginTop: '0',
+        },
+        table: {
+          fontSize: em(12, 14),
+          lineHeight: round(18 / 12),
+        },
+        'thead th': {
+          paddingInlineEnd: em(12, 12),
+          paddingBottom: em(8, 12),
+          paddingInlineStart: em(12, 12),
+        },
+        'thead th:first-child': {
+          paddingInlineStart: '0',
+        },
+        'thead th:last-child': {
+          paddingInlineEnd: '0',
+        },
+        'tbody td, tfoot td': {
+          paddingTop: em(8, 12),
+          paddingInlineEnd: em(12, 12),
+          paddingBottom: em(8, 12),
+          paddingInlineStart: em(12, 12),
+        },
+        'tbody td:first-child, tfoot td:first-child': {
+          paddingInlineStart: '0',
+        },
+        'tbody td:last-child, tfoot td:last-child': {
+          paddingInlineEnd: '0',
+        },
+        figure: {
+          maxWidth: '100%',
+          marginTop: theme('spacing.5'),
+          marginBottom: theme('spacing.5'),
+        },
+        'figure > *': {
+          marginTop: '0',
+          marginBottom: '0',
+        },
+        figcaption: {
+          fontSize: em(12, 14),
+          lineHeight: round(16 / 12),
+          marginTop: em(8, 12),
         },
         'blockquote footer': {
           fontSize: '0.75rem',
           textAlign: 'right',
         },
         '.newthought': {
+          fontSize: '1.2rem',
           fontVariant: 'small-caps',
-          fontSize: theme('fontSize.xl')?.[0],
-          ...theme('fontSize.xl')?.[1],
-        },
-        hr: {
-          border: 0,
-          borderBottom: '1px dashed',
-          borderColor: 'muted',
-        },
-        ol: {
-          position: 'relative',
-          listStyle: 'none',
-          marginTop: 0,
-          marginBottom: theme('spacing.3'),
-          padding: 0,
-          marginLeft: theme('spacing.7'),
-        },
-        'ol > li': {
-          counterIncrement: 'li',
         },
         'ol > li::before': {
           content: 'counter(li)',
@@ -266,66 +352,30 @@ export const typography = (theme: PluginAPI['theme']) => ({
           position: 'absolute',
           left: '-20px',
         },
-        ul: {
-          position: 'relative',
-          listStyle: 'none',
-          marginTop: 0,
-          marginBottom: theme('spacing.3'),
-          padding: 0,
-          marginLeft: theme('spacing.7'),
-        },
-        'ul > li': {
-          counterIncrement: 'li',
-        },
         'ul > li::before': {
           content: '"*"',
           color: 'inherit',
           position: 'absolute',
           left: '-20px',
         },
-        li: {
-          marginBottom: theme('spacing.1'),
+        thead: {
+          borderBottomStyle: 'dashed',
         },
-        table: {
-          width: '100%',
-          borderCollapse: 'collapse',
-          marginBottom: theme('spacing.3'),
-          border: 'none',
+        tr: {
+          borderBottomStyle: 'dashed',
         },
-        'table thead': {
-          border: 0,
-        },
-        'table thead tr th': {
-          border: '1px dashed var(--tw-prose-borders)',
-          padding: `${theme('spacing.2')} ${theme('spacing.4')}`,
-          textAlign: 'center',
-        },
-        'table tbody tr:nth-of-type(even)': {
+        'tr:nth-of-type(even)': {
           backgroundColor: 'var(--tw-prose-tr-even)',
         },
-        'table tbody tr': {
-          border: 0,
-        },
-        'table tbody tr td': {
-          border: '1px dashed var(--tw-prose-borders)',
-          padding: `${theme('spacing.2')} ${theme('spacing.4')}`,
-        },
-        figure: {
-          maxWidth: '100%',
-          marginTop: theme('spacing.5'),
-          marginBottom: theme('spacing.5'),
-        },
         'figure > figcaption': {
-          marginTop: theme('spacing.2'),
-          fontSize: theme('fontSize.xs')?.[0],
-          ...theme('fontSize.xs')?.[1],
-          color: theme('colors.black'),
+          marginTop: em(8, 16),
+          color: 'var(--tw-prose-body)',
         },
         'figure.fullwidth': {
           display: 'block',
           gridTemplateColumns: 'initial',
-          marginTop: theme('spacing.8'),
-          marginBottom: theme('spacing.8'),
+          marginTop: em(20, 16),
+          marginBottom: em(20, 16),
         },
         '.video-wrapper': {
           aspectRatio: '16 / 9',
@@ -334,156 +384,99 @@ export const typography = (theme: PluginAPI['theme']) => ({
           height: '100%',
           width: '100%',
         },
+        // Inline marginnotes / sidenotes
+        '.sidenote-number': {
+          counterIncrement: sidenoteCounter,
+          display: 'inline-block',
+          maxHeight: '2rem',
+        },
+        '.sidenote-number::after': {
+          content: `counter(${sidenoteCounter})`,
+          fontSize: '0.6rem',
+          top: '-0.4rem',
+          left: '0.15rem',
+          position: 'relative',
+          verticalAlign: 'baseline',
+        },
+        '.sidenote-definition, .marginnote-definition': {
+          fontSize: '0.8rem',
+          position: 'relative',
+          verticalAlign: 'baseline',
+          clear: 'both',
+          display: 'none',
+          float: 'left',
+          left: '1rem',
+          margin: '1rem 2.5%',
+          width: '95%',
+        },
+        '.sidenote-definition::before': {
+          content: `counter(${sidenoteCounter})`,
+          fontSize: '0.6rem',
+          top: '-0.4rem',
+          left: '-0.2rem',
+          position: 'relative',
+          verticalAlign: 'baseline',
+        },
+        '.sidenote input.margin-toggle': {
+          display: 'none',
+        },
+        '.sidenote .margin-toggle:checked + .sidenote-definition': {
+          display: 'block',
+        },
+        '.marginnote .margin-toggle:checked + .marginnote-definition': {
+          display: 'block',
+        },
+        '.sidenote label.margin-toggle': {
+          cursor: 'pointer',
+          pointerEvents: 'initial',
+        },
+        '.marginnote input.margin-toggle': {
+          display: 'none',
+        },
+        '.marginnote label.margin-toggle': {
+          display: 'inline',
+          cursor: 'pointer',
+          pointerEvents: 'initial',
+        },
+        '[data-initial-heading=true]': {
+          display: 'none',
+        },
       },
     ],
   },
-  'tufted-sidenotes': {
-    css: {
-      'p,h2,h3,h4,h5,h6,pre,blockquote': {
-        width: '100%',
-      },
-      '.rehype-code-title': {
-        width: '100%',
-      },
-      '.sidenote-number': {
-        counterIncrement: 'sidenote-counter',
-        display: 'inline-block',
-        maxHeight: '2rem',
-      },
-      '.sidenote-number::after': {
-        content: 'counter(sidenote-counter)',
-        fontSize: '0.6rem',
-        top: '-0.4rem',
-        left: '0.15rem',
-        position: 'relative',
-        verticalAlign: 'baseline',
-      },
-      '.sidenote-definition, .marginnote-definition': {
-        fontSize: theme('fontSize.xs')?.[0],
-        ...theme('fontSize.xs')?.[1],
-        position: 'relative',
-        verticalAlign: 'baseline',
-        clear: 'both',
-        display: 'none',
-        float: 'left',
-        left: '1rem',
-        margin: '1rem 2.5%',
-        width: '95%',
-      },
-      '.sidenote-definition::before': {
-        content: 'counter(sidenote-counter)',
-        fontSize: '0.6rem',
-        top: '-0.4rem',
-        left: '-0.2rem',
-        position: 'relative',
-        verticalAlign: 'baseline',
-      },
-      '.sidenote input.margin-toggle': {
-        display: 'none',
-      },
-      '.sidenote .margin-toggle:checked + .sidenote-definition': {
-        display: 'block',
-      },
-      '.marginnote .margin-toggle:checked + .marginnote-definition': {
-        display: 'block',
-      },
-      '.sidenote label.margin-toggle': {
-        cursor: 'pointer',
-        pointerEvents: 'initial',
-      },
-      '.marginnote input.margin-toggle': {
-        display: 'none',
-      },
-      '.marginnote label.margin-toggle': {
-        display: 'inline',
-        cursor: 'pointer',
-        pointerEvents: 'initial',
-      },
-      figure: {
-        display: 'block',
-        gridTemplateColumns: '75.5% 15.5%',
-        columnGap: '6.5%',
-      },
-      'figure > figcaption': {
-        marginTop: theme('spacing.2'),
-        p: {
-          width: '100%',
+  sidenotes: {
+    css: [
+      {
+        // Sidenotes to the side
+        '.sidenote-definition, .marginnote-definition': {
+          position: 'relative',
+          verticalAlign: 'baseline',
+          clear: 'right',
+          display: 'block',
+          float: 'right',
+          left: 0,
+          margin: '0.3rem -34% 0 0',
+          width: '26%',
+        },
+        '.sidenote > label.margin-toggle': {
+          cursor: 'default',
+          pointerEvents: 'none',
+        },
+        '.marginnote > label.margin-toggle': {
+          display: 'none',
+          cursor: 'default',
+          pointerEvents: 'none',
         },
       },
-      'figure.fullwidth': {
-        display: 'block',
-        gridTemplateColumns: 'initial',
-        width: '100%',
-        maxWidth: '100%',
-        paddingRight: 0,
-      },
-      'figure.fullwidth > figcaption': {
-        p: {
-          paddingLeft: theme('spacing.3'),
-          paddingRight: theme('spacing.3'),
-          width: '100%',
-        },
-      },
-      '.title': {
-        fontSize: '2.5rem',
-        marginBottom: theme('spacing.2'),
-      },
-    },
-  },
-  'tufted-sidenotes-lg': {
-    css: {
-      'p,h2,h3,h4,h5,h6,blockquote': {
-        width: '75.5%',
-      },
-      'pre,.rehype-code-title': {
-        width: '100%',
-      },
-      '.sidenote-definition, .marginnote-definition': {
-        clear: 'right',
-        display: 'block',
-        float: 'right',
-        left: 0,
-        margin: '0.3rem -34% 0 0',
-        width: '26%',
-      },
-      '.sidenote > label.margin-toggle': {
-        cursor: 'default',
-        pointerEvents: 'none',
-      },
-      '.marginnote > label.margin-toggle': {
-        display: 'none',
-        cursor: 'default',
-        pointerEvents: 'none',
-      },
-      table: {
-        width: 'initial',
-      },
-      figure: {
-        display: 'grid',
-      },
-      'figure > figcaption': {
-        marginTop: 0,
-      },
-      'figure.fullwidth': {
-        display: 'block',
-        gridTemplateColumns: 'initial',
-        width: '100%',
-        maxWidth: '100%',
-        paddingRight: 0,
-      },
-      'figure.fullwidth > figcaption': {
-        marginTop: 0,
-        p: {
-          paddingLeft: theme('spacing.3'),
-          paddingRight: theme('spacing.3'),
-        },
-      },
-    },
-  },
-  'tufted-bbs': {
-    css: colors(theme),
-  },
-  'tufted-bbs-invert': {
-    css: inverted(),
+    ],
   },
 });
+
+export default {
+  theme: {
+    extend: {
+      typography: styles,
+    },
+  },
+  plugins: [typography],
+} satisfies Config;
