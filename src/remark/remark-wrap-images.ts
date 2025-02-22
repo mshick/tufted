@@ -3,7 +3,6 @@ import type { Transformer } from 'unified';
 import { u } from 'unist-builder';
 import { CONTINUE, visit } from 'unist-util-visit';
 import {
-  isContainerDirectiveNode,
   isFigureNode,
   isImageNode,
   isParagraphNode,
