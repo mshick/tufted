@@ -1,6 +1,6 @@
 {
   "name": "@mshick/tufted",
-  "version": "2.0.0-20",
+  "version": "2.0.0-21",
   "keywords": [
     "react",
     "nodejs",
@@ -19,13 +19,23 @@
     "./rehype": "./dist/rehype/index.js",
     "./tailwind": "./dist/tailwind/index.js"
   },
-  "files": ["dist", "LICENSE", "README.md"],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "types": "./dist",
   "typesVersions": {
     "*": {
-      "remark": ["dist/remark/index.d.ts"],
-      "rehype": ["dist/rehype/index.d.ts"],
-      "tailwind": ["dist/tailwind/index.d.ts"]
+      "remark": [
+        "dist/remark/index.d.ts"
+      ],
+      "rehype": [
+        "dist/rehype/index.d.ts"
+      ],
+      "tailwind": [
+        "dist/tailwind/index.d.ts"
+      ]
     }
   },
   "scripts": {
