@@ -51,13 +51,9 @@ exports[`the preset works 1`] = `
     <h2>Sidenotes</h2>
     <p>Diam phasellus vestibulum lorem sed risus ultricies tristique. Arcu odio ut sem
         nulla pharetra diam sit amet. At augue eget arcu dictum. Viverra ipsum nunc
-        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition">
-                <figure><img src="./local-image.png" alt="Image in a marginnote">
-                    <figcaption>Image in a marginnote</figcaption>
-                </figure> At urna condimentum mattis
+        aliquet bibendum enim.<span class="marginnote"><label for="mn-margin-2" class="margin-toggle">⊕</label><input type="checkbox" id="mn-margin-2" class="margin-toggle"><span class="marginnote-definition"><img src="./local-image.png" alt="Image in a marginnote"> At urna condimentum mattis
                 pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
-                nulla porttitor massa id neque aliquam vestibulum.
-            </span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
+                nulla porttitor massa id neque aliquam vestibulum.</span></span> Magna eget est lorem ipsum dolor. Malesuada nunc vel
         risus commodo viverra maecenas accumsan lacus. Tellus orci ac auctor augue
         mauris. Lorem ipsum dolor sit amet consectetur. Viverra aliquet eget sit amet
         tellus cras adipiscing enim. Amet justo donec enim diam vulputate ut pharetra
@@ -68,9 +64,7 @@ exports[`the preset works 1`] = `
         ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
         tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
         vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
-    <figure><img src="./local-image.png" alt="Standalone image gets wrapped in figure">
-        <figcaption>Standalone image gets wrapped in figure</figcaption>
-    </figure>
+    <figure class="image"><img src="./local-image.png" alt="Standalone image gets wrapped in figure"></figure>
     <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
         purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
         nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id

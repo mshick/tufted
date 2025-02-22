@@ -24,7 +24,7 @@ sit amet tellus cras adipiscing enim.</p>
 <p>You can create explicit figures. This allows for optional classes, like
 <code>.fullwidth</code>. It also makes it easy to include a <code>figcaption</code>.</p>
 <p>:::figure{.fullwidth}</p>
-<figure><img src="https://picsum.photos/200/300" alt="Directive wrapped figure"><figcaption>Directive wrapped figure</figcaption></figure>
+<p><img src="https://picsum.photos/200/300" alt="Directive wrapped figure"></p>
 <p>Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas
 purus viverra accumsan in nisl nisi scelerisque. Eu mi bibendum neque egestas
 congue.</p>
@@ -52,10 +52,10 @@ ut. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Turpis
 tincidunt id aliquet risus. Faucibus scelerisque eleifend donec pretium
 vulputate sapien nec. Turpis in eu mi bibendum neque egestas congue.</p>
 <p>[^margin]:
-<figure><img src="./local-image.png" alt="Image in a marginnote"><figcaption>Image in a marginnote</figcaption></figure> At urna condimentum mattis
+<img src="./local-image.png" alt="Image in a marginnote"> At urna condimentum mattis
 pellentesque id nibh. Nulla facilisi nullam vehicula ipsum a. Diam quam
 nulla porttitor massa id neque aliquam vestibulum.</p>
-<figure><img src="./local-image.png" alt="Standalone image gets wrapped in figure"><figcaption>Standalone image gets wrapped in figure</figcaption></figure>
+<p><img src="./local-image.png" alt="Standalone image gets wrapped in figure"></p>
 <p>Amet mauris commodo quis imperdiet massa tincidunt. Adipiscing elit ut aliquam
 purus sit amet luctus venenatis. Odio tempor orci dapibus ultrices in iaculis
 nunc sed. Viverra maecenas accumsan lacus vel facilisis volutpat. Nunc id

@@ -18,7 +18,14 @@ import type {
 import type { MdxJsxFlowElement } from 'mdast-util-mdx-jsx';
 import type { MdxjsEsm } from 'mdast-util-mdxjs-esm';
 import type { Node } from 'unist';
-import type { Export, Footnote, Iframe, Section, Video } from './types.js';
+import type {
+  Export,
+  Figure,
+  Footnote,
+  Iframe,
+  Section,
+  Video,
+} from './types.js';
 
 export function isNode(node: unknown): node is Node {
   return Boolean(node && typeof (node as Node)?.type === 'string');
@@ -61,6 +68,10 @@ export function isImageNode(node: unknown): node is Image {
 
 export function isIframeNode(node: unknown): node is Iframe {
   return Boolean(isNode(node) && node.type === 'iframe');
+}
+
+export function isFigureNode(node: unknown): node is Figure {
+  return Boolean(isNode(node) && node.type === 'figure');
 }
 
 export function isVideoNode(node: unknown): node is Video {

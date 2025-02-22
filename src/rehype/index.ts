@@ -1,5 +1,3 @@
-// @ts-expect-error No types
-import rehypeFigure from '@microflash/rehype-figure';
 import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype';
 import rehypeAutolinkHeadings, {
   type Options as RehypeAutolinkHeadingsOptions,
@@ -19,7 +17,6 @@ function main({ settings, plugins }: PresetSettings = {}): Preset {
   return {
     settings,
     plugins: [
-      rehypeFigure,
       rehypeSlug,
       [
         rehypeShiki,
@@ -31,7 +28,6 @@ function main({ settings, plugins }: PresetSettings = {}): Preset {
           ...plugins?.rehypeShiki,
         },
       ],
-      // [rehypeImgSize, { assets, base }],
       [
         rehypeAutolinkHeadings,
         {

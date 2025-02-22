@@ -12,6 +12,7 @@ import remarkEpigraph from './remark-epigraph.js';
 import remarkInitialHeading from './remark-initial-heading.js';
 import remarkSectionize from './remark-sectionize.js';
 import remarkSidenotes from './remark-sidenotes.js';
+import remmarkWrapImages from './remark-wrap-images.js';
 
 export type PresetSettings = {
   settings?: Settings;
@@ -29,6 +30,7 @@ function main({ settings }: PresetSettings = {}): Preset {
       remarkDirectiveRehype,
       remarkDirectiveFooter,
       remarkDirectiveNewthought,
+      remmarkWrapImages,
       remarkSidenotes,
       remarkSqueezeParagraphs,
       remarkInitialHeading,

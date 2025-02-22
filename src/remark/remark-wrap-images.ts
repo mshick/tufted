@@ -4,6 +4,7 @@ import { u } from 'unist-builder';
 import { CONTINUE, visit } from 'unist-util-visit';
 import {
   isContainerDirectiveNode,
+  isFigureNode,
   isImageNode,
   isParagraphNode,
   isParentNode,
@@ -30,7 +31,7 @@ export default function remmarkWrapImages(): Transformer<Parent> {
         // Don't get images in an explicit figure container or that are inline
         if (
           isParentNode(parent) &&
-          !isContainerDirectiveNode(parent) &&
+          !isFigureNode(parent) &&
           !isParagraphNode(parent)
         ) {
           const contentTypesPresent = contentTypePresenceReducer(

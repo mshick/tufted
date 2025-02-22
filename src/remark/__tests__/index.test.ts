@@ -1,6 +1,4 @@
 import * as path from 'node:path';
-// @ts-expect-error No types
-import rehypeFigure from '@microflash/rehype-figure';
 import { html } from 'js-beautify';
 import rehypeStringify from 'rehype-stringify';
 import remarkMdx from 'remark-mdx';
@@ -17,7 +15,6 @@ test('the preset works', async () => {
     .use(remarkMdx)
     .use(preset())
     .use(remarkRehype)
-    .use(rehypeFigure)
     .use(rehypeStringify)
     .process(readSync(path.resolve(__dirname, '../../__tests__/example.md')));
 
