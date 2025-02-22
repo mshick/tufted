@@ -1,6 +1,5 @@
-import typography from '@tailwindcss/typography';
 import colors from 'tailwindcss/colors';
-import type { Config, PluginAPI } from 'tailwindcss/plugin';
+import type { PluginAPI } from 'tailwindcss/plugin';
 
 const round = (num: number) =>
   num
@@ -12,7 +11,7 @@ const em = (px: number, base: number) => `${round(px / base)}em`;
 
 const sidenoteCounter = 'sidenote-counter';
 
-const styles = ({ theme }: Pick<PluginAPI, 'theme'>) => ({
+export const styles = ({ theme }: Pick<PluginAPI, 'theme'>) => ({
   DEFAULT: {
     css: [
       {
@@ -471,12 +470,3 @@ const styles = ({ theme }: Pick<PluginAPI, 'theme'>) => ({
     ],
   },
 });
-
-export default {
-  theme: {
-    extend: {
-      typography: styles,
-    },
-  },
-  plugins: [typography],
-} satisfies Config;

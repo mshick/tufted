@@ -17,7 +17,7 @@
   "exports": {
     "./remark": "./dist/remark/index.js",
     "./rehype": "./dist/rehype/index.js",
-    "./tailwind": "./dist/tailwind/index.js"
+    "./tailwindcss": "./dist/tailwindcss/index.js"
   },
   "files": [
     "dist",
