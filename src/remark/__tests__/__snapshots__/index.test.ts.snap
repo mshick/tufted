@@ -3,7 +3,7 @@
 exports[`the preset works 1`] = `
 "<h1>Title Skip for Initial Heading</h1>
 <section>
-    <h2 class="hidden">Introduction</h2>
+    <h2 data-initial-heading="true" class="hidden">Introduction</h2>
     <p>Introductory text without heading will add a hidden h2 added. This allows for a
         consistent TOC. Consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut <code>inline code</code> et dolore magna aliqua. Vestibulum rhoncus est pellentesque

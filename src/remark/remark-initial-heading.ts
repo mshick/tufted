@@ -59,6 +59,7 @@ export default function remarkInitialHeading(
             depth: options.headingDepth,
             data: {
               hProperties: {
+                dataInitialHeading: 'true',
                 className: 'hidden',
               },
             },
