@@ -77,12 +77,11 @@ turpis cursus in. Fermentum leo vel orci porta non pulvinar neque laoreet.</p>
 <h2 id="code" class="group">Code<a class="heading-link hidden group-hover:inline-block ml-2" href="#code">#</a></h2>
 <p>Code blocks support titles. Titles are typically filenames, and they cannot
 contain spaces.</p>
-<pre class="shiki shiki-themes one-light one-dark-pro" style="background-color:#FAFAFA;--shiki-dark-bg:#282c34;color:#383A42;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#A626A4;--shiki-dark:#C678DD">function</span><span style="color:#4078F2;--shiki-dark:#61AFEF"> randomCode</span><span style="color:#383A42;--shiki-dark:#ABB2BF">(</span><span style="color:#383A42;--shiki-dark:#E06C75;font-style:inherit;--shiki-dark-font-style:italic">bar</span><span style="color:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<pre class="shiki shiki-themes one-light one-dark-pro" style="background-color:#FAFAFA;--shiki-dark-bg:#282c34;color:#383A42;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#A626A4;--shiki-dark:#C678DD">function</span><span style="color:#4078F2;--shiki-dark:#61AFEF"> randomCode</span><span style="color:#383A42;--shiki-dark:#ABB2BF">(</span><span style="color:#383A42;font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">bar</span><span style="color:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
 <span class="line"><span style="color:#A626A4;--shiki-dark:#C678DD">  var</span><span style="color:#383A42;--shiki-dark:#E06C75"> a</span><span style="color:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="color:#986801;--shiki-dark:#D19A66"> 42</span><span style="color:#383A42;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#A626A4;--shiki-dark:#C678DD">  var</span><span style="color:#383A42;--shiki-dark:#E06C75"> b</span><span style="color:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="color:#50A14F;--shiki-dark:#98C379"> 'Prism'</span><span style="color:#383A42;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#A626A4;--shiki-dark:#C678DD">  return</span><span style="color:#383A42;--shiki-dark:#E06C75"> a</span><span style="color:#0184BC;--shiki-dark:#56B6C2"> +</span><span style="color:#4078F2;--shiki-dark:#61AFEF"> bar</span><span style="color:#383A42;--shiki-dark:#ABB2BF">(</span><span style="color:#383A42;--shiki-dark:#E06C75">b</span><span style="color:#383A42;--shiki-dark:#ABB2BF">);</span></span>
-<span class="line"><span style="color:#383A42;--shiki-dark:#ABB2BF">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <h2 id="epigraphs" class="group">Epigraphs<a class="heading-link hidden group-hover:inline-block ml-2" href="#epigraphs">#</a></h2>
 <blockquote>
 <p>We get wrapped in an epigraph tag. Vel pharetra vel turpis nunc eget lorem

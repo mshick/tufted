@@ -49,7 +49,7 @@
     "watch": "vitest"
   },
   "dependencies": {
-    "@shikijs/rehype": "^1.10.0",
+    "@shikijs/rehype": "^3.0.0",
     "hast-util-from-html-isomorphic": "^2.0.0",
     "image-size": "^1.1.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -60,9 +60,9 @@
     "remark-footnotes": "^4.0.1",
     "remark-gfm": "^4.0.1",
     "remark-squeeze-paragraphs": "^6.0.0",
-    "remark-unwrap-images": "^4.0.0",
+    "remark-unwrap-images": "^4.0.1",
     "tailwindcss": "^4.0.8",
-    "unified": "^11.0.4",
+    "unified": "^11.0.5",
     "unist-builder": "^4.0.0",
     "unist-util-find-after": "^5.0.0",
     "unist-util-remove": "^4.0.0",
