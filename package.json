@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@shikijs/rehype": "^1.10.0",
+    "hast-util-from-html-isomorphic": "^2.0.0",
     "image-size": "^1.1.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-code-titles": "^1.2.0",

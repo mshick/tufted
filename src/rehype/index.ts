@@ -1,4 +1,6 @@
 import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype';
+import type { ElementContent } from 'hast';
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic';
 import rehypeAutolinkHeadings, {
   type Options as RehypeAutolinkHeadingsOptions,
 } from 'rehype-autolink-headings';
@@ -22,8 +24,8 @@ function main({ settings, plugins }: PresetSettings = {}): Preset {
         rehypeShiki,
         {
           themes: {
-            light: 'vitesse-light',
-            dark: 'vitesse-dark',
+            light: 'one-light',
+            dark: 'one-dark-pro',
           },
           ...plugins?.rehypeShiki,
         },
@@ -32,8 +34,19 @@ function main({ settings, plugins }: PresetSettings = {}): Preset {
         rehypeAutolinkHeadings,
         {
           behavior: 'append',
+          content: fromHtmlIsomorphic('#', {
+            fragment: true,
+          }).children as ElementContent[],
+          headingProperties: {
+            className: ['group'],
+          },
           properties: {
-            className: ['heading-link', 'hidden'],
+            className: [
+              'heading-link',
+              'hidden',
+              'group-hover:inline-block',
+              'ml-2',
+            ],
           },
           ...plugins?.rehypeAutolinkHeadings,
         },
