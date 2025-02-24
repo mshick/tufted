@@ -15,29 +15,24 @@
   ],
   "type": "module",
   "exports": {
-    "./remark": "./dist/remark/index.js",
-    "./rehype": "./dist/rehype/index.js",
-    "./tailwindcss": "./dist/tailwindcss/index.js"
+    "./remark": {
+      "types": "./dist/remark/index.d.ts",
+      "default": "./dist/remark/index.js"
+    },
+    "./rehype": {
+      "types": "./dist/rehype/index.d.ts",
+      "default": "./dist/rehype/index.js"
+    },
+    "./tailwindcss": {
+      "types": "./dist/tailwindcss/index.d.ts",
+      "default": "./dist/tailwindcss/index.js"
+    }
   },
   "files": [
     "dist",
     "LICENSE",
     "README.md"
   ],
-  "types": "./dist",
-  "typesVersions": {
-    "*": {
-      "remark": [
-        "dist/remark/index.d.ts"
-      ],
-      "rehype": [
-        "dist/rehype/index.d.ts"
-      ],
-      "tailwind": [
-        "dist/tailwind/index.d.ts"
-      ]
-    }
-  },
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "del-cli dist",
