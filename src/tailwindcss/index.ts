@@ -291,10 +291,10 @@ export const styles = ({ theme }: Pick<PluginAPI, 'theme'>) => ({
         'tbody td:last-child, tfoot td:last-child': {
           paddingInlineEnd: '0',
         },
-        'thead th:first-child': {
+        'thead td:first-child': {
           paddingInlineStart: em(12, 12),
         },
-        'thead th:last-child': {
+        'thead td:last-child': {
           paddingInlineEnd: em(12, 12),
         },
         figure: {
