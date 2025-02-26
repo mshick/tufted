@@ -97,9 +97,13 @@ const colorThemes = {
   },
 } satisfies Components;
 
+type ProseOptions = {
+  themeName?: keyof typeof colorThemes;
+};
+
 export const prose = (
   { theme }: Pick<PluginAPI, 'theme'>,
-  themeName: keyof typeof colorThemes = 'gray',
+  { themeName = 'gray' }: ProseOptions = {},
 ) => ({
   DEFAULT: {
     css: [
